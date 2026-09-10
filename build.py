@@ -134,7 +134,7 @@ def head(title, desc, canonical, depth=0, schema=None, og_title=None):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0a57ff">
+<meta name="theme-color" content="#106efe">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..800&display=swap" rel="stylesheet">
@@ -156,8 +156,8 @@ def nav(depth=0, quote_href=None):
 <nav class="nav" id="nav">
   <div class="nav-in">
     <a href="{p}index.html" class="logo" aria-label="{BRAND} home">
-      <img src="{p}images/logo.png" alt="{BRAND}" class="logo-light" width="1223" height="437">
-      <img src="{p}images/logo-dark.png" alt="" aria-hidden="true" class="logo-dark" width="1223" height="437">
+      <img src="{p}images/logo.png" alt="{BRAND}" class="logo-light" width="1842" height="449">
+      <img src="{p}images/logo-dark.png" alt="" aria-hidden="true" class="logo-dark" width="1842" height="449">
     </a>
     <ul class="nav-l">
       <li class="has-dd"><a href="{p}services.html">Services <span class="chev">&#9662;</span></a>
