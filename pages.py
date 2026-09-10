@@ -170,7 +170,7 @@ def build_home():
     body = f'''{nav(0, quote_href="#quote-form")}
 
 <section class="hero">
-  <div class="hero-bg"><img src="images/hero.jpg" alt="Rear extension with raked ceiling and full-height glazing on a {CITY} period home" width="1600" height="1000" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="images/hero.jpg" alt="Open-plan living, dining and kitchen under a raked ceiling, opening to the garden of a {CITY} home" width="1600" height="1000" fetchpriority="high"></div>
   <div class="hero-inner">
     <div class="ctr">
       <div class="hero-grid">
