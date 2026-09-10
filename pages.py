@@ -145,7 +145,7 @@ def build_home():
   "@type": "HomeAndConstructionBusiness",
   "name": "{BRAND}",
   "legalName": "{LEGAL}",
-  "description": "{CITY} renovation and extension builders specialising in period homes, rear extensions, kitchens and bathrooms.",
+  "description": "Over 40 years in {CITY} residential construction. Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.",
   "url": "{SITE_URL}/",
   "logo": "{SITE_URL}/images/logo-dark.png",
   "image": "{SITE_URL}/images/og.jpg",
@@ -154,7 +154,7 @@ def build_home():
   "slogan": "{SLOGAN}",
   "address": {{"@type": "PostalAddress", "addressLocality": "{CITY}", "addressRegion": "{STATE}", "addressCountry": "AU"}},
   "areaServed": {{"@type": "State", "name": "Victoria", "containedInPlace": {{"@type": "Country", "name": "Australia"}}}},
-  "knowsAbout": ["Home extensions", "Renovations", "Kitchens", "Bathrooms", "Heritage homes", "Granny flats", "Commercial fit-outs", "Building maintenance"]
+  "knowsAbout": ["Home additions", "Home extensions", "Renovations", "Kitchen upgrades", "Bathroom upgrades", "Outdoor living areas", "Property maintenance", "Pre-sale facelifts", "Heritage homes", "Granny flats"]
 }}'''
 
     projects = "".join([
@@ -177,19 +177,20 @@ def build_home():
         <div class="hero-left">
           <div class="hero-content">
             <div class="hero-tag"><span class="dot"></span>Taking on new projects across {CITY}</div>
-            <h1>Keep the <span class="em">character</span>.<br>Gain the space.</h1>
-            <p class="hero-sub">{BRAND} are {CITY} renovation and extension builders. We restore what gives a house its character at the front and rebuild everything behind it &mdash; light, height, and a floor plan that suits how you actually live.</p>
+            <h1>Forty years of<br><span class="em">{CITY}</span> homes.</h1>
+            <p class="hero-sub">Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts &mdash; backed by four decades in {CITY} residential construction, with the same team from first quote to final handover.</p>
             <div class="hero-btns">
               <a href="#quote-form" class="btn-p">Get a Free Quote &rarr;</a>
               <a href="tel:{PHONE_HREF}" class="btn-glass">&#128222; {PHONE}</a>
             </div>
           </div>
-          <!-- TODO (Rankify): confirm these four claims with the client before launch -->
+          <!-- "40+ years" is from the client's Facebook page. TODO (Rankify):
+               confirm the other three claims before launch. -->
           <div class="hero-cards">
-            <div class="hero-glass"><div class="hg-icon">{svg("design")}</div><div><div class="hg-val">End&#8209;to&#8209;end</div><div class="hg-label">Design to handover</div></div></div>
+            <div class="hero-glass"><div class="hg-icon">{svg("star")}</div><div><div class="hg-val">40+ years</div><div class="hg-label">{CITY} residential</div></div></div>
             <div class="hero-glass"><div class="hg-icon">{svg("doc")}</div><div><div class="hg-val">Fixed price</div><div class="hg-label">Written contracts</div></div></div>
             <div class="hero-glass"><div class="hg-icon">{svg("team")}</div><div><div class="hg-val">One team</div><div class="hg-label">Every trade managed</div></div></div>
-            <div class="hero-glass"><div class="hg-icon">{svg("pin")}</div><div><div class="hg-val">Local</div><div class="hg-label">{CITY} &amp; suburbs</div></div></div>
+            <div class="hero-glass"><div class="hg-icon">{svg("design")}</div><div><div class="hg-val">End&#8209;to&#8209;end</div><div class="hg-label">Quote to handover</div></div></div>
           </div>
         </div>
         {hero_quote_form("Hero Enquiry", "quote-form")}
@@ -202,7 +203,7 @@ def build_home():
   <div class="ctr">
     <div class="benefits-grid">
       <div class="ben-item"><div class="ben-ico">{svg("shield")}</div><h4>Licensed &amp; Insured</h4><p>Registered builder with full public liability and domestic building insurance</p></div>
-      <div class="ben-item"><div class="ben-ico">{svg("heritage")}</div><h4>Period Home Specialists</h4><p>Heritage overlays, restumping, leadlight and lath-and-plaster hold no surprises</p></div>
+      <div class="ben-item"><div class="ben-ico">{svg("star")}</div><h4>40+ Years&rsquo; Experience</h4><p>Four decades of residential construction across {CITY} &mdash; very little is new to us</p></div>
       <div class="ben-item"><div class="ben-ico">{svg("team")}</div><h4>One Point of Contact</h4><p>Whoever quotes your job runs your job. No hand-offs, no chasing</p></div>
       <div class="ben-item"><div class="ben-ico">{svg("doc")}</div><h4>Itemised Quotes</h4><p>You see what every line costs before a tool comes out of the ute</p></div>
     </div>
@@ -214,7 +215,7 @@ def build_home():
     <div class="sec-c">
       <div class="sec-tag fade">What We Do</div>
       <h2 class="sec-t fade">From one bathroom to the whole back half of the house</h2>
-      <p class="sec-sub fade">Most of our work is residential &mdash; extensions, renovations and period homes. We also take on commercial fit-outs and ongoing maintenance for the clients we already build for.</p>
+      <p class="sec-sub fade">We specialise in home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts &mdash; plus the heritage, granny flat and design work that comes with forty years in {CITY} housing.</p>
     </div>
     {service_grid(0)}
   </div>
@@ -316,5 +317,5 @@ def build_home():
 '''
     write("index.html",
           head(f"{BRAND} | Renovation &amp; Extension Builders {CITY}",
-               f"{CITY} renovation and extension builders. Period home extensions, kitchens, bathrooms, granny flats and commercial fit-outs. Free written quotes.",
+               f"Over 40 years in {CITY} residential construction. Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts. Free written quotes.",
                "", 0, schema) + body + footer(0, quote_href="#quote-form"))

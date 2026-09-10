@@ -54,9 +54,12 @@ I = {
  "cal":        '<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>',
  "bolt":       '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>',
  "house":      '<path d="M3 10 12 3l9 7M5 10v10h14V10M9 20v-6h6v6M3 22h18"/>',
+ "townhouse":  '<path d="M2 21h20M4 21V9l4.5-3.5L13 9v12M13 21V11.5l3.5-2.5L20 11.5V21M6.5 21v-4.5h4V21M15.5 21v-3.5h3V21M7 12h3"/>',
  "help":       '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
  "ruler":      '<path d="M3 7h18v10H3zM7 7v4M11 7v6M15 7v4M19 7v6"/>',
  "leaf":       '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+ "outdoor":    '<path d="M2 21h20M5 21V10M19 21V10M3 10h18M7 10V6.5M11 10V6.5M15 10V6.5M9 17h6M10 17v4M14 17v4"/>',
+ "presale":    '<path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/>',
 }
 def svg(key, cls=""):
     return f'<svg viewBox="0 0 24 24"{cls}>{I[key]}</svg>'
@@ -76,9 +79,18 @@ SERVICES = [
  S("renovations.html", "Home Renovations", "Home Renovations", "reno",
    "Whole-home and room-by-room renovations &mdash; structural changes, new joinery, fresh services throughout.",
    "Full and partial home renovations for {sub} houses, from a single room through to a whole-of-house rebuild."),
- S("kitchens-bathrooms.html", "Kitchens &amp; Bathrooms", "Kitchens &amp; Bathrooms", "kitchen",
+ S("kitchens-bathrooms.html", "Kitchens &amp; Bathrooms", "Kitchen &amp; Bathroom Upgrades", "kitchen",
    "The two rooms that make or break a house. Custom joinery, stone, tiling and waterproofing done properly.",
    "New kitchens, bathrooms, ensuites and laundries for {sub} homes &mdash; waterproofed and tiled to standard."),
+ S("outdoor-living.html", "Outdoor Living Areas", "Outdoor Living Areas", "outdoor",
+   "Decks, pergolas, alfresco areas and outdoor kitchens &mdash; the part of the house everyone actually wants to be in.",
+   "Decking, pergolas and alfresco areas built for {sub} back yards and the way Melbourne weather actually behaves."),
+ S("maintenance.html", "Property Maintenance", "Property Maintenance &amp; Repairs", "maintain",
+   "Carpentry, make-goods, defect rectification and the ongoing repairs that keep a property in good order.",
+   "Ongoing property maintenance, carpentry and repair work across {sub} and the surrounding suburbs."),
+ S("presale.html", "Pre-Sale Facelifts", "Pre-Sale Facelifts", "presale",
+   "Targeted work before you list &mdash; spend on the things that move the price, skip the things that don't.",
+   "Pre-sale preparation for {sub} vendors, timed around your campaign and agent's advice."),
  S("heritage.html", "Heritage &amp; Period Homes", "Heritage &amp; Period Homes", "heritage",
    "Victorian, Edwardian and interwar homes restored at the front, opened right up at the back.",
    "Heritage-overlay work in {sub} &mdash; restoration at the street, contemporary living behind it."),
@@ -88,12 +100,11 @@ SERVICES = [
  S("design-build.html", "Design &amp; Build", "Design &amp; Build", "design",
    "One contract from concept sketch to handover &mdash; design, documentation, permits and construction.",
    "A single point of responsibility for {sub} projects &mdash; design, permits and build under one contract."),
+ # TODO (Rankify): their Facebook positions them as *residential* builders and
+ # doesn't mention commercial work. Confirm they still want this page.
  S("commercial.html", "Commercial Fit-Outs", "Commercial Fit-Outs", "commercial",
    "Shopfronts, offices, cafes and clinics fitted out around your trading hours, not ours.",
    "Retail, office and hospitality fit-outs for {sub} businesses, staged around your trading hours."),
- S("maintenance.html", "Maintenance &amp; Repairs", "Building Maintenance &amp; Repairs", "maintain",
-   "Carpentry, make-goods, defect rectification and the ongoing repairs that keep a property in good order.",
-   "Ongoing property maintenance, carpentry and repair work across {sub} and the surrounding suburbs."),
 ]
 
 NAV_PAGES = [("projects.html","Projects"), ("about.html","About"), ("contact.html","Contact")]
@@ -198,8 +209,9 @@ def footer(depth=0, quote_href=None):
     <div class="foot-g">
       <div class="foot-brand">
         <a href="{p}index.html" class="logo"><img src="{p}images/logo.png" alt="{BRAND}"></a>
-        <p>{CITY} renovation and extension builders. We keep what gives a house its character and rebuild everything behind it.</p>
+        <p>Over 40 years in {CITY} residential construction &mdash; home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.</p>
         <div class="foot-accred">
+          <span class="foot-badge">40+ years</span>
           <span class="foot-badge">Licensed &amp; insured</span>
           <span class="foot-badge">{CITY} &amp; suburbs</span>
         </div>
@@ -254,9 +266,9 @@ def qform_markup(context, form_id="quote-form", extra_class="", head_tag="Free Q
         ("Extension / Addition", "extension", "Extension"),
         ("Home Renovation", "reno", "Renovation"),
         ("Kitchen / Bathroom", "kitchen", "Kitchen/Bath"),
-        ("Granny Flat / Studio", "granny", "Granny Flat"),
-        ("Commercial Fit-Out", "commercial", "Commercial"),
-        ("Maintenance / Repairs", "maintain", "Maintenance"),
+        ("Outdoor Living", "outdoor", "Outdoor Living"),
+        ("Property Maintenance", "maintain", "Maintenance"),
+        ("Something else", "help", "Something else"),
     ]
     obs = "".join(
         f'<button type="button" class="ob" data-v="{v}"><div class="oico">{svg(ic)}</div><div class="olbl">{lbl}</div></button>'
@@ -274,11 +286,10 @@ def qform_markup(context, form_id="quote-form", extra_class="", head_tag="Free Q
 
         <div class="fslide" data-s="2" data-field="Property Type">
           <h3>What sort of property?</h3><p class="fsub">This tells us what we're likely to find behind the walls.</p>
-          <div class="og">
-            <button type="button" class="ob" data-v="Period home (pre-1940)"><div class="oico">{svg("heritage")}</div><div class="olbl">Period home</div></button>
-            <button type="button" class="ob" data-v="Post-war / modern house"><div class="oico">{svg("house")}</div><div class="olbl">Modern house</div></button>
-            <button type="button" class="ob" data-v="Townhouse / unit"><div class="oico">{svg("commercial")}</div><div class="olbl">Townhouse</div></button>
-            <button type="button" class="ob" data-v="Not sure"><div class="oico">{svg("help")}</div><div class="olbl">Not sure</div></button>
+          <div class="og og-3">
+            <button type="button" class="ob" data-v="House"><div class="oico">{svg("house")}</div><div class="olbl">House</div></button>
+            <button type="button" class="ob" data-v="Town House"><div class="oico">{svg("townhouse")}</div><div class="olbl">Town House</div></button>
+            <button type="button" class="ob" data-v="Heritage Home"><div class="oico">{svg("heritage")}</div><div class="olbl">Heritage Home</div></button>
           </div>
           <div class="fnav"><button type="button" class="fb">&larr; Back</button><button type="button" class="fn">Next &rarr;</button></div>
         </div>

@@ -96,12 +96,6 @@
     if(!slides.length) return;
     var maxStep = slides.length - 1;
 
-    // Steps that only make sense for a home — skipped for commercial/maintenance
-    var skipsProperty = function(){
-      var s = fd['Service Type'];
-      return s === 'Commercial Fit-Out' || s === 'Maintenance / Repairs';
-    };
-
     var upd = function(){
       slides.forEach(function(s){ s.classList.remove('active'); });
       var slide = qform.querySelector('.fslide[data-s="' + cs + '"]');
@@ -122,12 +116,7 @@
         var key = slide.dataset.field || ('Question ' + slide.dataset.s);
         fd[key] = b.dataset.v;
         setTimeout(function(){
-          if(cs < maxStep){
-            cs++;
-            var next = qform.querySelector('.fslide[data-s="' + cs + '"]');
-            if(skipsProperty() && next && next.dataset.field === 'Property Type') cs++;
-            upd();
-          }
+          if(cs < maxStep){ cs++; upd(); }
         }, 350);
       });
     });
@@ -223,8 +212,6 @@
         var sel = qform.querySelector('.fslide[data-s="' + cs + '"] .ob.sel');
         if(!sel) return;
         cs++;
-        var next = qform.querySelector('.fslide[data-s="' + cs + '"]');
-        if(skipsProperty() && next && next.dataset.field === 'Property Type') cs++;
         upd();
       });
     });
@@ -233,8 +220,6 @@
       b.addEventListener('click', function(){
         if(cs <= 1) return;
         cs--;
-        var prev = qform.querySelector('.fslide[data-s="' + cs + '"]');
-        if(skipsProperty() && prev && prev.dataset.field === 'Property Type') cs--;
         upd();
       });
     });

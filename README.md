@@ -13,11 +13,13 @@ services.html              Services index
 extensions.html            ─┐
 renovations.html            │
 kitchens-bathrooms.html     │
-heritage.html               ├─ 8 service pages
+outdoor-living.html         │
+maintenance.html            ├─ 10 service pages
+presale.html                │
+heritage.html               │
 granny-flats.html           │
 design-build.html           │
-commercial.html             │
-maintenance.html           ─┘
+commercial.html            ─┘
 projects.html              Featured project gallery
 about.html                 About
 contact.html               Contact + quote form
@@ -33,7 +35,7 @@ sitemap.xml  robots.txt
 ## Regenerating the HTML
 
 The HTML is generated from Python templates so the nav, footer and quote form
-never drift between 47 pages. **The generated `.html` files are committed** — the
+never drift between 49 pages. **The generated `.html` files are committed** — the
 build step is a convenience, not a deploy requirement.
 
 ```bash
@@ -45,7 +47,7 @@ python check.py    # link, anchor and asset integrity check
 | --- | --- |
 | `build.py` | Brand constants, icons, service list, shared partials (head/nav/footer/CTA/quote form) |
 | `pages.py` | Home page, suburb data, shared content blocks |
-| `pages2.py` | The 8 service pages and their copy |
+| `pages2.py` | The 10 service pages and their copy |
 | `pages3.py` | Services index, projects, about, contact, thank-you, 404, locations, sitemap |
 | `make.py` | Runs all of the above |
 | `check.py` | Verifies internal links, `#anchors` and image references |
@@ -83,15 +85,29 @@ replace `PLACEHOLDER_REVIEW` in `pages.py`, plus the `—` rating in the badge.
 - Builder registration number (VBA) — currently "to be confirmed" on `about.html`
 - Insurance details (public liability, domestic building insurance)
 - HIA / Master Builders membership
-- Years in business, team size, director's name (the pull quote on the home page
-  and the whole "Our Story" block on `about.html` are placeholder copy)
-- The four hero stat cards on `index.html`
+- Team size and the director's name (the pull quote on the home page is still
+  placeholder copy)
+- Three of the four hero stat cards on `index.html` — "40+ years" is theirs,
+  the other three are ours
+- Whether they still want the **Commercial Fit-Outs** page: their Facebook
+  positions them as *residential* builders and doesn't mention commercial work
 - Project name, suburb and completion date for the featured project — currently
   "Ethel Street, Melbourne, VIC"
 
 **Domain** — no CNAME yet. `SITE_URL` in `build.py` points at
 `https://rankify-ops.github.io/pa-building-group`. When a domain is registered,
 update `SITE_URL`, re-run `make.py`, and add a `CNAME` file.
+
+## Known-good facts (from the client's Facebook page)
+
+These are the only business claims on the site that came from the client rather
+than from us:
+
+- Over 40 years' experience in Melbourne residential construction
+- Specialises in home additions & renovations, bathroom & kitchen upgrades,
+  outdoor living areas, property maintenance, and pre-sale facelifts
+
+The service list, home page hero and About story are all built on these.
 
 ## Brand
 

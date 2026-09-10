@@ -17,14 +17,14 @@ from pages2 import phero, BAND
 # ===========================================================================
 def build_services():
     body = (nav(0) + phero([("Home", "index.html"), "Services"], "Our", "Services",
-            "Residential is the heart of it &mdash; extensions, renovations and period homes. "
-            "We also take on commercial fit-outs and ongoing maintenance for clients we already build for.")
+            "Forty years of {city} residential construction &mdash; home additions and renovations, kitchen and "
+            "bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.".replace("{city}", CITY))
     + f'''
 <section class="sec">
   <div class="ctr">
     <div class="sec-c">
       <div class="sec-tag fade">Everything We Do</div>
-      <h2 class="sec-t fade">Eight things, done properly</h2>
+      <h2 class="sec-t fade">What we take on</h2>
       <p class="sec-sub fade">We&rsquo;d rather be good at a defined list than average at everything. If your job isn&rsquo;t on here, ask anyway &mdash; we&rsquo;ll tell you straight if it&rsquo;s not for us.</p>
     </div>
     {service_grid(0)}
@@ -65,7 +65,7 @@ def build_services():
 
     write("services.html", head(
         f"Our Services | Extensions, Renovations &amp; Fit-Outs {CITY} | {BRAND}",
-        f"Everything {BRAND} takes on across {CITY} — extensions, renovations, kitchens and bathrooms, heritage homes, granny flats, design and build, commercial fit-outs and maintenance.",
+        f"Everything {BRAND} takes on across {CITY} — home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance, pre-sale facelifts, heritage homes, granny flats and design and build.",
         "services.html", 0) + body + footer(0, quote_href="#quote-form"))
 
 
@@ -155,19 +155,19 @@ def build_about():
     }, indent=2)
 
     body = (nav(0) + phero([("Home", "index.html"), "About"], "About", BRAND,
-            "A {city} building company that would rather do a smaller number of jobs properly than a large number quickly.".replace("{city}", CITY),
+            "Over forty years of residential construction across {city} &mdash; a building company that would rather do a smaller number of jobs properly than a large number quickly.".replace("{city}", CITY),
             quote_href="contact.html#quote-form")
     + f'''
 <section class="sec">
   <div class="ctr">
-    {content_block("build-progress-1.jpg", "Our Story", "Who we are",
-      ["<strong>PLACEHOLDER &mdash; needs the client&rsquo;s real story.</strong> Trading as {legal}, {brand} works across {city} on home extensions, renovations, period homes and commercial fit-outs.".format(legal=LEGAL, brand=BRAND, city=CITY),
-       "We&rsquo;re a hands-on outfit. The person who quotes your job is on site while it&rsquo;s being built, and is still the person who answers the phone a year later. That&rsquo;s deliberate, and it&rsquo;s the main reason our work comes from referrals.",
-       "Most of what we do is older housing stock &mdash; Victorian, Edwardian, Californian bungalow, interwar brick. Those houses have their own rules and their own surprises, and we&rsquo;ve learnt them the way everyone does: by opening walls."])}
+    {content_block("build-progress-1.jpg", "Our Story", "Forty years in {city} housing".format(city=CITY),
+      ["Trading as {legal}, {brand} has spent over forty years in {city} residential construction &mdash; home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.".format(legal=LEGAL, brand=BRAND, city=CITY),
+       "Four decades in the same city means very little is genuinely new to us. We&rsquo;ve worked on Victorian terraces, Edwardian weatherboards, Californian bungalows, interwar brick and every era of post-war housing since. Each has its own rules and its own surprises, and we&rsquo;ve learnt them the way everyone does: by opening walls.",
+       "We&rsquo;re a hands-on outfit. The person who quotes your job is on site while it&rsquo;s being built, and is still the person who answers the phone a year later. That&rsquo;s deliberate, and it&rsquo;s the main reason our work comes from referrals."])}
     <div class="note fade">
-      <strong>To confirm with the client:</strong> year established, builder registration number, number of staff,
-      any HIA / Master Builders membership, insurance details, and the director&rsquo;s name and background.
-      Everything on this page is placeholder copy until those come back.
+      <strong>Still to confirm with the client:</strong> builder registration number, insurance details,
+      number of staff, any HIA / Master Builders membership, and the director&rsquo;s name and background.
+      The forty years and the service list come from their Facebook page.
     </div>
   </div>
 </section>
@@ -229,7 +229,7 @@ def build_about():
 
     write("about.html", head(
         f"About Us | {CITY} Renovation &amp; Extension Builders | {BRAND}",
-        f"Meet {BRAND} — {CITY} builders specialising in home extensions, renovations and period homes. Licensed, insured and hands-on from quote to handover.",
+        f"Meet {BRAND} — over 40 years in {CITY} residential construction. Home additions, renovations, kitchens and bathrooms, outdoor living and property maintenance.",
         "about.html", 0, schema) + body + footer(0))
 
 
