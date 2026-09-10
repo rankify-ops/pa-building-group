@@ -246,9 +246,10 @@ def cta(title, text, depth=0, quote_href=None):
   </div>
 </section>'''
 
-def quote_form(context, heading, sub, depth=0, image=None):
-    p = "../" * depth
-    img = f'<div class="form-img"><img src="{p}images/projects/{image}" alt="Recent {BRAND} project" loading="lazy" width="1158" height="864"></div>' if image else ""
+def qform_markup(context, form_id="quote-form", extra_class="", head_tag="Free Quote",
+                 head_title="Get a Free Quote"):
+    """The multi-step form card on its own — used both inside the hero and inside
+    the full form section further down the page."""
     opts = [
         ("Extension / Addition", "extension", "Extension"),
         ("Home Renovation", "reno", "Renovation"),
@@ -260,24 +261,9 @@ def quote_form(context, heading, sub, depth=0, image=None):
     obs = "".join(
         f'<button type="button" class="ob" data-v="{v}"><div class="oico">{svg(ic)}</div><div class="olbl">{lbl}</div></button>'
         for v, ic, lbl in opts)
-    return f'''
-<section class="sec form-sec" id="quote">
-  <div class="ctr">
-    <div class="form-g">
-      <div class="form-info fade">
-        <div class="sec-tag">Free Quote</div>
-        <h2 class="sec-t">{heading}</h2>
-        <p class="sec-sub">{sub}</p>
-        <div class="fperks">
-          <div class="fperk"><div class="fpd">&#10003;</div>No obligation &mdash; completely free</div>
-          <div class="fperk"><div class="fpd">&#10003;</div>Itemised, written pricing</div>
-          <div class="fperk"><div class="fpd">&#10003;</div>We come to you for the site visit</div>
-          <div class="fperk"><div class="fpd">&#10003;</div>One team managing every trade</div>
-        </div>
-        {img}
-      </div>
-      <div class="qform fade" data-context="{context}" id="quote-form">
-        <div class="qform-head"><div class="qh-tag">Free Quote</div><h3>Get a Free Quote</h3></div>
+    cls = f"qform {extra_class}".strip()
+    return f'''<div class="{cls}" data-context="{context}" id="{form_id}">
+        <div class="qform-head"><div class="qh-tag">{head_tag}</div><h3>{head_title}</h3></div>
         <div class="fsteps"><div class="fstep active"></div><div class="fstep"></div><div class="fstep"></div><div class="fstep"></div></div>
 
         <div class="fslide active" data-s="1" data-field="Service Type">
@@ -326,7 +312,38 @@ def quote_form(context, heading, sub, depth=0, image=None):
             <p class="fsub" style="margin:0">Your enquiry is on its way. Need us sooner? Call <a href="tel:{PHONE_HREF}" style="color:var(--accent);font-weight:700">{PHONE}</a>.</p>
           </div>
         </div>
+      </div>'''
+
+
+def hero_quote_form(context="Hero Enquiry", form_id="quote-form"):
+    """Compact version of the form card, sized to sit in the right of the hero."""
+    return f'''<div class="hero-form">
+        {qform_markup(context, form_id, extra_class="qform-hero",
+                      head_tag="Free Quote &bull; No obligation",
+                      head_title="Get a quote in about a minute")}
+      </div>'''
+
+
+def quote_form(context, heading, sub, depth=0, image=None, form_id="quote-form"):
+    p = "../" * depth
+    img = f'<div class="form-img"><img src="{p}images/projects/{image}" alt="Recent {BRAND} project" loading="lazy" width="1158" height="864"></div>' if image else ""
+    return f'''
+<section class="sec form-sec" id="quote">
+  <div class="ctr">
+    <div class="form-g">
+      <div class="form-info fade">
+        <div class="sec-tag">Free Quote</div>
+        <h2 class="sec-t">{heading}</h2>
+        <p class="sec-sub">{sub}</p>
+        <div class="fperks">
+          <div class="fperk"><div class="fpd">&#10003;</div>No obligation &mdash; completely free</div>
+          <div class="fperk"><div class="fpd">&#10003;</div>Itemised, written pricing</div>
+          <div class="fperk"><div class="fpd">&#10003;</div>We come to you for the site visit</div>
+          <div class="fperk"><div class="fpd">&#10003;</div>One team managing every trade</div>
+        </div>
+        {img}
       </div>
+      {qform_markup(context, form_id, extra_class="fade")}
     </div>
   </div>
 </section>'''

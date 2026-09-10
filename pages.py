@@ -10,7 +10,8 @@ Everything marked PLACEHOLDER needs the client's real words before launch.
 import json
 from build import (
     BRAND, LEGAL, PHONE, PHONE_HREF, EMAIL, SITE_URL, CITY, STATE, SLOGAN, YEAR,
-    SERVICES, svg, head, nav, footer, cta, quote_form, faq_block, service_grid, write,
+    SERVICES, svg, head, nav, footer, cta, quote_form, hero_quote_form, faq_block,
+    service_grid, write,
 )
 
 PROJECT  = "Ethel Street"        # TODO (Rankify): confirm the suburb with the client
@@ -172,21 +173,26 @@ def build_home():
   <div class="hero-bg"><img src="images/hero.jpg" alt="Rear extension with raked ceiling and full-height glazing on a {CITY} period home" width="1600" height="1000" fetchpriority="high"></div>
   <div class="hero-inner">
     <div class="ctr">
-      <div class="hero-content">
-        <div class="hero-tag"><span class="dot"></span>Taking on new projects across {CITY}</div>
-        <h1>Keep the <span class="em">character</span>.<br>Gain the space.</h1>
-        <p class="hero-sub">{BRAND} are {CITY} renovation and extension builders. We restore what gives a house its character at the front and rebuild everything behind it &mdash; light, height, and a floor plan that suits how you actually live.</p>
-        <div class="hero-btns">
-          <a href="#quote-form" class="btn-p">Get a Free Quote &rarr;</a>
-          <a href="tel:{PHONE_HREF}" class="btn-glass">&#128222; {PHONE}</a>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-content">
+            <div class="hero-tag"><span class="dot"></span>Taking on new projects across {CITY}</div>
+            <h1>Keep the <span class="em">character</span>.<br>Gain the space.</h1>
+            <p class="hero-sub">{BRAND} are {CITY} renovation and extension builders. We restore what gives a house its character at the front and rebuild everything behind it &mdash; light, height, and a floor plan that suits how you actually live.</p>
+            <div class="hero-btns">
+              <a href="#quote-form" class="btn-p">Get a Free Quote &rarr;</a>
+              <a href="tel:{PHONE_HREF}" class="btn-glass">&#128222; {PHONE}</a>
+            </div>
+          </div>
+          <!-- TODO (Rankify): confirm these four claims with the client before launch -->
+          <div class="hero-cards">
+            <div class="hero-glass"><div class="hg-icon">{svg("design")}</div><div><div class="hg-val">End&#8209;to&#8209;end</div><div class="hg-label">Design to handover</div></div></div>
+            <div class="hero-glass"><div class="hg-icon">{svg("doc")}</div><div><div class="hg-val">Fixed price</div><div class="hg-label">Written contracts</div></div></div>
+            <div class="hero-glass"><div class="hg-icon">{svg("team")}</div><div><div class="hg-val">One team</div><div class="hg-label">Every trade managed</div></div></div>
+            <div class="hero-glass"><div class="hg-icon">{svg("pin")}</div><div><div class="hg-val">Local</div><div class="hg-label">{CITY} &amp; suburbs</div></div></div>
+          </div>
         </div>
-      </div>
-      <!-- TODO (Rankify): confirm these four claims with the client before launch -->
-      <div class="hero-cards">
-        <div class="hero-glass"><div class="hg-icon">{svg("design")}</div><div><div class="hg-val">End&#8209;to&#8209;end</div><div class="hg-label">Design to handover</div></div></div>
-        <div class="hero-glass"><div class="hg-icon">{svg("doc")}</div><div><div class="hg-val">Fixed price</div><div class="hg-label">Written contracts</div></div></div>
-        <div class="hero-glass"><div class="hg-icon">{svg("team")}</div><div><div class="hg-val">One team</div><div class="hg-label">Every trade managed</div></div></div>
-        <div class="hero-glass"><div class="hg-icon">{svg("pin")}</div><div><div class="hg-val">Local</div><div class="hg-label">{CITY} &amp; suburbs</div></div></div>
+        {hero_quote_form("Hero Enquiry", "quote-form")}
       </div>
     </div>
   </div>
@@ -304,7 +310,7 @@ def build_home():
   </div>
 </section>
 
-{quote_form("General Enquiry", "Get a quote<br>in about a minute", "Four quick questions and we&rsquo;ll come back to you with next steps and a time for the site visit.", 0, image="dining-living.jpg")}
+{quote_form("General Enquiry", "Still here?<br>Let&rsquo;s get you a number", "Four quick questions and we&rsquo;ll come back to you with next steps and a time for the site visit.", 0, image="dining-living.jpg", form_id="quote-form-2")}
 
 {cta("Thinking about the back of your house?", "Send through what you&rsquo;ve got and we&rsquo;ll tell you honestly whether it&rsquo;s worth doing.", 0, quote_href="#quote-form")}
 '''
