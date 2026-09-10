@@ -10,10 +10,10 @@
     phone:      '0400 000 000',
     phoneHref:  '0400000000',
     email:      'hello@pabuildinggroup.com.au',
-    // TODO: create a Web3Forms access key on the client's own inbox.
-    // Leave empty and the form falls back to a "call us" message instead of
-    // silently posting leads nowhere.
-    web3FormsKey: ''
+    // Web3Forms access key — public by design (it only permits sending to the
+    // inbox it was registered against). If it's ever cleared, the form falls
+    // back to a "call us" message instead of silently posting leads nowhere.
+    web3FormsKey: '2742141c-cdc6-4e7b-be33-672d05ed3aff'
   };
 
   var nav = document.getElementById('nav');

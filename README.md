@@ -72,9 +72,11 @@ Everything below is placeholder content. Search the repo for `TODO` and `PLACEHO
 - Phone: `0400 000 000`
 - Email: `hello@pabuildinggroup.com.au`
 
-**Form endpoint** — `assets/site.js` → `CONFIG.web3FormsKey` is empty. Until a
-Web3Forms key registered to the client's own inbox is added, the form deliberately
-shows a "call us instead" message rather than silently dropping enquiries.
+**Form endpoint** — ✅ connected. `assets/site.js` → `CONFIG.web3FormsKey` holds
+the Web3Forms access key; submissions go to whichever inbox that key was
+registered against, with the subject `Website enquiry — <page context>` and the
+visitor's email as reply-to. If the key is ever cleared, the form falls back to a
+"call us instead" message rather than silently dropping enquiries.
 
 **Reviews** — the reviews marquee on the home and projects pages is dummy text with
 a visible placeholder notice. Connect the client's Google Business Profile and
