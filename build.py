@@ -137,7 +137,7 @@ def head(title, desc, canonical, depth=0, schema=None, og_title=None):
 <meta name="theme-color" content="#0a57ff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="{p}favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="{p}images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="{p}images/favicon-192.png">

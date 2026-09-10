@@ -115,7 +115,33 @@ The service list, home page hero and About story are all built on these.
 | --- | --- |
 | Blue | `#0a57ff` (sampled from the supplied logo) |
 | Ink | `#08090c` |
-| Type | Inter 400–800 |
+| Type | Archivo, variable 300–800 |
+
+### Type scale
+
+One family, one scale. Every `font-size` in `site.css` is a token defined in
+`:root` — if you need a size that isn't there, use the nearest one rather than
+adding another. Four literal sizes remain on purpose: the `×` and `+` glyphs,
+the decorative quote mark, and the pull quote's own clamp.
+
+| Token | Size | Used for |
+| --- | --- | --- |
+| `--fs-micro` | .68rem | stat sub-labels, footer badges, chevrons |
+| `--fs-label` | .74rem | uppercase eyebrows, breadcrumbs |
+| `--fs-xs` | .8rem | helper text under form headings |
+| `--fs-sm` | .875rem | nav, card body, footer links, buttons |
+| `--fs-body` | .95rem | body copy |
+| `--fs-md` | 1rem | drawer links, list headings |
+| `--fs-lead` | 1.05rem | hero sub, page-hero leads |
+| `--fs-h4` | 1.15rem | card titles |
+| `--fs-h3` | 1.3rem | form headings |
+| `--fs-h2s` | 1.55rem | in-body section headings |
+| `--fs-h2` | clamp(1.7–2.3rem) | section headings |
+| `--fs-h1s` | clamp(2.2–3.2rem) | sub-page H1 |
+| `--fs-h1` | clamp(2.6–3.7rem) | home hero H1 |
+
+Tracking is tokenised too: `--ls-tight` for headings, `--ls-caps` for uppercase
+micro-labels (in `em`, so it tracks the size).
 
 `images/logo.png` is the reverse lockup (white wordmark, for dark backgrounds);
 `images/logo-dark.png` is the standard lockup. Both were built from the client's
