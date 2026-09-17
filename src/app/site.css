@@ -246,10 +246,8 @@ h1, h2, h3, h4 {
   .nav, .header-phone { display: none; }
   .nav-toggle { display: block; }
   .site-header__inner { min-height: 74px; }
-  .header-actions .btn { padding: 13px 18px; font-size: 11.5px; }
 }
 @media (max-width: 600px) {
-  .header-actions .btn { display: none; }
   .brandmark img { height: 40px; }
 }
 
@@ -291,8 +289,7 @@ body.nav-open { overflow: hidden; }
 body.nav-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 210; background: transparent; border-bottom-color: transparent; }
 body.nav-open .site-header .brandmark,
 body.nav-open .site-header .nav,
-body.nav-open .site-header .header-phone,
-body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
+body.nav-open .site-header .header-phone { visibility: hidden; }
 
 /* ==========================================================================
    Home hero

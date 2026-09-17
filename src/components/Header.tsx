@@ -46,9 +46,6 @@ export function Header() {
             <a className="header-phone" href={`tel:${SITE.office.tel}`}>
               <PhoneIcon /> {SITE.office.label}
             </a>
-            <a className="btn btn--accent" href={quote}>
-              Get a quote <ArrowIcon />
-            </a>
             <button className="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="Menu">
               <span />
               <span />
