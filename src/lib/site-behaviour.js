@@ -153,6 +153,7 @@ export function initSite() {
     var nextBtn = form.querySelector('[data-next]');
     var sendBtn = form.querySelector('[data-send]');
     var statusEl = form.querySelector('[data-fstatus]');
+    var navRow = form.querySelector('.fnav');
     if (steps.length < 2 || !nextBtn || !sendBtn || !backBtn) { return null; }
 
     form.classList.add('is-stepped');
@@ -186,9 +187,13 @@ export function initSite() {
       var title = steps[at].getAttribute('data-title') || '';
       label.textContent = 'Step ' + (at + 1) + ' of ' + steps.length + (title ? '  ·  ' + title : '');
       var last = at === steps.length - 1;
+      // Tapping a tile already advances, so a Continue button on a tile stage
+      // is dead weight. It only shows on stages made of typed fields.
+      var tileStage = !!steps[at].querySelector('.choices');
       backBtn.hidden = at === 0;
-      nextBtn.hidden = last;
+      nextBtn.hidden = last || tileStage;
       sendBtn.hidden = !last;
+      if (navRow) { navRow.hidden = backBtn.hidden && nextBtn.hidden && sendBtn.hidden; }
       if (focus) {
         var first = steps[at].querySelector('.choice, input:not(.choice__input), select, textarea');
         if (first && first.focus) {

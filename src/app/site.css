@@ -41,7 +41,8 @@
   --step-num:    #a6b1c4;
 
   --figure-grad: linear-gradient(100deg, #ffffff 0%, #d7e3fb 45%, #86aeff 100%);
-  --scrim: 4, 13, 30;
+  /* Overlay on photography: neutral near-black, not navy, so photos keep their own colour. */
+  --scrim: 8, 9, 11;
 
   --font: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -319,7 +320,7 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
   position: relative;
   display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
   gap: clamp(40px, 6vw, 86px); align-items: center;
-  padding-block: clamp(64px, 8vw, 108px);
+  padding-block: clamp(44px, 4.6vw, 68px);
 }
 .hero__copy { max-width: 640px; }
 .hero .eyebrow { color: rgba(255, 255, 255, .74); }
@@ -403,18 +404,22 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
   position: absolute; top: 0; left: 0; width: 1px; height: 1px; padding: 0; margin: 0; border: 0;
   overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none;
 }
+/* Icon beside the label keeps each tile about 56px tall, so the hero card
+   stays inside the first screen. The three-across step stacks instead, which
+   is the only way its labels fit on a 375px phone. */
 .choice {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 100%;
-  padding: 16px 10px; border: 1px solid var(--pearl); border-radius: 2px; cursor: pointer; text-align: center;
+  display: flex; align-items: center; gap: 12px; height: 100%; min-height: 56px;
+  padding: 10px 12px; border: 1px solid var(--pearl); border-radius: 2px; cursor: pointer; text-align: left;
   background: var(--white); transition: border-color var(--t-fast), background var(--t-fast);
 }
 .choices > span { display: block; }
 .choice__icon {
-  width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 3px;
+  width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: 3px;
   background: var(--accent-soft); color: var(--accent);
   transition: background var(--t-fast), color var(--t-fast);
 }
-.choice__icon svg { width: 22px; height: 22px; }
+.choice__icon svg { width: 19px; height: 19px; }
+.choices--3 .choice { flex-direction: column; justify-content: center; text-align: center; gap: 8px; padding: 12px 6px; }
 .choice:hover { border-color: var(--steel); }
 .choice__title { font-size: 14.5px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; line-height: 1.3; }
 .choice__input:checked + .choice { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
