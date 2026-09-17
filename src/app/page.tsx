@@ -2,6 +2,7 @@ import { ADDRESS_LINE, PROJECT_NAME, SERVICES, SITE } from "@/data/site";
 import { asset, href, photo } from "@/lib/basePath";
 import { ArrowIcon, ClockIcon, PinIcon, ShieldIcon } from "@/components/Icon";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { HERO_PLACEHOLDER } from "@/data/heroPlaceholder";
 import { Areas, Credentials, CtaBand, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
 const schema = {
@@ -41,7 +42,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="hero">
-        <div className="hero__media">
+        <div className="hero__media" style={{ backgroundImage: `url(${HERO_PLACEHOLDER})` }}>
           <img
             src={asset("/assets/img/hero.jpg")}
             alt="Open-plan living and dining under a raked ceiling, opening onto the garden of a Melbourne home"

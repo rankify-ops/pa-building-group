@@ -42,7 +42,7 @@ export function Header() {
     <>
       <a className="skip-link" href="#main">Skip to content</a>
 
-      <header className="site-header" id="siteHeader">
+      <header className="site-header" id="siteHeader" suppressHydrationWarning>
         <div className="wrap site-header__inner">
           <Brand swap />
           <nav className="nav" aria-label="Primary">

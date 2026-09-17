@@ -45,7 +45,7 @@
   /* Overlay on photography: neutral near-black, not navy, so photos keep their own colour. */
   --scrim: 6, 7, 8;
 
-  --font: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --wrap: 1280px;
   --gutter: clamp(20px, 5vw, 64px);
@@ -386,7 +386,7 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
 }
 /* min-width: 0 so the flex item can't grow to its content's min-content width. */
 .hero > .wrap { flex: 1; min-width: 0; }
-.hero__media { position: absolute; inset: 0; }
+.hero__media { position: absolute; inset: 0; background: var(--band) center 55% / cover no-repeat; }
 /* Mirrored: in the original photo the kitchen and dining area sit on the right,
    exactly where the quote card covers them. */
 .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; transform: scaleX(-1); }
@@ -524,7 +524,12 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
 .enquiry--dark .choice__input:checked + .choice .choice__icon { background: var(--accent-on-dark); color: var(--band); }
 .enquiry--dark .choice__input:checked + .choice { background: rgba(255, 255, 255, .12); border-color: var(--accent-on-dark); box-shadow: inset 0 0 0 1px var(--accent-on-dark); }
 
-.fprogress { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.fprogress { display: none; align-items: center; gap: 12px; margin-bottom: 20px; }
+.js-reveal .fprogress { display: flex; }
+/* Before the script collapses the form into stages, show exactly what stage 1
+   will look like, so the card doesn't render all four stages and then jump. */
+.js-reveal .js-enquiry:not(.is-stepped) .fstep ~ .fstep,
+.js-reveal .js-enquiry:not(.is-stepped) .fnav { display: none; }
 .fprogress__label { font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--steel); white-space: nowrap; }
 .enquiry--dark .fprogress__label { color: var(--mist); }
 .fprogress__track { display: flex; gap: 4px; flex: 1; }
@@ -792,14 +797,25 @@ body.nav-open .dock { display: none; }
 
 /* ==========================================================================
    Reveal on scroll
-   Gated on .js-reveal so content is never stranded invisible if the script
-   fails. Never used on the hero or its form card: glass inside an opacity
-   fade renders late and fogged.
+   Only content that starts below the fold is hidden, and only by the script
+   (it adds .reveal-pending). Anything on screen at load is painted once and
+   never blinks out, and nothing is stranded invisible if the script fails.
+   Never used on the hero or its form card: glass inside an opacity fade
+   renders late and fogged.
    ========================================================================== */
-.js-reveal .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms cubic-bezier(.16, 1, .3, 1), transform 700ms cubic-bezier(.16, 1, .3, 1); transition-delay: var(--d, 0ms); }
-.js-reveal .reveal.is-in { opacity: 1; transform: none; }
+.reveal-pending { opacity: 0; transform: translateY(22px); transition: opacity 700ms cubic-bezier(.16, 1, .3, 1), transform 700ms cubic-bezier(.16, 1, .3, 1); transition-delay: var(--d, 0ms); }
+.reveal-pending.is-in { opacity: 1; transform: none; }
+
+/* No transitions until the site script has started (see EARLY in layout.tsx). */
+.is-loading .site-header::before,
+.is-loading .site-header *,
+.is-loading .dock,
+.is-loading .navpanel,
+.is-loading .navpanel * { transition: none !important; }
+
 @media (prefers-reduced-motion: reduce) {
-  .js-reveal .reveal, .js-reveal .dock, .js-reveal .dock.is-visible { opacity: 1; transform: none; transition: none; }
+  .reveal-pending { opacity: 1; transform: none; transition: none; }
+  .js-reveal .dock, .js-reveal .dock.is-visible { transition: none; }
   .project__media img, .gallery img { transition: none; }
 }
 

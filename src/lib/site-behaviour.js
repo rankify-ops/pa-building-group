@@ -6,6 +6,12 @@ export function initSite() {
 
   var root = document.documentElement;
   root.classList.add('js-reveal');
+  // Transitions back on after the first two frames, once the initial state
+  // (scrolled header, dock, form stage) has been applied without animating.
+  // The timer is a backstop: rAF doesn't fire in a background tab.
+  var loaded = function () { root.classList.remove('is-loading'); };
+  window.requestAnimationFrame(function () { window.requestAnimationFrame(loaded); });
+  window.setTimeout(loaded, 150);
   var BASE = document.body.getAttribute('data-base') || '';
 
   /* ---------- Full-screen menu ---------- */
@@ -92,18 +98,23 @@ export function initSite() {
     }
   }
 
-  /* ---------- Reveal on scroll ---------- */
-  var reveals = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    Array.prototype.forEach.call(reveals, function (el) { el.classList.add('is-in'); });
-  } else {
+  /* ---------- Reveal on scroll ----------
+     Only elements that start below the fold get hidden and faded in. Anything
+     already on screen was painted before this ran, so hiding it would make it
+     blink. */
+  if ('IntersectionObserver' in window &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
+    var fold = window.innerHeight;
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) {
+      if (el.getBoundingClientRect().top < fold) { return; }
+      el.classList.add('reveal-pending');
+      io.observe(el);
+    });
   }
 
   /* ======================================================================
@@ -156,23 +167,13 @@ export function initSite() {
     var navRow = form.querySelector('.fnav');
     if (steps.length < 2 || !nextBtn || !sendBtn || !backBtn) { return null; }
 
-    form.classList.add('is-stepped');
+    // Progress bar is server-rendered (EnquiryForm.tsx) so the card doesn't
+    // grow when the script starts.
+    var label = form.querySelector('.fprogress__label');
+    var segs = Array.prototype.slice.call(form.querySelectorAll('.fprogress__seg'));
+    if (!label || segs.length !== steps.length) { return null; }
 
-    var prog = document.createElement('div');
-    prog.className = 'fprogress';
-    var label = document.createElement('span');
-    label.className = 'fprogress__label';
-    var track = document.createElement('span');
-    track.className = 'fprogress__track';
-    var segs = steps.map(function () {
-      var seg = document.createElement('span');
-      seg.className = 'fprogress__seg';
-      track.appendChild(seg);
-      return seg;
-    });
-    prog.appendChild(label);
-    prog.appendChild(track);
-    form.insertBefore(prog, form.firstChild);
+    form.classList.add('is-stepped');
 
     var at = 0;
 

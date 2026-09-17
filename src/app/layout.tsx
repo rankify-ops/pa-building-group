@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
+import { Archivo } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Dock, Footer } from "@/components/Chrome";
 import { SiteScripts } from "@/components/SiteScripts";
 import { SITE } from "@/data/site";
 import { BASE_PATH, asset } from "@/lib/basePath";
 import "./site.css";
+
+// Self-hosted at build time. next/font also generates a metrics-matched
+// fallback, so text doesn't reflow when the web font arrives.
+const archivo = Archivo({ subsets: ["latin"], display: "swap", variable: "--font-archivo" });
+
+/* Runs before first paint:
+   - js-reveal: CSS may hide things the script will reveal (dock, form stages)
+   - is-loading: no transitions until the site script has started, so the
+     header doesn't animate into its scrolled state on a mid-page reload
+   - sets the header's scrolled state from the first scroll event, without
+     waiting for React to hydrate */
+const EARLY = `(function(){var d=document.documentElement;d.classList.add('js-reveal','is-loading');function s(){var h=document.getElementById('siteHeader');if(h){h.classList.toggle('is-scrolled',window.scrollY>40)}}window.addEventListener('scroll',s,{passive:true});document.addEventListener('DOMContentLoaded',s)})()`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE.url}/`),
@@ -33,16 +46,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // site-behaviour adds classes to <html> before hydration finishes.
-    <html lang="en-AU" suppressHydrationWarning>
+    <html lang="en-AU" className={archivo.variable} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&display=swap" rel="stylesheet" />
-        <script
-          // Opt in to the scroll reveal before first paint.
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-reveal')" }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: EARLY }} />
       </head>
       <body data-base={BASE_PATH}>
         <Header />

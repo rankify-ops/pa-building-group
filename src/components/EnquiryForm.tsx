@@ -75,6 +75,18 @@ export function EnquiryForm({
         data-phone={SITE.mobile.label}
         data-email={SITE.email}
       >
+        {/* Rendered here rather than injected by the script, so the card is
+            already its final height on first paint. Hidden without JS. */}
+        <div className="fprogress" aria-hidden="true">
+          <span className="fprogress__label">Step 1 of 4  ·  Project</span>
+          <span className="fprogress__track">
+            <span className="fprogress__seg is-done" />
+            <span className="fprogress__seg" />
+            <span className="fprogress__seg" />
+            <span className="fprogress__seg" />
+          </span>
+        </div>
+
         <div className="fstep" data-title="Project">
           <fieldset className="fieldset">
             <legend>What are you planning?</legend>
