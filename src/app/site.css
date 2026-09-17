@@ -205,36 +205,111 @@ h1, h2, h3, h4 {
    Header
    ========================================================================== */
 
-.site-header { position: sticky; top: 0; z-index: 100; background: var(--head-bg); border-bottom: 1px solid var(--head-line); }
+/* Frosted glass header floating over the page, after the Prime Group build:
+   dark glass over the hero, light glass with the dark logo once scrolled.
+   The glass lives on ::before rather than on the header itself. An element
+   with backdrop-filter becomes the backdrop root for its descendants, so if
+   the header carried the blur, the dropdown's own blur could only see the
+   header, not the page behind it. */
+:root { --head-h: 85px; }
+@media (max-width: 1040px) { :root { --head-h: 75px; } }
+
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(10, 10, 12, .42);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  transition: background var(--t-med), border-color var(--t-med), box-shadow var(--t-med);
+}
+.site-header.is-scrolled::before {
+  background: rgba(255, 255, 255, .76);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom-color: rgba(10, 10, 10, .07);
+  box-shadow: 0 4px 24px rgba(10, 10, 10, .07);
+}
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 84px; transition: min-height var(--t-med); }
-.site-header.is-compact .site-header__inner { min-height: 68px; }
+.site-header.is-scrolled .site-header__inner { min-height: 68px; }
 
-.brandmark { display: block; flex: none; }
-.brandmark img { height: 44px; width: auto; transition: height var(--t-med); }
-.site-header.is-compact .brandmark img { height: 36px; }
+.brandmark { display: block; flex: none; position: relative; }
+.brandmark img { height: 44px; width: auto; transition: height var(--t-med), opacity var(--t-med); }
+.brandmark__dark { position: absolute; top: 0; left: 0; opacity: 0; }
+.site-header.is-scrolled .brandmark img { height: 36px; }
+.site-header.is-scrolled .brandmark__light { opacity: 0; }
+.site-header.is-scrolled .brandmark__dark { opacity: 1; }
 
-.nav { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 38px); }
+.nav { display: flex; align-items: center; gap: clamp(24px, 3vw, 44px); }
+.nav__item { position: relative; display: flex; align-items: center; }
 .nav__link {
+  display: inline-flex; align-items: center; gap: 7px;
   font-size: 12.5px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--head-text);
-  padding-block: 6px;
+  color: rgba(255, 255, 255, .8);
+  padding-block: 8px;
   position: relative;
   transition: color var(--t-fast);
 }
 .nav__link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-  background: var(--accent-on-dark);
+  background: #fff;
   transform: scaleX(0); transform-origin: left; transition: transform var(--t-med);
 }
-.nav__link:hover, .nav__link[aria-current="page"] { color: var(--head-strong); }
+.nav__link:hover, .nav__link[aria-current="page"] { color: #fff; }
 .nav__link:hover::after, .nav__link[aria-current="page"]::after { transform: scaleX(1); }
+.nav__chev { width: 10px; height: 10px; opacity: .7; transition: transform var(--t-med); }
+.nav__item--dd:hover .nav__chev, .nav__item--dd:focus-within .nav__chev { transform: rotate(180deg); }
+.site-header.is-scrolled .nav__link { color: var(--slate); }
+.site-header.is-scrolled .nav__link:hover, .site-header.is-scrolled .nav__link[aria-current="page"] { color: var(--ink); }
+.site-header.is-scrolled .nav__link::after { background: var(--ink); }
+
+/* Services dropdown. padding-top bridges the gap so the pointer can travel
+   from the link to the panel without it closing. */
+.dropdown {
+  position: absolute; top: 100%; left: -18px; padding-top: 18px;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity var(--t-fast), transform var(--t-med), visibility 0s linear var(--t-med);
+}
+.nav__item--dd:hover .dropdown, .nav__item--dd:focus-within .dropdown {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity var(--t-fast), transform var(--t-med), visibility 0s;
+}
+.dropdown__panel {
+  display: grid; grid-template-columns: repeat(2, minmax(210px, 1fr)); gap: 2px 6px;
+  padding: 10px; border-radius: 3px;
+  background: rgba(14, 14, 16, .74);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+}
+.dropdown__panel a {
+  display: block; padding: 10px 12px; border-radius: 2px;
+  font-size: 14px; font-weight: 500; letter-spacing: -.005em; white-space: nowrap;
+  color: rgba(255, 255, 255, .82);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.dropdown__panel a:hover, .dropdown__panel a[aria-current="page"] { background: rgba(255, 255, 255, .09); color: #fff; }
+.dropdown__panel .dropdown__all {
+  grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 4px; padding-block: 12px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .12); border-radius: 2px 2px 0 0;
+}
+.site-header.is-scrolled .dropdown__panel { background: rgba(255, 255, 255, .9); border-color: rgba(10, 10, 10, .08); box-shadow: var(--shadow-md); }
+.site-header.is-scrolled .dropdown__panel a { color: var(--graphite); }
+.site-header.is-scrolled .dropdown__panel a:hover, .site-header.is-scrolled .dropdown__panel a[aria-current="page"] { background: var(--cloud); color: var(--ink); }
+.site-header.is-scrolled .dropdown__panel .dropdown__all { color: var(--ink); border-bottom-color: var(--pearl); }
 
 .header-actions { display: flex; align-items: center; gap: 18px; }
-.header-phone { font-weight: 700; font-size: 15px; letter-spacing: .02em; color: var(--head-strong); display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
-.header-phone:hover { color: var(--accent-on-dark); }
+.header-phone { font-weight: 700; font-size: 15px; letter-spacing: .02em; color: #fff; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; transition: color var(--t-fast); }
+.header-phone:hover { color: rgba(255, 255, 255, .72); }
+.site-header.is-scrolled .header-phone { color: var(--ink); }
+.site-header.is-scrolled .header-phone:hover { color: var(--accent); }
 
 .nav-toggle { display: none; width: 46px; height: 46px; background: none; border: 0; padding: 0; position: relative; z-index: 2; }
-.nav-toggle span { position: absolute; right: 6px; height: 2px; border-radius: 2px; background: var(--head-strong); transition: width var(--t-med), transform var(--t-med), top var(--t-med); }
+.nav-toggle span { position: absolute; right: 6px; height: 2px; border-radius: 2px; background: #fff; transition: width var(--t-med), transform var(--t-med), top var(--t-med), background var(--t-med); }
+.site-header.is-scrolled .nav-toggle span { background: var(--ink); }
 .nav-toggle span:nth-child(1) { top: 19px; width: 30px; }
 .nav-toggle span:nth-child(2) { top: 27px; width: 18px; }
 .nav-toggle:hover span:nth-child(2) { width: 30px; }
@@ -246,9 +321,11 @@ h1, h2, h3, h4 {
   .nav, .header-phone { display: none; }
   .nav-toggle { display: block; }
   .site-header__inner { min-height: 74px; }
+  .site-header.is-scrolled .site-header__inner { min-height: 64px; }
 }
 @media (max-width: 600px) {
   .brandmark img { height: 40px; }
+  .site-header.is-scrolled .brandmark img { height: 34px; }
 }
 
 /* ---------- Full-screen mobile menu ---------- */
@@ -286,7 +363,9 @@ h1, h2, h3, h4 {
 }
 
 body.nav-open { overflow: hidden; }
-body.nav-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 210; background: transparent; border-bottom-color: transparent; }
+body.nav-open .site-header { z-index: 210; }
+body.nav-open .site-header::before { opacity: 0; }
+body.nav-open .nav-toggle span { background: #fff; }
 body.nav-open .site-header .brandmark,
 body.nav-open .site-header .nav,
 body.nav-open .site-header .header-phone { visibility: hidden; }
@@ -295,15 +374,15 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
    Home hero
    ========================================================================== */
 /* The home hero fills the first screen exactly, as on Santa'lana, so nothing
-   below it (the stat bar) peeks in at the bottom. The offset is the header
-   above it: 85px on desktop, 75px from 1040px down. svh keeps mobile browser
-   toolbars from pushing it past the fold. */
+   below it (the stat bar) peeks in at the bottom. The photo runs up under the
+   floating glass header; padding-top keeps the content clear of it. svh keeps
+   mobile browser toolbars from pushing it past the fold. */
 .hero {
-  --chrome-h: 85px;
   position: relative; background: var(--band); color: #fff; overflow: hidden;
   display: flex; align-items: center;
-  min-height: calc(100vh - var(--chrome-h));
-  min-height: calc(100svh - var(--chrome-h));
+  padding-top: var(--head-h);
+  min-height: 100vh;
+  min-height: 100svh;
 }
 /* min-width: 0 so the flex item can't grow to its content's min-content width. */
 .hero > .wrap { flex: 1; min-width: 0; }
@@ -340,12 +419,12 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
      down the full height of the form. .hero__inner steps aside with
      display: contents so the photo, the copy and the card can share one grid:
      photo and copy overlap in row 1, the card takes row 2. */
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; min-height: 0; padding-bottom: clamp(36px, 7vw, 56px); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; min-height: 0; padding-top: 0; padding-bottom: clamp(36px, 7vw, 56px); }
   .hero__inner { display: contents; }
   .hero__media { position: relative; grid-area: 1 / 1; overflow: hidden; }
   .hero__media img { position: absolute; inset: 0; }
   .hero__media::after { background: linear-gradient(to bottom, rgba(var(--scrim), .8) 0%, rgba(var(--scrim), .7) 50%, rgba(var(--scrim), .86) 100%); }
-  .hero__copy { grid-area: 1 / 1; position: relative; z-index: 1; max-width: none; padding: clamp(48px, 9vw, 72px) var(--gutter); }
+  .hero__copy { grid-area: 1 / 1; position: relative; z-index: 1; max-width: none; padding: calc(var(--head-h) + clamp(40px, 8vw, 64px)) var(--gutter) clamp(48px, 9vw, 72px); }
   .hero__lede { color: rgba(255, 255, 255, .9); }
   .hero > .wrap > .enquiry { grid-area: 2 / 1; position: relative; margin: clamp(32px, 7vw, 48px) var(--gutter) 0; max-width: 640px; }
 }
@@ -360,7 +439,7 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
 .pagehero__media { position: absolute; inset: 0; }
 .pagehero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
 .pagehero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(var(--scrim), .92) 0%, rgba(var(--scrim), .7) 55%, rgba(var(--scrim), .5) 100%); }
-.pagehero__inner { position: relative; padding-block: clamp(64px, 8.5vw, 124px); max-width: 820px; }
+.pagehero__inner { position: relative; padding-block: calc(var(--head-h) + clamp(56px, 7.5vw, 110px)) clamp(64px, 8.5vw, 124px); max-width: 820px; }
 .pagehero h1 { color: #fff; font-size: clamp(2.3rem, 4.9vw, 3.9rem); font-weight: 500; letter-spacing: -.035em; }
 .pagehero h1 em { font-style: normal; background: var(--silver-grad-light); -webkit-background-clip: text; background-clip: text; color: transparent; }
 /* The silver loses too much contrast over photography at phone sizes. */

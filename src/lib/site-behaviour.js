@@ -62,13 +62,13 @@ export function initSite() {
     });
   }
 
-  /* ---------- Header tightens once you scroll ---------- */
+  /* ---------- Header: dark glass over the hero, light glass once scrolled ---------- */
   var header = document.getElementById('siteHeader');
   if (header) {
-    var lastCompact = null;
+    var lastScrolled = null;
     var onScroll = function () {
-      var compact = window.scrollY > 120;
-      if (compact !== lastCompact) { header.classList.toggle('is-compact', compact); lastCompact = compact; }
+      var scrolled = window.scrollY > 40;
+      if (scrolled !== lastScrolled) { header.classList.toggle('is-scrolled', scrolled); lastScrolled = scrolled; }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
