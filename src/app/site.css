@@ -310,7 +310,6 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
 }
 /* min-width: 0 so the flex item can't grow to its content's min-content width. */
 .hero > .wrap { flex: 1; min-width: 0; }
-@media (max-width: 1040px) { .hero { --chrome-h: 75px; } }
 .hero__media { position: absolute; inset: 0; }
 /* Mirrored: in the original photo the kitchen and dining area sit on the right,
    exactly where the quote card covers them. */
@@ -339,9 +338,19 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
 .hero__proof svg { flex: none; color: var(--accent-on-dark); }
 
 @media (max-width: 1040px) {
-  .hero__inner { grid-template-columns: minmax(0, 1fr); }
-  .hero__media::after { background: linear-gradient(to bottom, rgba(var(--scrim), .84) 0%, rgba(var(--scrim), .74) 46%, rgba(var(--scrim), .9) 100%); }
+  /* Stacked layout: the photo only sits behind the copy, and the quote card
+     drops out underneath onto the black band, so the image isn't stretched
+     down the full height of the form. .hero__inner steps aside with
+     display: contents so the photo, the copy and the card can share one grid:
+     photo and copy overlap in row 1, the card takes row 2. */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; min-height: 0; padding-bottom: clamp(36px, 7vw, 56px); }
+  .hero__inner { display: contents; }
+  .hero__media { position: relative; grid-area: 1 / 1; overflow: hidden; }
+  .hero__media img { position: absolute; inset: 0; }
+  .hero__media::after { background: linear-gradient(to bottom, rgba(var(--scrim), .8) 0%, rgba(var(--scrim), .7) 50%, rgba(var(--scrim), .86) 100%); }
+  .hero__copy { grid-area: 1 / 1; position: relative; z-index: 1; max-width: none; padding: clamp(48px, 9vw, 72px) var(--gutter); }
   .hero__lede { color: rgba(255, 255, 255, .9); }
+  .hero > .wrap > .enquiry { grid-area: 2 / 1; position: relative; margin: clamp(32px, 7vw, 48px) var(--gutter) 0; max-width: 640px; }
 }
 @media (max-width: 600px) {
   .hero h1 { font-size: clamp(2.05rem, 9vw, 2.65rem); }
