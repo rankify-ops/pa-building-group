@@ -119,11 +119,9 @@ h1, h2, h3, h4 {
   color: var(--steel);
   margin: 0 0 18px;
 }
-.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); flex: none; }
 .section--dark .eyebrow, .cta .eyebrow { color: var(--mist); }
-.section--dark .eyebrow::before, .cta .eyebrow::before, .hero .eyebrow::before, .pagehero .eyebrow::before { background: var(--accent-on-dark); }
 .section-head--center .eyebrow { justify-content: center; }
-@media (max-width: 600px) { .eyebrow { letter-spacing: .16em; gap: 10px; } .eyebrow::before { width: 16px; } }
+@media (max-width: 600px) { .eyebrow { letter-spacing: .16em; } }
 
 .h-xl { font-size: clamp(2.05rem, 4vw, 3.3rem); letter-spacing: -.032em; }
 .h-lg { font-size: clamp(1.65rem, 2.75vw, 2.35rem); letter-spacing: -.026em; }
@@ -206,14 +204,6 @@ h1, h2, h3, h4 {
 /* ==========================================================================
    Header
    ========================================================================== */
-.utility { background: var(--head-bg); color: var(--head-text); font-size: 12.5px; border-bottom: 1px solid var(--head-line); }
-.utility__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 40px; padding-block: 8px; }
-.utility__licence { letter-spacing: .1em; font-size: 11px; font-weight: 500; text-transform: uppercase; }
-.utility__links { display: flex; align-items: center; gap: 22px; }
-.utility a { transition: color var(--t-fast); }
-.utility a:hover { color: var(--head-strong); }
-.utility__item { display: inline-flex; align-items: center; gap: 8px; }
-@media (max-width: 860px) { .utility { display: none; } }
 
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--head-bg); border-bottom: 1px solid var(--head-line); }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 84px; transition: min-height var(--t-med); }
@@ -298,7 +288,6 @@ h1, h2, h3, h4 {
 }
 
 body.nav-open { overflow: hidden; }
-body.nav-open .utility { visibility: hidden; }
 body.nav-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 210; background: transparent; border-bottom-color: transparent; }
 body.nav-open .site-header .brandmark,
 body.nav-open .site-header .nav,
@@ -309,20 +298,19 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
    Home hero
    ========================================================================== */
 /* The home hero fills the first screen exactly, as on Santa'lana, so nothing
-   below it (the stat bar) peeks in at the bottom. The offset is the chrome
-   above it: 41px utility strip + 85px header on desktop; the strip hides at
-   860px and the header drops to 75px at 1040px. svh keeps mobile browser
+   below it (the stat bar) peeks in at the bottom. The offset is the header
+   above it: 85px on desktop, 75px from 1040px down. svh keeps mobile browser
    toolbars from pushing it past the fold. */
 .hero {
-  --chrome-h: 126px;
+  --chrome-h: 85px;
   position: relative; background: var(--band); color: #fff; overflow: hidden;
   display: flex; align-items: center;
   min-height: calc(100vh - var(--chrome-h));
   min-height: calc(100svh - var(--chrome-h));
 }
-.hero > .wrap { flex: 1; }
-@media (max-width: 1040px) { .hero { --chrome-h: 116px; } }
-@media (max-width: 860px) { .hero { --chrome-h: 75px; } }
+/* min-width: 0 so the flex item can't grow to its content's min-content width. */
+.hero > .wrap { flex: 1; min-width: 0; }
+@media (max-width: 1040px) { .hero { --chrome-h: 75px; } }
 .hero__media { position: absolute; inset: 0; }
 /* Mirrored: in the original photo the kitchen and dining area sit on the right,
    exactly where the quote card covers them. */
@@ -351,7 +339,7 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
 .hero__proof svg { flex: none; color: var(--accent-on-dark); }
 
 @media (max-width: 1040px) {
-  .hero__inner { grid-template-columns: 1fr; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); }
   .hero__media::after { background: linear-gradient(to bottom, rgba(var(--scrim), .84) 0%, rgba(var(--scrim), .74) 46%, rgba(var(--scrim), .9) 100%); }
   .hero__lede { color: rgba(255, 255, 255, .9); }
 }

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { SITE } from "@/data/site";
 import { asset, href } from "@/lib/basePath";
 import { normalise, quoteHref } from "@/lib/routes";
-import { ArrowIcon, MailIcon, PhoneIcon } from "./Icon";
+import { ArrowIcon, PhoneIcon } from "./Icon";
 
 const LINKS: [string, string][] = [
   ["/", "Home"],
@@ -32,22 +32,6 @@ export function Header() {
     <>
       <a className="skip-link" href="#main">Skip to content</a>
 
-      <div className="utility">
-        <div className="wrap utility__inner">
-          <span className="utility__licence">
-            Registered building practitioner &nbsp;/&nbsp; {SITE.registrations.join("  /  ")}
-          </span>
-          <div className="utility__links">
-            <a className="utility__item" href={`tel:${SITE.office.tel}`}>
-              <PhoneIcon size={13} /> Office {SITE.office.label}
-            </a>
-            <a className="utility__item" href={`mailto:${SITE.email}`}>
-              <MailIcon size={13} /> {SITE.email}
-            </a>
-          </div>
-        </div>
-      </div>
-
       <header className="site-header" id="siteHeader">
         <div className="wrap site-header__inner">
           <Brand />
@@ -59,8 +43,8 @@ export function Header() {
             ))}
           </nav>
           <div className="header-actions">
-            <a className="header-phone" href={`tel:${SITE.mobile.tel}`}>
-              <PhoneIcon /> {SITE.mobile.label}
+            <a className="header-phone" href={`tel:${SITE.office.tel}`}>
+              <PhoneIcon /> {SITE.office.label}
             </a>
             <a className="btn btn--accent" href={quote}>
               Get a quote <ArrowIcon />
@@ -86,8 +70,7 @@ export function Header() {
         </nav>
         <div className="wrap navpanel__foot">
           <div className="navpanel__contact">
-            <a href={`tel:${SITE.mobile.tel}`}><PhoneIcon size={16} /> {SITE.mobile.label}</a>
-            <a href={`mailto:${SITE.email}`}><MailIcon size={16} /> {SITE.email}</a>
+            <a href={`tel:${SITE.office.tel}`}><PhoneIcon size={16} /> {SITE.office.label}</a>
           </div>
           <a className="btn btn--accent btn--wide" href={quote}>
             Get a free quote <ArrowIcon />
