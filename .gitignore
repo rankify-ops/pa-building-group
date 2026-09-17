@@ -1,7 +1,18 @@
-__pycache__/
-*.pyc
+# Local preview server config and scratch
+.claude/
+.preview/
+_*.py
+
+# OS / editor noise
 .DS_Store
 Thumbs.db
+desktop.ini
+.vscode/
+.idea/
 
-_fonts.html
-_*.html
+# Next.js
+.next/
+out/
+node_modules/
+*.tsbuildinfo
+next-env.d.ts

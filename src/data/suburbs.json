@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Brunswick",
+    "slug": "brunswick",
+    "region": "inner north",
+    "character": "terrace rows, workers’ cottages and warehouse conversions off Sydney Road"
+  },
+  {
+    "name": "Northcote",
+    "slug": "northcote",
+    "region": "inner north",
+    "character": "Californian bungalows and Edwardian weatherboards on tight, deep blocks"
+  },
+  {
+    "name": "Thornbury",
+    "slug": "thornbury",
+    "region": "inner north",
+    "character": "interwar brick and weatherboard homes with generous back yards"
+  },
+  {
+    "name": "Preston",
+    "slug": "preston",
+    "region": "north",
+    "character": "post-war brick veneers and bungalows with room to extend"
+  },
+  {
+    "name": "Coburg",
+    "slug": "coburg",
+    "region": "north",
+    "character": "solid interwar brick homes and a growing number of rear additions"
+  },
+  {
+    "name": "Reservoir",
+    "slug": "reservoir",
+    "region": "north",
+    "character": "large post-war blocks that suit second dwellings and big extensions"
+  },
+  {
+    "name": "Fitzroy",
+    "slug": "fitzroy",
+    "region": "inner city",
+    "character": "Victorian terraces, heritage overlays and very little room to move"
+  },
+  {
+    "name": "Collingwood",
+    "slug": "collingwood",
+    "region": "inner city",
+    "character": "narrow terraces and former industrial buildings turned homes"
+  },
+  {
+    "name": "Carlton",
+    "slug": "carlton",
+    "region": "inner city",
+    "character": "double-fronted Victorians under some of Melbourne’s strictest overlays"
+  },
+  {
+    "name": "Richmond",
+    "slug": "richmond",
+    "region": "inner east",
+    "character": "single-fronted cottages where every millimetre of the rear counts"
+  },
+  {
+    "name": "Hawthorn",
+    "slug": "hawthorn",
+    "region": "inner east",
+    "character": "Edwardian and Federation homes on established, leafy streets"
+  },
+  {
+    "name": "Kew",
+    "slug": "kew",
+    "region": "inner east",
+    "character": "large period homes, heritage overlays and serious renovation budgets"
+  },
+  {
+    "name": "Camberwell",
+    "slug": "camberwell",
+    "region": "east",
+    "character": "Californian bungalows and Edwardians on wide, established blocks"
+  },
+  {
+    "name": "Balwyn",
+    "slug": "balwyn",
+    "region": "east",
+    "character": "interwar brick homes with deep rear yards made for extensions"
+  },
+  {
+    "name": "Box Hill",
+    "slug": "box-hill",
+    "region": "east",
+    "character": "a mix of post-war homes and newer builds across a fast-changing suburb"
+  },
+  {
+    "name": "Doncaster",
+    "slug": "doncaster",
+    "region": "east",
+    "character": "sloping sites and split-level homes that reward careful planning"
+  },
+  {
+    "name": "Ringwood",
+    "slug": "ringwood",
+    "region": "outer east",
+    "character": "post-war brick veneers on generous, often sloping blocks"
+  },
+  {
+    "name": "Eltham",
+    "slug": "eltham",
+    "region": "north east",
+    "character": "mud brick, timber and bushfire-overlay sites among the gums"
+  },
+  {
+    "name": "Ivanhoe",
+    "slug": "ivanhoe",
+    "region": "north east",
+    "character": "Federation and interwar homes on established streets above the Yarra"
+  },
+  {
+    "name": "Heidelberg",
+    "slug": "heidelberg",
+    "region": "north east",
+    "character": "solid interwar homes and post-war brick veneers with room at the rear"
+  },
+  {
+    "name": "Essendon",
+    "slug": "essendon",
+    "region": "north west",
+    "character": "grand Edwardians and Californian bungalows under heritage controls"
+  },
+  {
+    "name": "Moonee Ponds",
+    "slug": "moonee-ponds",
+    "region": "north west",
+    "character": "Victorian and Edwardian homes on tree-lined, tightly-held streets"
+  },
+  {
+    "name": "Ascot Vale",
+    "slug": "ascot-vale",
+    "region": "north west",
+    "character": "Edwardian weatherboards and brick homes on narrow, deep allotments"
+  },
+  {
+    "name": "Yarraville",
+    "slug": "yarraville",
+    "region": "inner west",
+    "character": "workers’ cottages and Californian bungalows around the village"
+  },
+  {
+    "name": "Footscray",
+    "slug": "footscray",
+    "region": "inner west",
+    "character": "Victorian and Edwardian cottages in a rapidly renovating pocket"
+  },
+  {
+    "name": "Williamstown",
+    "slug": "williamstown",
+    "region": "west",
+    "character": "coastal heritage homes where salt air and overlays both matter"
+  },
+  {
+    "name": "South Yarra",
+    "slug": "south-yarra",
+    "region": "inner south",
+    "character": "terraces and apartments where access and noise rules shape the build"
+  },
+  {
+    "name": "Prahran",
+    "slug": "prahran",
+    "region": "inner south",
+    "character": "single-fronted Victorians squeezed between neighbours on both sides"
+  },
+  {
+    "name": "Armadale",
+    "slug": "armadale",
+    "region": "inner south",
+    "character": "period homes with high expectations on finish and detail"
+  },
+  {
+    "name": "Malvern",
+    "slug": "malvern",
+    "region": "south east",
+    "character": "large Edwardian and interwar homes on wide, established blocks"
+  },
+  {
+    "name": "Caulfield",
+    "slug": "caulfield",
+    "region": "south east",
+    "character": "interwar brick homes and a steady run of rear extensions"
+  },
+  {
+    "name": "Brighton",
+    "slug": "brighton",
+    "region": "bayside",
+    "character": "substantial period homes and coastal rebuilds on premium blocks"
+  }
+]

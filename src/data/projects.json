@@ -1,0 +1,130 @@
+[
+  {
+    "anchor": "heritage",
+    "tag": "Heritage",
+    "title": "The facade stayed exactly where it was",
+    "blurb": "Weatherboards repaired, leadlight retained, the picket fence and front garden reinstated. From the footpath the house reads as it always did — which is the point.",
+    "images": [
+      {
+        "image": "facade.jpg",
+        "caption": "Restored Facade"
+      },
+      {
+        "image": "formal-lounge.jpg",
+        "caption": "Front Lounge"
+      },
+      {
+        "image": "bedroom-leadlight.jpg",
+        "caption": "Front Bedroom"
+      }
+    ]
+  },
+  {
+    "anchor": "extension",
+    "tag": "Extension",
+    "title": "A new rear pavilion, resolved against the original roof",
+    "blurb": "The old lean-to came off and a raked-ceiling pavilion went on. High-level glazing along the gable pulls light deep into the plan, and the whole rear wall opens to the garden.",
+    "images": [
+      {
+        "image": "rear-extension.jpg",
+        "caption": "Rear Elevation"
+      },
+      {
+        "image": "living-gable.jpg",
+        "caption": "Gable Glazing"
+      },
+      {
+        "image": "build-progress-1.jpg",
+        "caption": "Under Construction"
+      }
+    ]
+  },
+  {
+    "anchor": "living",
+    "tag": "Living",
+    "title": "One room for cooking, eating and everything else",
+    "blurb": "Kitchen, dining and living share a single volume under the rake, with the ceiling dropping as it meets the original house so the junction reads deliberately.",
+    "images": [
+      {
+        "image": "living-open-plan.jpg",
+        "caption": "Living & Dining"
+      },
+      {
+        "image": "dining-living.jpg",
+        "caption": "Dining Zone"
+      },
+      {
+        "image": "build-progress-3.jpg",
+        "caption": "Before Fit-Out"
+      }
+    ]
+  },
+  {
+    "anchor": "kitchen",
+    "tag": "Kitchen",
+    "title": "Fluted island, stone tops and a pantry that hides the mess",
+    "blurb": "A single stone-topped island with fluted joinery, a window splashback instead of tiles, and a butler’s pantry behind holding the second sink and everything that lives on the bench.",
+    "images": [
+      {
+        "image": "kitchen-island.jpg",
+        "caption": "Island & Stone"
+      },
+      {
+        "image": "kitchen-galley.jpg",
+        "caption": "Window Splashback"
+      },
+      {
+        "image": "butlers-pantry.jpg",
+        "caption": "Butler’s Pantry"
+      }
+    ]
+  },
+  {
+    "anchor": "bathrooms",
+    "tag": "Bathrooms",
+    "title": "Terrazzo, fluted glass and vertical tile",
+    "blurb": "Main bathroom with a fully glazed bath-shower recess, terrazzo to dado height and vertical stack tile above. The ensuite runs the same palette with a double vanity.",
+    "images": [
+      {
+        "image": "bathroom-main.jpg",
+        "caption": "Main Bathroom"
+      },
+      {
+        "image": "ensuite.jpg",
+        "caption": "Ensuite"
+      }
+    ]
+  },
+  {
+    "anchor": "bedrooms",
+    "tag": "Bedrooms",
+    "title": "Four bedrooms, all with proper storage",
+    "blurb": "Original front bedrooms kept their leadlight and ceiling height. The new ones got built-in robes, so nothing has to live on a chair.",
+    "images": [
+      {
+        "image": "bedroom-robes.jpg",
+        "caption": "Built-In Robes"
+      },
+      {
+        "image": "bedroom-guest.jpg",
+        "caption": "Guest Bedroom"
+      },
+      {
+        "image": "build-progress-2.jpg",
+        "caption": "Frame Stage"
+      }
+    ]
+  },
+  {
+    "anchor": "garden",
+    "tag": "Outdoor",
+    "title": "Bluestone, lawn and a level change that works",
+    "blurb": "Bluestone paving off the living room, a raised lawn behind a low retaining wall, and stepping stones through to the studio at the rear.",
+    "images": [
+      {
+        "image": "backyard.jpg",
+        "caption": "Paved Terrace"
+      }
+    ]
+  }
+]
