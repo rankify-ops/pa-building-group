@@ -1,7 +1,9 @@
 # PA Building Group website
 
-Next.js (App Router) static export, the same stack and design system as the Santa'lana Builders
-build, recoloured to PA navy with the brand blue as the accent. Rebuilt on 17 Sep 2026 from the
+Next.js (App Router) static export, the same stack, design system and black / white / silver
+palette as the Santa'lana Builders build. PA's logo blue is kept only for the main quote buttons
+and selected states. The home hero photo is mirrored in CSS (`.hero__media img`) so the kitchen
+isn't hidden behind the quote card. Rebuilt on 17 Sep 2026 from the
 earlier plain-HTML site; all of that site's copy and photography carried over.
 
 ```bash

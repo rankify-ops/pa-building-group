@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE.url}/assets/img/og.jpg`, width: 1200, height: 630 }],
   },
-  other: { "theme-color": "#071630" },
+  other: { "theme-color": "#07080a" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
