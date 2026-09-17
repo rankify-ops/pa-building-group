@@ -1,25 +1,38 @@
 import { SITE } from "@/data/site";
-import { ArrowIcon } from "./Icon";
+import { ArrowIcon, Icon } from "./Icon";
 
-const SERVICE_CHOICES = [
-  "Extension or addition",
-  "Home renovation",
-  "Kitchen or bathroom",
-  "Outdoor living area",
-  "Property maintenance",
-  "Something else",
+/** [label, icon] — icon keys are from src/data/icons.json. */
+type Choice = [string, string];
+
+const SERVICE_CHOICES: Choice[] = [
+  ["Extension or addition", "extension"],
+  ["Home renovation", "reno"],
+  ["Kitchen or bathroom", "kitchen"],
+  ["Outdoor living area", "outdoor"],
+  ["Property maintenance", "maintain"],
+  ["Something else", "help"],
 ];
-const PROPERTY_CHOICES = ["House", "Town House", "Heritage Home"];
-const STAGE_CHOICES = ["Just an idea so far", "I have plans", "Permit approved", "Needs doing now"];
+const PROPERTY_CHOICES: Choice[] = [
+  ["House", "house"],
+  ["Town House", "townhouse"],
+  ["Heritage Home", "heritage"],
+];
+const STAGE_CHOICES: Choice[] = [
+  ["Just an idea so far", "chat"],
+  ["I have plans", "ruler"],
+  ["Permit approved", "doc"],
+  ["Needs doing now", "bolt"],
+];
 
-function Choices({ name, options, id, cols3 }: { name: string; options: string[]; id: string; cols3?: boolean }) {
+function Choices({ name, options, id, cols3 }: { name: string; options: Choice[]; id: string; cols3?: boolean }) {
   return (
     <div className={`choices${cols3 ? " choices--3" : ""}`}>
-      {options.map((opt, i) => (
-        <span key={opt}>
-          <input className="choice__input" type="radio" id={`${id}-${name}-${i}`} name={name} value={opt} required />
+      {options.map(([label, icon], i) => (
+        <span key={label}>
+          <input className="choice__input" type="radio" id={`${id}-${name}-${i}`} name={name} value={label} required />
           <label className="choice" htmlFor={`${id}-${name}-${i}`} tabIndex={-1}>
-            <span className="choice__title">{opt}</span>
+            <span className="choice__icon"><Icon name={icon} size={22} /></span>
+            <span className="choice__title">{label}</span>
           </label>
         </span>
       ))}

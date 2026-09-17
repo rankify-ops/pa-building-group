@@ -404,18 +404,27 @@ body.nav-open .site-header .header-actions > .btn { visibility: hidden; }
   overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none;
 }
 .choice {
-  display: flex; flex-direction: column; justify-content: center; gap: 3px; min-height: 52px;
-  padding: 12px 14px; border: 1px solid var(--pearl); border-radius: 2px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 100%;
+  padding: 16px 10px; border: 1px solid var(--pearl); border-radius: 2px; cursor: pointer; text-align: center;
   background: var(--white); transition: border-color var(--t-fast), background var(--t-fast);
 }
-.choices--3 .choice { text-align: center; align-items: center; padding-inline: 8px; }
+.choices > span { display: block; }
+.choice__icon {
+  width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 3px;
+  background: var(--accent-soft); color: var(--accent);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.choice__icon svg { width: 22px; height: 22px; }
 .choice:hover { border-color: var(--steel); }
 .choice__title { font-size: 14.5px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; line-height: 1.3; }
 .choice__input:checked + .choice { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.choice__input:checked + .choice .choice__icon { background: var(--accent); color: #fff; }
 .choice__input:focus-visible + .choice { outline: 2px solid var(--accent); outline-offset: 2px; }
 .enquiry--dark .choice { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .2); }
 .enquiry--dark .choice:hover { border-color: rgba(255, 255, 255, .5); }
 .enquiry--dark .choice__title { color: #fff; }
+.enquiry--dark .choice__icon { background: rgba(134, 174, 255, .14); color: var(--accent-on-dark); }
+.enquiry--dark .choice__input:checked + .choice .choice__icon { background: var(--accent-on-dark); color: var(--band); }
 .enquiry--dark .choice__input:checked + .choice { background: rgba(134, 174, 255, .16); border-color: var(--accent-on-dark); box-shadow: inset 0 0 0 1px var(--accent-on-dark); }
 
 .fprogress { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
