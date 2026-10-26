@@ -77,9 +77,9 @@ export function EnquiryForm({
       >
         {/* Rendered here rather than injected by the script, so the card is
             already its final height on first paint. Hidden without JS. */}
-        <div className="fprogress" aria-hidden="true">
-          <span className="fprogress__label">Step 1 of 4  ·  Project</span>
-          <span className="fprogress__track">
+        <div className="fprogress">
+          <span className="fprogress__label" aria-live="polite">Step 1 of 4  ·  Project</span>
+          <span className="fprogress__track" aria-hidden="true">
             <span className="fprogress__seg is-done" />
             <span className="fprogress__seg" />
             <span className="fprogress__seg" />

@@ -145,7 +145,8 @@ export function initSite() {
         // anchor its bubble to. Write the message out instead.
         if (c.type === 'radio') {
           if (statusEl) { statusEl.textContent = 'Please choose one to continue.'; }
-          var firstTile = stepEl.querySelector('.choice');
+          // Focus the radio itself (not its label) so arrow keys and Space work.
+          var firstTile = stepEl.querySelector('.choice__input');
           if (firstTile) { firstTile.focus(); }
         } else {
           c.focus();
@@ -196,7 +197,10 @@ export function initSite() {
       sendBtn.hidden = !last;
       if (navRow) { navRow.hidden = backBtn.hidden && nextBtn.hidden && sendBtn.hidden; }
       if (focus) {
-        var first = steps[at].querySelector('.choice, input:not(.choice__input), select, textarea');
+        // Focus the chosen (or first) radio, never its tabindex=-1 label, so
+        // keyboard users land on an operable control (WCAG 2.1.1 / 2.4.3).
+        var first = steps[at].querySelector('.choice__input:checked') ||
+          steps[at].querySelector('.choice__input, input:not([name="botcheck"]), select, textarea');
         if (first && first.focus) {
           try { first.focus({ preventScroll: true }); } catch (err) { first.focus(); }
         }
@@ -217,8 +221,28 @@ export function initSite() {
       go(at - 1);
     });
 
-    // Picking a tile is a complete answer, so move straight on.
+    // Picking a tile is a complete answer, so move straight on. Arrow keys
+    // also fire change on a radio group while the user is only browsing the
+    // options, so those don't advance (WCAG 3.2.2 On Input); Enter or Space
+    // confirms the choice instead.
+    var arrowNav = false;
+    var spaceOnChecked = false;
+    form.addEventListener('keydown', function (e) {
+      arrowNav = /^Arrow/.test(e.key);
+      spaceOnChecked = e.key === ' ' && !!e.target.checked;
+    }, true);
+    form.addEventListener('pointerdown', function () { arrowNav = false; }, true);
+    form.addEventListener('keyup', function (e) {
+      var t = e.target;
+      // Space on an already-chosen tile fires no change event; advance here.
+      if (e.key === ' ' && spaceOnChecked && t.classList && t.classList.contains('choice__input') && at < steps.length - 1) {
+        spaceOnChecked = false;
+        if (statusEl) { statusEl.textContent = ''; }
+        go(at + 1);
+      }
+    });
     form.addEventListener('change', function (e) {
+      if (arrowNav) { arrowNav = false; return; }
       if (e.target.classList && e.target.classList.contains('choice__input') && at < steps.length - 1) {
         if (statusEl) { statusEl.textContent = ''; }
         window.setTimeout(function () { go(at + 1); }, 200);
