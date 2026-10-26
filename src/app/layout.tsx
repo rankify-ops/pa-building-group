@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts.`,
   icons: {
     icon: [
-      { url: asset("/assets/img/logo-dark.svg"), type: "image/svg+xml" },
+      { url: asset("/assets/img/favicon.svg"), type: "image/svg+xml" },
       { url: asset("/favicon.ico") },
       { url: asset("/assets/img/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
     ],

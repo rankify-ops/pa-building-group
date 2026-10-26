@@ -16,10 +16,10 @@ const PAGES: [string, string][] = [
 function Brand({ swap = false }: { swap?: boolean }) {
   return (
     <a className="brandmark" href={href("/")} aria-label={`${SITE.brand} home`}>
-      <img className="brandmark__light" src={asset("/assets/img/logo.svg")} alt={SITE.brand} width={1371} height={1147} />
+      <img className="brandmark__light" src={asset("/assets/img/logo.svg")} alt={SITE.brand} width={995} height={688} />
       {/* Dark lockup for the light glass the header turns into once scrolled. */}
       {swap && (
-        <img className="brandmark__dark" src={asset("/assets/img/logo-dark.svg")} alt="" aria-hidden="true" width={1371} height={1147} />
+        <img className="brandmark__dark" src={asset("/assets/img/logo-dark.svg")} alt="" aria-hidden="true" width={995} height={688} />
       )}
     </a>
   );
