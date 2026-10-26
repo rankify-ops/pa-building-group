@@ -35,7 +35,7 @@ function Chevron() {
 
 export function Header() {
   const path = normalise(usePathname());
-  const onServices = path.startsWith("/services/") || path.startsWith("/locations/");
+  const onServices = path.startsWith("/services/");
   const current = (p: string) => (path.startsWith(p) ? "page" : undefined);
 
   return (
@@ -48,9 +48,18 @@ export function Header() {
           <nav className="nav" aria-label="Primary">
             <div className="nav__item nav__item--dd">
               <a className="nav__link" href={href("/services/")} aria-current={onServices ? "page" : undefined}>
-                Services <Chevron />
+                Services
               </a>
-              <div className="dropdown">
+              <button
+                type="button"
+                className="nav__chevbtn"
+                aria-expanded="false"
+                aria-controls="servicesMenu"
+                aria-label="Show services"
+              >
+                <Chevron />
+              </button>
+              <div className="dropdown" id="servicesMenu">
                 <div className="dropdown__panel">
                   <a className="dropdown__all" href={href("/services/")}>
                     All services <ArrowIcon size={13} />

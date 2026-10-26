@@ -1,6 +1,8 @@
-/* PA Building Group site behaviour
-   Plain ES5-safe JS, no dependencies. Run once after hydration by
-   src/components/SiteScripts.tsx. Adapted from the Santa'lana Builders build. */
+/* PA Building Group site behaviour.
+   Run once after hydration by src/components/SiteScripts.tsx.
+   Adapted from the Santa'lana Builders build. */
+import { isAustralianPhone, PHONE_ERROR } from "./phone.mjs";
+
 export function initSite() {
   'use strict';
 
@@ -65,6 +67,46 @@ export function initSite() {
 
     window.addEventListener('resize', function () {
       if (window.innerWidth > 1040 && panel.classList.contains('is-open')) { setPanel(false); }
+    });
+  }
+
+  /* ---------- Desktop Services menu ----------
+     The word Services is a link. The chevron button opens the list:
+     Enter or Space toggles it, Escape closes it, aria-expanded follows. */
+  var servicesItem = document.querySelector('.nav__item--dd');
+  var servicesBtn = servicesItem && servicesItem.querySelector('.nav__chevbtn');
+  var servicesMenu = document.getElementById('servicesMenu');
+  if (servicesItem && servicesBtn && servicesMenu) {
+    var setServicesOpen = function (open) {
+      servicesItem.classList.toggle('is-open', open);
+      servicesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      servicesBtn.setAttribute('aria-label', open ? 'Hide services' : 'Show services');
+    };
+    setServicesOpen(false);
+
+    servicesBtn.addEventListener('click', function (e) {
+      var open = servicesBtn.getAttribute('aria-expanded') !== 'true';
+      setServicesOpen(open);
+      if (open && e.detail === 0) {
+        var firstLink = servicesMenu.querySelector('a');
+        if (firstLink) { firstLink.focus(); }
+      }
+    });
+
+    servicesItem.addEventListener('mouseenter', function () { setServicesOpen(true); });
+    servicesItem.addEventListener('mouseleave', function () {
+      if (!servicesItem.contains(document.activeElement)) { setServicesOpen(false); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !servicesItem.classList.contains('is-open')) { return; }
+      if (window.matchMedia('(max-width: 1040px)').matches) { return; }
+      setServicesOpen(false);
+      servicesBtn.focus();
+    });
+
+    document.addEventListener('focusin', function (e) {
+      if (!servicesItem.contains(e.target)) { setServicesOpen(false); }
     });
   }
 
@@ -136,7 +178,15 @@ export function initSite() {
     return Array.prototype.slice.call(el.querySelectorAll('input:not([type="hidden"]):not([name="botcheck"]), select, textarea'));
   }
 
+  function setPhoneValidity(input) {
+    if (!input) { return; }
+    var value = input.value.trim();
+    if (!value) { input.setCustomValidity(''); return; }
+    input.setCustomValidity(isAustralianPhone(value) ? '' : PHONE_ERROR);
+  }
+
   function stageValid(stepEl, statusEl) {
+    setPhoneValidity(stepEl.querySelector('input[name="phone"]'));
     var controls = fieldsIn(stepEl);
     for (var i = 0; i < controls.length; i++) {
       var c = controls[i];
@@ -242,6 +292,8 @@ export function initSite() {
       e.preventDefault();
       var statusEl = form.querySelector('[data-fstatus]');
 
+      setPhoneValidity(form.querySelector('input[name="phone"]'));
+
       if (stages) {
         for (var i = 0; i < stages.steps.length; i++) {
           if (!stageValid(stages.steps[i], stages.status)) {
@@ -305,6 +357,10 @@ export function initSite() {
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.js-enquiry'), function (form) {
+    var phoneInput = form.querySelector('input[name="phone"]');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function () { setPhoneValidity(phoneInput); });
+    }
     var stages = setupStages(form);
     form.addEventListener('submit', handleSubmit(form, stages));
   });

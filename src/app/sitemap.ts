@@ -1,17 +1,19 @@
 import type { MetadataRoute } from "next";
-import { SERVICES, SITE, SUBURBS } from "@/data/site";
+import { SERVICES, SUBURBS } from "@/data/site";
+import { absoluteUrl } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const url = (p: string) => `${SITE.url}${p}`;
   return [
-    { url: url("/"), priority: 1 },
-    { url: url("/services/"), priority: 0.9 },
-    ...SERVICES.map((s) => ({ url: url(`/services/${s.slug}/`), priority: 0.9 })),
-    { url: url("/projects/"), priority: 0.8 },
-    { url: url("/about/"), priority: 0.7 },
-    { url: url("/contact/"), priority: 0.8 },
-    ...SUBURBS.map((s) => ({ url: url(`/locations/${s.slug}/`), priority: 0.6 })),
+    { url: absoluteUrl("/"), priority: 1 },
+    { url: absoluteUrl("/services/"), priority: 0.9 },
+    ...SERVICES.map((s) => ({ url: absoluteUrl(`/services/${s.slug}/`), priority: 0.9 })),
+    { url: absoluteUrl("/projects/"), priority: 0.8 },
+    { url: absoluteUrl("/about/"), priority: 0.7 },
+    { url: absoluteUrl("/contact/"), priority: 0.8 },
+    { url: absoluteUrl("/privacy/"), priority: 0.3 },
+    { url: absoluteUrl("/locations/"), priority: 0.7 },
+    ...SUBURBS.map((s) => ({ url: absoluteUrl(`/locations/${s.slug}/`), priority: 0.6 })),
   ];
 }

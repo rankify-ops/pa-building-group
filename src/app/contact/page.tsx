@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ADDRESS_LINE, SITE } from "@/data/site";
+import { SITE } from "@/data/site";
 import { href } from "@/lib/basePath";
 import { pageMetadata } from "@/lib/seo";
 import { MailIcon, PhoneIcon, PinIcon } from "@/components/Icon";
@@ -7,8 +7,8 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq, PageHero, SectionHead } from "@/components/Blocks";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Our Thornbury Office | Free Quotes, Melbourne",
-  description: `Call Paul on ${SITE.mobile.label} or the office on ${SITE.office.label} for a free site visit and itemised quote. ${SITE.brand}, ${ADDRESS_LINE}. We work across north-east Melbourne.`,
+  title: "Contact Our Thornbury Office for a Quote",
+  description: `Call Paul on ${SITE.mobile.label} or the office on ${SITE.office.label} for a free site visit and itemised written quote. ${SITE.brand}, ${SITE.address.street}, Thornbury.`,
   path: "/contact/",
 });
 

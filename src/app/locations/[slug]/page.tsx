@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ADDRESS_LINE, PROJECT_NAME, SERVICES, SITE, SUBURBS, suburbBySlug } from "@/data/site";
+import { PROJECT_NAME, SERVICES, SITE, SUBURBS, suburbBySlug } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
 import { JsonLd } from "@/components/JsonLd";
 import { Areas, EnquirySection, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 import { locationJsonLd } from "@/lib/schema";
-import { pageMetadata } from "@/lib/seo";
+import { locationDescription, locationTitle, pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -18,10 +18,9 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sub = suburbBySlug((await params).slug);
   if (!sub) return {};
-  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}, Melbourne. Registered builder, office at ${ADDRESS_LINE}. Free itemised quote.`;
   return pageMetadata({
-    title: `Home Additions & Renovations in ${sub.name}, Melbourne`,
-    description,
+    title: locationTitle(sub.name),
+    description: locationDescription(sub.name),
     path: `/locations/${sub.slug}/`,
   });
 }
@@ -30,13 +29,13 @@ export default async function LocationPage({ params }: Props) {
   const sub = suburbBySlug((await params).slug);
   if (!sub) notFound();
 
-  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}, Melbourne. Registered builder, office at ${ADDRESS_LINE}. Free itemised quote.`;
+  const description = locationDescription(sub.name);
 
   return (
     <>
       <JsonLd data={locationJsonLd(sub, description)} />
       <PageHero
-        crumbs={[["Home", "/"], ["Services", "/services/"], [sub.name]]}
+        crumbs={[["Home", "/"], ["Locations", "/locations/"], [sub.name]]}
         title={<>Builder in <em>{sub.name}</em></>}
         lede={`Home additions, renovations and repairs across ${sub.name} and the surrounding ${sub.region}, from a registered builder with ${SITE.years} years in Melbourne housing.`}
         image="rear-extension.jpg"

@@ -19,12 +19,9 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = serviceBySlug((await params).slug);
   if (!s) return {};
-  const description = s.metaDescription.includes("Thornbury")
-    ? s.metaDescription
-    : `${s.metaDescription} Office in Thornbury, Melbourne.`;
   return pageMetadata({
     title: s.metaTitle,
-    description,
+    description: s.metaDescription,
     path: `/services/${s.slug}/`,
   });
 }

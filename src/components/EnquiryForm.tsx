@@ -1,4 +1,5 @@
 import { SITE } from "@/data/site";
+import { href } from "@/lib/basePath";
 import { ArrowIcon, Icon } from "./Icon";
 
 /** [label, icon] — icon keys are from src/data/icons.json. */
@@ -116,7 +117,7 @@ export function EnquiryForm({
           <div className="field-row">
             <div className="field">
               <label htmlFor={`${id}-phone`}>Phone</label>
-              <input id={`${id}-phone`} name="phone" type="tel" autoComplete="tel" placeholder="04…" required />
+              <input id={`${id}-phone`} name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="04…" required />
             </div>
             <div className="field">
               <label htmlFor={`${id}-email`}>Email</label>
@@ -147,7 +148,9 @@ export function EnquiryForm({
             Send enquiry <ArrowIcon />
           </button>
         </div>
-        <p className="enquiry__fine">No obligation. Your details only go to Paul.</p>
+        <p className="enquiry__fine">
+          No obligation. Your details only go to Paul. <a href={href("/privacy/")}>Privacy policy</a>
+        </p>
       </form>
     </div>
   );

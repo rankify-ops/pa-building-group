@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE } from "@/data/site";
 import { href } from "@/lib/basePath";
 import { pageMetadata } from "@/lib/seo";
 import { ArrowIcon } from "@/components/Icon";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Page Not Found | Thornbury Builders, Melbourne",
-  description: "That page isn't on the PA Building Group site. Go back home, or contact our Thornbury office about a Melbourne renovation or extension.",
+  title: "Page Not Found | Builders in Thornbury",
+  description: `That page is not on the ${SITE.brand} site. Head back home, or contact the Thornbury office on ${SITE.mobile.label} about a Melbourne renovation or extension.`,
   index: false,
 });
 

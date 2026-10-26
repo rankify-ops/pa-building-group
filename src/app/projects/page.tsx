@@ -7,9 +7,9 @@ import { projectsJsonLd } from "@/lib/schema";
 import { pageMetadata, projectAlt } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Projects | Renovations & Extensions across Melbourne",
+  title: "Melbourne Renovation & Extension Projects",
   description:
-    "Melbourne building projects from our Thornbury office: an extension in Smith's Gully, a renovation and extension in Thornbury, a new build in Kinglake, a renovation and addition in Coburg, and an extension in Elwood.",
+    "Thornbury office projects: Smith's Gully extension, Thornbury renovation and extension, Kinglake new build, Coburg renovation and addition, Elwood extension.",
   path: "/projects/",
 });
 

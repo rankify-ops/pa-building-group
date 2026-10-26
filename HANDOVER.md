@@ -13,9 +13,11 @@ npm run build      # static export in out/
 ```
 
 Every push to `main` deploys to https://rankify-ops.github.io/pa-building-group/ through
-`.github/workflows/deploy.yml` (basePath `/pa-building-group`). At domain cutover, change
-`SITE.url` in `src/data/site.ts`, remove `NEXT_PUBLIC_BASE_PATH` from the workflow, and add
-`public/CNAME`, all in the same commit. His email domain suggests `pabuilding.com.au`.
+`.github/workflows/deploy.yml` (basePath `/pa-building-group`). Canonicals, `og:url`, schema
+`@id` and `url`, breadcrumbs, sitemap URLs and the `robots.txt` sitemap line all read `SITE.url`
+in `src/data/site.ts`. Changing that one value retargets them. It is still the GitHub Pages
+preview. At domain cutover, also remove `NEXT_PUBLIC_BASE_PATH` from the workflow and add
+`public/CNAME` in the same commit, or every asset 404s. His email domain suggests `pabuilding.com.au`.
 
 Building locally with the base path in Git Bash needs `MSYS_NO_PATHCONV=1`, otherwise
 `/pa-building-group` is rewritten into a Windows path.
@@ -31,6 +33,8 @@ Building locally with the base path in Git Bash needs `MSYS_NO_PATHCONV=1`, othe
 | `src/data/icons.json` | Line icons used on service cards. |
 | `src/app/page.tsx` | Home page. |
 | `src/app/services/[slug]/page.tsx` | Template for every service page. |
+| `src/app/locations/page.tsx` | Index of every suburb page. |
+| `src/app/privacy/page.tsx` | Privacy policy for the enquiry form. |
 | `src/app/locations/[slug]/page.tsx` | Template for every suburb page. |
 | `src/app/{services,projects,about,contact,thank-you}/page.tsx` | The other pages. |
 | `src/components/` | Header (utility strip, nav, mobile menu), footer and dock, enquiry form, shared section blocks. |

@@ -6,8 +6,8 @@ import { ArrowIcon, PhoneIcon } from "@/components/Icon";
 import { SectionHead, ServiceCards } from "@/components/Blocks";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thanks, We'll Be in Touch | Thornbury, Melbourne",
-  description: `Your enquiry is with ${SITE.brand} in Thornbury. Paul will be in touch to talk through your Melbourne project and book a site visit.`,
+  title: "Thanks, We'll Be in Touch from Thornbury",
+  description: `Your enquiry is with ${SITE.brand} at our Thornbury office. Paul will be in touch to talk through your Melbourne project and book a free site visit.`,
   path: "/thank-you/",
   index: false,
 });

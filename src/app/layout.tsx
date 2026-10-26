@@ -7,6 +7,7 @@ import { SiteScripts } from "@/components/SiteScripts";
 import { SITE } from "@/data/site";
 import { BASE_PATH, asset } from "@/lib/basePath";
 import { localBusinessJsonLd } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 import "./site.css";
 
 // Self-hosted at build time. next/font also generates a metrics-matched
@@ -22,13 +23,13 @@ const archivo = Archivo({ subsets: ["latin"], display: "swap", variable: "--font
 const EARLY = `(function(){var d=document.documentElement;d.classList.add('js-reveal','is-loading');function s(){var h=document.getElementById('siteHeader');if(h){h.classList.toggle('is-scrolled',window.scrollY>40)}}window.addEventListener('scroll',s,{passive:true});document.addEventListener('DOMContentLoaded',s)})()`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${SITE.url}/`),
+  metadataBase: new URL(absoluteUrl("/")),
   title: {
     default: `${SITE.brand} | Thornbury Builders, North-East Melbourne`,
     template: `%s | ${SITE.brand}`,
   },
   description:
-    `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts.`,
+    `Home additions, renovations, kitchens, bathrooms and outdoor living across Thornbury and north-east Melbourne. Office at ${SITE.address.street}. Call ${SITE.mobile.label}.`,
   icons: {
     icon: [
       { url: asset("/assets/img/favicon.svg"), type: "image/svg+xml" },
@@ -41,9 +42,9 @@ export const metadata: Metadata = {
     siteName: SITE.brand,
     locale: "en_AU",
     type: "website",
-    url: `${SITE.url}/`,
+    url: absoluteUrl("/"),
     images: [{
-      url: `${SITE.url}/assets/img/og.jpg`,
+      url: absoluteUrl("/assets/img/og.jpg"),
       width: 1200,
       height: 630,
       alt: `${SITE.brand}, Melbourne builders based in Thornbury`,

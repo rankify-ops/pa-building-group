@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ADDRESS_LINE, PROJECT_NAME, SERVICE_AREAS, SERVICES, SITE } from "@/data/site";
+import { ADDRESS_LINE, PROJECT_NAME, SERVICE_AREAS, SERVICES, SITE, SUBURBS } from "@/data/site";
 import { asset, href, photo } from "@/lib/basePath";
 import { pageMetadata } from "@/lib/seo";
 import { ArrowIcon, ClockIcon, PinIcon, ShieldIcon } from "@/components/Icon";
@@ -7,10 +7,17 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { HERO_PLACEHOLDER } from "@/data/heroPlaceholder";
 import { Credentials, CtaBand, Faq, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
+const suburbSlug = new Map(SUBURBS.map((suburb) => [suburb.name, suburb.slug]));
+const HERO_WIDTHS = [480, 800, 1200, 1600] as const;
+
+function heroSrcSet(ext: string) {
+  return HERO_WIDTHS.map((width) => `${asset(`/assets/img/hero-${width}.${ext}`)} ${width}w`).join(", ");
+}
+
 export const metadata: Metadata = pageMetadata({
-  title: "Home Additions & Renovations in Thornbury, Melbourne",
+  title: "Melbourne Home Additions & Renovations",
   description:
-    `Home additions, renovations, kitchens, bathrooms and outdoor living in Thornbury and north-east Melbourne. Office at ${ADDRESS_LINE}. Call ${SITE.mobile.label} for a free itemised quote.`,
+    `Home additions, renovations, kitchens, bathrooms and outdoor living across Thornbury and north-east Melbourne. Office at ${SITE.address.street}. Call ${SITE.mobile.label}.`,
   path: "/",
 });
 
@@ -64,15 +71,28 @@ export default function Home() {
   return (
     <>
 
+      <link
+        rel="preload"
+        as="image"
+        href={asset("/assets/img/hero-800.avif")}
+        imageSrcSet={heroSrcSet("avif")}
+        imageSizes="100vw"
+        type="image/avif"
+        fetchPriority="high"
+      />
       <section className="hero">
         <div className="hero__media" style={{ backgroundImage: `url(${HERO_PLACEHOLDER})` }}>
-          <img
-            src={asset("/assets/img/hero.jpg")}
-            alt="Thornbury extension: open-plan living and dining under a raked ceiling, opening onto the garden"
-            width={1600}
-            height={1000}
-            fetchPriority="high"
-          />
+          <picture>
+            <source type="image/avif" srcSet={heroSrcSet("avif")} sizes="100vw" />
+            <source type="image/webp" srcSet={heroSrcSet("webp")} sizes="100vw" />
+            <img
+              src={asset("/assets/img/hero.jpg")}
+              alt="Thornbury extension: open-plan living and dining under a raked ceiling, opening onto the garden"
+              width={1600}
+              height={1000}
+              fetchPriority="high"
+            />
+          </picture>
         </div>
         <div className="wrap hero__inner">
           <div className="hero__copy">
@@ -246,11 +266,17 @@ export default function Home() {
             eyebrow="Service areas"
             title="The office is in Thornbury."
             lede={`Most of our jobs are in Melbourne's north-east, from Northcote and Preston out through Eltham, Greensborough and Doreen. We also work in Camberwell, Kew, Hawthorn and Balwyn. Our only office is at ${ADDRESS_LINE}. If your suburb isn't listed, ask anyway.`}
+            action={<a className="link-arrow" href={href("/locations/")}>All suburbs <ArrowIcon size={13} /></a>}
           />
-          <ul className="areas areas--text reveal">
-            {SERVICE_AREAS.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
+          <ul className="areas reveal">
+            {SERVICE_AREAS.map((name) => {
+              const slug = suburbSlug.get(name);
+              return (
+                <li key={name}>
+                  {slug ? <a href={href(`/locations/${slug}/`)}>{name}</a> : <span>{name}</span>}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>

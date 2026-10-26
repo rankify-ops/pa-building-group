@@ -1,18 +1,31 @@
 import type { Metadata } from "next";
 import { SITE } from "@/data/site";
 
+/**
+ * Every public URL is built from SITE.url. Page paths gain a trailing slash.
+ * Files (a dot in the last segment) do not. A hash stays after the page slash.
+ */
+export function absoluteUrl(path = "/"): string {
+  const hashAt = path.indexOf("#");
+  const hash = hashAt >= 0 ? path.slice(hashAt) : "";
+  const raw = hashAt >= 0 ? path.slice(0, hashAt) : path;
+  const last = raw.split("/").filter(Boolean).pop() ?? "";
+  if (last.includes(".")) {
+    const withLead = raw.startsWith("/") ? raw : `/${raw}`;
+    return `${SITE.url}${withLead}${hash}`;
+  }
+  if (raw === "" || raw === "/") return `${SITE.url}/${hash}`;
+  const withLead = raw.startsWith("/") ? raw : `/${raw}`;
+  const withSlash = withLead.endsWith("/") ? withLead : `${withLead}/`;
+  return `${SITE.url}${withSlash}${hash}`;
+}
+
 const OG_IMAGE = {
-  url: `${SITE.url}/assets/img/og.jpg`,
+  url: absoluteUrl("/assets/img/og.jpg"),
   width: 1200,
   height: 630,
   alt: `${SITE.brand}, Melbourne builders based in Thornbury`,
 };
-
-export function canonicalUrl(path: string) {
-  if (path === "/") return `${SITE.url}/`;
-  const withLead = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE.url}${withLead.endsWith("/") ? withLead : `${withLead}/`}`;
-}
 
 /** Title, description, canonical and Open Graph for one page. */
 export function pageMetadata({
@@ -27,7 +40,7 @@ export function pageMetadata({
   path?: string;
   index?: boolean;
 }): Metadata {
-  const url = path ? canonicalUrl(path) : undefined;
+  const url = path ? absoluteUrl(path) : undefined;
   const fullTitle = title.includes(SITE.brand) ? title : `${title} | ${SITE.brand}`;
   return {
     // absolute so the root page (which does not inherit the layout title template)
@@ -52,6 +65,21 @@ export function pageMetadata({
       images: [OG_IMAGE.url],
     },
   };
+}
+
+/**
+ * Suburb landing titles. Short names pick up ", Melbourne" so the branded
+ * title stays near 60 characters, and Thornbury does not repeat the home title.
+ */
+export function locationTitle(name: string) {
+  const stem = `${name} Home Additions & Renovations`;
+  if (`${stem} | ${SITE.brand}`.length < 55) return `${stem}, Melbourne`;
+  return stem;
+}
+
+/** One description length for every suburb: the name is the only variable. */
+export function locationDescription(name: string) {
+  return `Home additions, renovations, kitchens, bathrooms and outdoor living in ${name}. Registered builder. The only office is in Thornbury. Free, itemised quote.`;
 }
 
 /** Project photography: suburb and the kind of work, plus a caption when there is one. */
