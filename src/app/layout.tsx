@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Dock, Footer } from "@/components/Chrome";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteScripts } from "@/components/SiteScripts";
 import { SITE } from "@/data/site";
 import { BASE_PATH, asset } from "@/lib/basePath";
+import { localBusinessJsonLd } from "@/lib/schema";
 import "./site.css";
 
 // Self-hosted at build time. next/font also generates a metrics-matched
@@ -39,7 +41,13 @@ export const metadata: Metadata = {
     siteName: SITE.brand,
     locale: "en_AU",
     type: "website",
-    images: [{ url: `${SITE.url}/assets/img/og.jpg`, width: 1200, height: 630 }],
+    url: `${SITE.url}/`,
+    images: [{
+      url: `${SITE.url}/assets/img/og.jpg`,
+      width: 1200,
+      height: 630,
+      alt: `${SITE.brand}, Melbourne builders based in Thornbury`,
+    }],
   },
   other: { "theme-color": "#07080a" },
 };
@@ -52,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: EARLY }} />
       </head>
       <body data-base={BASE_PATH}>
+        <JsonLd data={localBusinessJsonLd()} />
         <Header />
         <main id="main">{children}</main>
         <Footer />

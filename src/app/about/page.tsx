@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { SERVICES, SITE } from "@/data/site";
+import { ADDRESS_LINE, SERVICES, SITE } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
+import { pageMetadata } from "@/lib/seo";
 import { Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
-export const metadata: Metadata = {
-  title: "About | Thornbury Home Additions & Renovation Builders",
+export const metadata: Metadata = pageMetadata({
+  title: "About Our Thornbury Builders | Home Additions, Melbourne",
   description:
-    `PA Building Group: ${SITE.years} years in Melbourne residential construction, led by director Paul Athinis. Registered builder. Our office is in Thornbury, and most of our work is across north-east Melbourne.`,
-  alternates: { canonical: `${SITE.url}/about/` },
-};
+    `${SITE.brand}: ${SITE.years} years in Melbourne residential construction, led by director ${SITE.director}. Registered builder. Office at ${ADDRESS_LINE}. Home additions and renovations across north-east Melbourne.`,
+  path: "/about/",
+});
 
 export default function AboutPage() {
   return (
@@ -18,6 +19,7 @@ export default function AboutPage() {
         title={<>About <em>{SITE.brand}</em></>}
         lede={`${SITE.years} years of Melbourne residential construction, from a building company that would rather do a smaller number of jobs properly than a large number quickly.`}
         image="facade.jpg"
+        alt="Thornbury period home with a restored weatherboard facade"
         quote={href("/contact/#enquire")}
       />
 
@@ -28,7 +30,7 @@ export default function AboutPage() {
             <h2 className="h-xl">{SITE.years} years in Melbourne housing.</h2>
             <p className="lede" style={{ marginTop: 24 }}>
               Trading as {SITE.legal}, {SITE.brand} has spent {SITE.years} years in Melbourne residential
-              construction, led by director {SITE.director} from our office in {SITE.address.suburb}.
+              construction, led by director {SITE.director} from our office at {ADDRESS_LINE}.
             </p>
             <p className="body-copy">
               {SITE.years} years in the same city means very little is genuinely new to us. We have worked on Victorian
@@ -46,7 +48,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="split__media reveal" style={{ "--d": "120ms" }}>
-            <img src={photo("living-open-plan.jpg")} alt="Open-plan living and dining in a renovated Melbourne home" width={1150} height={864} loading="lazy" />
+            <img src={photo("living-open-plan.jpg")} alt="Thornbury renovation: open-plan living and dining under a raked ceiling" width={1150} height={864} loading="lazy" />
           </div>
         </div>
       </section>

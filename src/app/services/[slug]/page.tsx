@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SERVICES, SITE, serviceBySlug } from "@/data/site";
+import { SERVICES, serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
+import { JsonLd } from "@/components/JsonLd";
 import { EnquirySection, Faq, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 import { ExtensionsLayout, RenovationsLayout } from "@/components/ServiceLayouts";
+import { serviceJsonLd } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -16,12 +19,14 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = serviceBySlug((await params).slug);
   if (!s) return {};
-  return {
+  const description = s.metaDescription.includes("Thornbury")
+    ? s.metaDescription
+    : `${s.metaDescription} Office in Thornbury, Melbourne.`;
+  return pageMetadata({
     title: s.metaTitle,
-    description: s.metaDescription,
-    alternates: { canonical: `${SITE.url}/services/${s.slug}/` },
-    openGraph: { title: s.metaTitle, description: s.metaDescription },
-  };
+    description,
+    path: `/services/${s.slug}/`,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -29,26 +34,11 @@ export default async function ServicePage({ params }: Props) {
   if (!s) notFound();
 
   const others = SERVICES.filter((x) => x.slug !== s.slug).slice(0, 3);
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: s.title,
-    serviceType: s.title,
-    description: s.metaDescription,
-    areaServed: { "@type": "City", name: "Melbourne" },
-    provider: {
-      "@type": "HomeAndConstructionBusiness",
-      name: SITE.brand,
-      telephone: SITE.office.tel,
-      email: SITE.email,
-      url: `${SITE.url}/`,
-    },
-  };
 
   if (s.slug === "extensions" || s.slug === "renovations") {
     return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        <JsonLd data={serviceJsonLd(s)} />
         {s.slug === "extensions" ? <ExtensionsLayout /> : <RenovationsLayout />}
       </>
     );
@@ -56,12 +46,13 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={serviceJsonLd(s)} />
       <PageHero
         crumbs={[["Home", "/"], ["Services", "/services/"], [s.nav]]}
         title={<>{s.h1} <em>{s.em}</em></>}
         lede={s.lead}
         image={s.blocks[0].image}
+        alt={`${s.blocks[0].heading} — ${s.title} in Thornbury, Melbourne`}
       />
 
       {s.blocks.map((b, i) => (
@@ -74,7 +65,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="ticks">{b.bullets.map((t) => <li key={t}>{t}</li>)}</ul>
             </div>
             <div className="split__media reveal" style={{ "--d": "120ms" }}>
-              <img src={photo(b.image)} alt={`${b.heading}, ${SITE.brand}`} width={1158} height={864} loading="lazy" />
+              <img src={photo(b.image)} alt={`${b.heading} — ${s.title} in Thornbury, Melbourne`} width={1158} height={864} loading="lazy" />
             </div>
           </div>
         </section>

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PROJECT_NAME, SERVICES, SITE, SUBURBS, suburbBySlug } from "@/data/site";
+import { ADDRESS_LINE, PROJECT_NAME, SERVICES, SITE, SUBURBS, suburbBySlug } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
+import { JsonLd } from "@/components/JsonLd";
 import { Areas, EnquirySection, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
+import { locationJsonLd } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -15,35 +18,29 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sub = suburbBySlug((await params).slug);
   if (!sub) return {};
-  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}. Registered builder with ${SITE.years} years in Melbourne's ${sub.region}. Free itemised quote.`;
-  return {
-    title: `Builder ${sub.name} | Home Additions & Renovations`,
+  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}, Melbourne. Registered builder, office at ${ADDRESS_LINE}. Free itemised quote.`;
+  return pageMetadata({
+    title: `Home Additions & Renovations in ${sub.name}, Melbourne`,
     description,
-    alternates: { canonical: `${SITE.url}/locations/${sub.slug}/` },
-  };
+    path: `/locations/${sub.slug}/`,
+  });
 }
 
 export default async function LocationPage({ params }: Props) {
   const sub = suburbBySlug((await params).slug);
   if (!sub) notFound();
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: `Builder ${sub.name}`,
-    serviceType: "Home additions, renovations and building services",
-    areaServed: { "@type": "City", name: sub.name, containedInPlace: { "@type": "City", name: "Melbourne" } },
-    provider: { "@type": "HomeAndConstructionBusiness", name: SITE.brand, telephone: SITE.office.tel, email: SITE.email, url: `${SITE.url}/` },
-  };
+  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}, Melbourne. Registered builder, office at ${ADDRESS_LINE}. Free itemised quote.`;
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={locationJsonLd(sub, description)} />
       <PageHero
         crumbs={[["Home", "/"], ["Services", "/services/"], [sub.name]]}
         title={<>Builder in <em>{sub.name}</em></>}
         lede={`Home additions, renovations and repairs across ${sub.name} and the surrounding ${sub.region}, from a registered builder with ${SITE.years} years in Melbourne housing.`}
         image="rear-extension.jpg"
+        alt={`Rear extension of the kind we build for homes in ${sub.name}, Melbourne`}
       />
 
       <section className="section">
@@ -66,7 +63,7 @@ export default async function LocationPage({ params }: Props) {
             </p>
           </div>
           <div className="split__media reveal" style={{ "--d": "120ms" }}>
-            <img src={photo("living-gable.jpg")} alt={`Raked-ceiling rear addition of the kind we build in ${sub.name}`} width={1155} height={864} loading="lazy" />
+            <img src={photo("living-gable.jpg")} alt={`Raked-ceiling rear addition of the kind we build in ${sub.name}, Melbourne`} width={1155} height={864} loading="lazy" />
           </div>
         </div>
       </section>

@@ -19,7 +19,7 @@ function Brand({ swap = false }: { swap?: boolean }) {
       <img className="brandmark__light" src={asset("/assets/img/logo.svg")} alt={SITE.brand} width={995} height={688} />
       {/* Dark lockup for the light glass the header turns into once scrolled. */}
       {swap && (
-        <img className="brandmark__dark" src={asset("/assets/img/logo-dark.svg")} alt="" aria-hidden="true" width={995} height={688} />
+        <img className="brandmark__dark" src={asset("/assets/img/logo-dark.svg")} alt={`${SITE.brand} logo`} aria-hidden="true" width={995} height={688} />
       )}
     </a>
   );

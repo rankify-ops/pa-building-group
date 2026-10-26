@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { SERVICES, SITE } from "@/data/site";
 import { href } from "@/lib/basePath";
+import { pageMetadata } from "@/lib/seo";
 import { ArrowIcon, PhoneIcon } from "@/components/Icon";
 import { SectionHead, ServiceCards } from "@/components/Blocks";
 
-export const metadata: Metadata = {
-  title: "Thanks, we'll be in touch",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Thanks, We'll Be in Touch | Thornbury, Melbourne",
+  description: `Your enquiry is with ${SITE.brand} in Thornbury. Paul will be in touch to talk through your Melbourne project and book a site visit.`,
+  path: "/thank-you/",
+  index: false,
+});
 
 export default function ThankYouPage() {
   return (

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { SERVICES, SITE } from "@/data/site";
+import { ADDRESS_LINE, SERVICES, SITE } from "@/data/site";
 import { Areas, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 import { href } from "@/lib/basePath";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services | Additions & Renovations from Thornbury",
+export const metadata: Metadata = pageMetadata({
+  title: "Building Services in Thornbury | Additions & Renovations, Melbourne",
   description:
-    "Home additions and renovations, kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts. Our office is in Thornbury, and most of our work is across north-east Melbourne.",
-  alternates: { canonical: `${SITE.url}/services/` },
-};
+    `Home additions and renovations, kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts in Melbourne. ${SITE.brand}, office at ${ADDRESS_LINE}.`,
+  path: "/services/",
+});
 
 export default function ServicesPage() {
   return (
@@ -18,6 +19,7 @@ export default function ServicesPage() {
         title={<>Our <em>services</em></>}
         lede={`${SITE.years} years of Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`}
         image="living-open-plan.jpg"
+        alt="Thornbury renovation with open-plan living and dining"
         quote={href("/contact/#enquire")}
       />
 
