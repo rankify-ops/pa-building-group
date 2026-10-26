@@ -12,10 +12,23 @@
         "title": "Completed in 2021",
         "blurb": "An extension with rammed earth walls, a master bathroom and a large carport.",
         "images": [
-          { "image": "smiths-gully/smiths-gully-2.jpg", "caption": "Rammed earth walls" },
-          { "image": "smiths-gully/smiths-gully-1.jpg", "caption": "Interior" },
-          { "image": "smiths-gully/smiths-gully-3.jpg", "caption": "Hallway" },
-          { "image": "smiths-gully/smiths-gully-4.jpg", "caption": "Exterior", "span": "g-12" }
+          {
+            "image": "smiths-gully/smiths-gully-2.jpg",
+            "caption": "Rammed earth walls"
+          },
+          {
+            "image": "smiths-gully/smiths-gully-1.jpg",
+            "caption": "Interior"
+          },
+          {
+            "image": "smiths-gully/smiths-gully-3.jpg",
+            "caption": "Hallway"
+          },
+          {
+            "image": "smiths-gully/smiths-gully-4.jpg",
+            "caption": "Exterior",
+            "span": "g-12"
+          }
         ]
       }
     ]
@@ -33,9 +46,18 @@
         "title": "The facade stayed exactly where it was",
         "blurb": "Weatherboards repaired, leadlight retained, the picket fence and front garden reinstated. From the footpath the house reads as it always did.",
         "images": [
-          { "image": "facade.jpg", "caption": "Restored facade" },
-          { "image": "formal-lounge.jpg", "caption": "Front lounge" },
-          { "image": "bedroom-leadlight.jpg", "caption": "Front bedroom" }
+          {
+            "image": "facade.jpg",
+            "caption": "Restored facade"
+          },
+          {
+            "image": "formal-lounge.jpg",
+            "caption": "Front lounge"
+          },
+          {
+            "image": "bedroom-leadlight.jpg",
+            "caption": "Front bedroom"
+          }
         ]
       },
       {
@@ -44,8 +66,14 @@
         "title": "A new rear pavilion, resolved against the original roof",
         "blurb": "The old lean-to came off and a raked-ceiling pavilion went on. High-level glazing along the gable pulls light deep into the plan, and the whole rear wall opens to the garden.",
         "images": [
-          { "image": "rear-extension.jpg", "caption": "Rear elevation" },
-          { "image": "living-gable.jpg", "caption": "Gable glazing" }
+          {
+            "image": "rear-extension.jpg",
+            "caption": "Rear elevation"
+          },
+          {
+            "image": "living-gable.jpg",
+            "caption": "Gable glazing"
+          }
         ]
       },
       {
@@ -54,9 +82,18 @@
         "title": "One room for cooking, eating and everything else",
         "blurb": "Kitchen, dining and living share a single volume under the rake, with the ceiling dropping as it meets the original house so the junction reads deliberately.",
         "images": [
-          { "image": "living-open-plan.jpg", "caption": "Living and dining" },
-          { "image": "dining-living.jpg", "caption": "Dining zone" },
-          { "image": "build-progress-3.jpg", "caption": "Open-plan interior" }
+          {
+            "image": "living-open-plan.jpg",
+            "caption": "Living and dining"
+          },
+          {
+            "image": "dining-living.jpg",
+            "caption": "Dining zone"
+          },
+          {
+            "image": "build-progress-3.jpg",
+            "caption": "Open-plan interior"
+          }
         ]
       },
       {
@@ -65,9 +102,18 @@
         "title": "Fluted island, stone tops and a pantry that hides the mess",
         "blurb": "A single stone-topped island with fluted joinery, a window splashback instead of tiles, and a butler's pantry behind holding the second sink and everything that lives on the bench.",
         "images": [
-          { "image": "kitchen-island.jpg", "caption": "Island and stone" },
-          { "image": "kitchen-galley.jpg", "caption": "Window splashback" },
-          { "image": "butlers-pantry.jpg", "caption": "Butler's pantry" }
+          {
+            "image": "kitchen-island.jpg",
+            "caption": "Island and stone"
+          },
+          {
+            "image": "kitchen-galley.jpg",
+            "caption": "Window splashback"
+          },
+          {
+            "image": "butlers-pantry.jpg",
+            "caption": "Butler's pantry"
+          }
         ]
       },
       {
@@ -76,8 +122,14 @@
         "title": "Terrazzo, fluted glass and vertical tile",
         "blurb": "Main bathroom with a fully glazed bath-shower recess, terrazzo to dado height and vertical stack tile above. The ensuite runs the same palette with a double vanity.",
         "images": [
-          { "image": "bathroom-main.jpg", "caption": "Main bathroom" },
-          { "image": "ensuite.jpg", "caption": "Ensuite" }
+          {
+            "image": "bathroom-main.jpg",
+            "caption": "Main bathroom"
+          },
+          {
+            "image": "ensuite.jpg",
+            "caption": "Ensuite"
+          }
         ]
       },
       {
@@ -86,9 +138,18 @@
         "title": "Bedrooms with proper storage",
         "blurb": "Original front bedrooms kept their leadlight and ceiling height. The new ones got built-in robes, so nothing has to live on a chair.",
         "images": [
-          { "image": "bedroom-robes.jpg", "caption": "Built-in robes" },
-          { "image": "bedroom-guest.jpg", "caption": "Guest bedroom" },
-          { "image": "build-progress-2.jpg", "caption": "Finished interior" }
+          {
+            "image": "bedroom-robes.jpg",
+            "caption": "Built-in robes"
+          },
+          {
+            "image": "bedroom-guest.jpg",
+            "caption": "Guest bedroom"
+          },
+          {
+            "image": "build-progress-2.jpg",
+            "caption": "Finished interior"
+          }
         ]
       },
       {
@@ -97,7 +158,10 @@
         "title": "Bluestone, lawn and a level change that works",
         "blurb": "Bluestone paving off the living room, a raised lawn behind a low retaining wall, and stepping stones through to the studio at the rear.",
         "images": [
-          { "image": "backyard.jpg", "caption": "Paved terrace" }
+          {
+            "image": "backyard.jpg",
+            "caption": "Paved terrace"
+          }
         ]
       }
     ]
@@ -106,16 +170,20 @@
     "slug": "kinglake",
     "name": "Kinglake",
     "kind": "New build to lock-up",
-    "summary": "A new build taken through to lock-up. The frame is up, the roof is on, and the openings are in.",
+    "summary": "A new build taken through to lock-up.",
     "image": "kinglake/kinglake-1.jpg",
     "groups": [
       {
         "anchor": "kinglake-lockup",
         "tag": "New build",
-        "title": "Frame, roof and openings in",
-        "blurb": "The house at lock-up: roof on, wall framing up, and the window and door openings formed.",
+        "title": "New build to lock-up",
+        "blurb": "A new home in Kinglake, built through to lock-up.",
         "images": [
-          { "image": "kinglake/kinglake-1.jpg", "caption": "Lock-up stage", "span": "g-6" }
+          {
+            "image": "kinglake/kinglake-1.jpg",
+            "caption": "Exterior",
+            "span": "g-6"
+          }
         ]
       }
     ]
@@ -124,17 +192,23 @@
     "slug": "coburg",
     "name": "Coburg",
     "kind": "Renovation and addition",
-    "summary": "A weatherboard house. The street frontage was repaired, and the kitchen rebuilt.",
+    "summary": "A renovation and addition in Coburg.",
     "image": "coburg/coburg-1.jpg",
     "groups": [
       {
         "anchor": "coburg-works",
         "tag": "Renovation",
-        "title": "Street front and a new kitchen",
-        "blurb": "Weatherboards repaired and the facade painted. Inside, a new kitchen with timber joinery and a stone benchtop.",
+        "title": "Bathroom renovation",
+        "blurb": "Part of the renovation and addition: a new bathroom with a walk-in shower, freestanding bath and timber vanity.",
         "images": [
-          { "image": "coburg/coburg-1.jpg", "caption": "Street front" },
-          { "image": "coburg/coburg-2.jpg", "caption": "Kitchen" }
+          {
+            "image": "coburg/coburg-1.jpg",
+            "caption": "Shower and vanity"
+          },
+          {
+            "image": "coburg/coburg-2.jpg",
+            "caption": "Freestanding bath"
+          }
         ]
       }
     ]
@@ -143,17 +217,23 @@
     "slug": "elwood",
     "name": "Elwood",
     "kind": "Extension and renovation",
-    "summary": "An extension and renovation, with the kitchen and living room in one volume and a bedroom with built-in robes.",
+    "summary": "An extension and renovation in Elwood.",
     "image": "elwood/elwood-2.jpg",
     "groups": [
       {
         "anchor": "elwood-rooms",
         "tag": "Extension",
-        "title": "Open plan, and a bedroom with storage",
-        "blurb": "Kitchen and living share one room, with timber joinery and a stone island. The bedroom has a built-in robe.",
+        "title": "Deck and outdoor living",
+        "blurb": "Part of the extension and renovation: a timber deck with built-in seating, under a pergola that opens onto the house.",
         "images": [
-          { "image": "elwood/elwood-1.jpg", "caption": "Bedroom" },
-          { "image": "elwood/elwood-2.jpg", "caption": "Kitchen and living" }
+          {
+            "image": "elwood/elwood-1.jpg",
+            "caption": "Deck and pergola"
+          },
+          {
+            "image": "elwood/elwood-2.jpg",
+            "caption": "Outdoor living"
+          }
         ]
       }
     ]
