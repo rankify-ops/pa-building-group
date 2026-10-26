@@ -4,9 +4,9 @@ import { href, photo } from "@/lib/basePath";
 import { CtaBand, PageHero, SectionHead } from "@/components/Blocks";
 
 export const metadata: Metadata = {
-  title: "Projects | Extensions, Renovations & New Builds Melbourne",
+  title: "Projects | Renovations across North-East Melbourne",
   description:
-    "PA Building Group projects: Smith's Gully, Thornbury, Kinglake, Coburg and Elwood. Extensions, renovations, an addition and a new build to lock-up.",
+    "Projects from our Thornbury office: Smith's Gully, Thornbury, Kinglake, Coburg and Elwood. Extensions, renovations, an addition and a new build to lock-up across north-east Melbourne.",
   alternates: { canonical: `${SITE.url}/projects/` },
 };
 

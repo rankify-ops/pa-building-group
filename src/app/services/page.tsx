@@ -4,9 +4,9 @@ import { Areas, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/
 import { href } from "@/lib/basePath";
 
 export const metadata: Metadata = {
-  title: "Services | Additions, Renovations, Kitchens & Bathrooms Melbourne",
+  title: "Services | Additions & Renovations from Thornbury",
   description:
-    "Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance, pre-sale facelifts, heritage homes, granny flats and design and build across Melbourne.",
+    "Home additions and renovations, kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts. Our office is in Thornbury, and most of our work is across north-east Melbourne.",
   alternates: { canonical: `${SITE.url}/services/` },
 };
 
@@ -48,7 +48,11 @@ export default function ServicesPage() {
 
       <section className="section section--tight">
         <div className="wrap">
-          <SectionHead eyebrow="Service areas" title="Across Melbourne and surrounds." />
+          <SectionHead
+            eyebrow="Service areas"
+            title="The office is in Thornbury."
+            lede="Most of our work is across Melbourne's north-east, including Doreen, and we also take jobs in Camberwell, Kew, Hawthorn and Balwyn. If your suburb isn't listed, ask anyway."
+          />
           <div className="reveal"><Areas /></div>
         </div>
       </section>

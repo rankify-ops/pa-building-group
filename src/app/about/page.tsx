@@ -4,9 +4,9 @@ import { href, photo } from "@/lib/basePath";
 import { Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
 export const metadata: Metadata = {
-  title: "About | Melbourne Home Additions & Renovation Builders",
+  title: "About | Thornbury Home Additions & Renovation Builders",
   description:
-    `PA Building Group: ${SITE.years} years in Melbourne residential construction, led by director Paul Athinis. Registered builder based in Thornbury.`,
+    `PA Building Group: ${SITE.years} years in Melbourne residential construction, led by director Paul Athinis. Registered builder. Our office is in Thornbury, and most of our work is across north-east Melbourne.`,
   alternates: { canonical: `${SITE.url}/about/` },
 };
 

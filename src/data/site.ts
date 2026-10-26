@@ -34,6 +34,37 @@ export const SITE = {
 
 export const ADDRESS_LINE = `${SITE.address.street}, ${SITE.address.suburb} ${SITE.address.state} ${SITE.address.postcode}`;
 
+/**
+ * Suburbs named in copy and in the homepage LocalBusiness areaServed list.
+ * Thornbury is the only office (see SITE.address). Doreen is one of these
+ * service areas, the same as Camberwell and Kew — never a second address.
+ * Do not add these to suburbs.json; that file generates location pages.
+ */
+export const SERVICE_AREAS = [
+  "Thornbury",
+  "Northcote",
+  "Preston",
+  "Reservoir",
+  "Fairfield",
+  "Alphington",
+  "Ivanhoe",
+  "Heidelberg",
+  "Bundoora",
+  "Greensborough",
+  "Eltham",
+  "Diamond Creek",
+  "Doreen",
+  "Mernda",
+  "South Morang",
+  "Mill Park",
+  "Templestowe",
+  "Doncaster",
+  "Camberwell",
+  "Kew",
+  "Hawthorn",
+  "Balwyn",
+] as const;
+
 export type Service = {
   slug: string;
   nav: string;
