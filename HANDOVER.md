@@ -67,8 +67,11 @@ visitor is shown Paul's mobile and email instead of a silent failure.
 2. **Claims to confirm**: "Licensed & insured" wording, whether he is an HIA or Master Builders
    member (not currently claimed), and the three process-style stats on the home page stat bar.
 3. **Featured project**: the client has named the photographed job Thornbury
-   (`PROJECT_NAME` in `src/data/site.ts`). Smith's Gully, Kinglake, Coburg, Elwood,
-   North Melbourne and Badgers Creek are listed and still need photographs.
+   (`PROJECT_NAME` in `src/data/site.ts`). Only jobs with real photographs are
+   published. Smith's Gully, Kinglake, Coburg, Elwood, North Melbourne and
+   Badgers Creek are held in `src/data/projects-awaiting-photos.ts` and stay off
+   the site until their photographs arrive. To publish one, move it into
+   `src/data/projects.json` and add its images under `public/assets/img/projects/`.
 4. **Reviews**: deliberately left out rather than filled with placeholder cards. Once Paul's
    Google Business Profile is connected, a reviews band between projects and the quote band on the
    home page is the right slot.

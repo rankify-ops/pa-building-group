@@ -68,10 +68,7 @@ export type Project = {
   name: string;
   kind: string;
   summary: string;
-  /** True when the client has not supplied photography for this job yet. */
-  needsPhoto: boolean;
-  /** Card image. Omitted when the project still needs photographs. */
-  image?: string;
+  image: string;
   groups: ProjectGroup[];
 };
 
