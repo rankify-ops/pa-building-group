@@ -3,19 +3,19 @@
     "slug": "smiths-gully",
     "name": "Smith's Gully",
     "kind": "Extension with rammed earth walls",
-    "summary": "An extension built in rammed earth, with a new kitchen and living room and a courtyard enclosed by the same walls.",
+    "summary": "An extension with rammed earth walls, a master bathroom and a large carport, completed in 2021.",
     "image": "smiths-gully/smiths-gully-2.jpg",
     "groups": [
       {
         "anchor": "smiths-gully-rooms",
         "tag": "Extension",
-        "title": "Rammed earth, inside and out",
-        "blurb": "The new rooms are finished in rammed earth, from the living room and kitchen through to a courtyard walled in the same material.",
+        "title": "Completed in 2021",
+        "blurb": "An extension with rammed earth walls, a master bathroom and a large carport.",
         "images": [
-          { "image": "smiths-gully/smiths-gully-2.jpg", "caption": "Living room" },
-          { "image": "smiths-gully/smiths-gully-1.jpg", "caption": "Kitchen" },
+          { "image": "smiths-gully/smiths-gully-2.jpg", "caption": "Rammed earth walls" },
+          { "image": "smiths-gully/smiths-gully-1.jpg", "caption": "Interior" },
           { "image": "smiths-gully/smiths-gully-3.jpg", "caption": "Hallway" },
-          { "image": "smiths-gully/smiths-gully-4.jpg", "caption": "Courtyard", "span": "g-12" }
+          { "image": "smiths-gully/smiths-gully-4.jpg", "caption": "Exterior", "span": "g-12" }
         ]
       }
     ]
@@ -56,7 +56,7 @@
         "images": [
           { "image": "living-open-plan.jpg", "caption": "Living and dining" },
           { "image": "dining-living.jpg", "caption": "Dining zone" },
-          { "image": "build-progress-3.jpg", "caption": "Before fit-out" }
+          { "image": "build-progress-3.jpg", "caption": "Open-plan interior" }
         ]
       },
       {
@@ -88,7 +88,7 @@
         "images": [
           { "image": "bedroom-robes.jpg", "caption": "Built-in robes" },
           { "image": "bedroom-guest.jpg", "caption": "Guest bedroom" },
-          { "image": "build-progress-2.jpg", "caption": "Frame stage" }
+          { "image": "build-progress-2.jpg", "caption": "Finished interior" }
         ]
       },
       {

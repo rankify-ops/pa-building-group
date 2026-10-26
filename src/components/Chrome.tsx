@@ -13,7 +13,7 @@ export function Footer() {
         <div className="footer-brand">
           <img src={asset("/assets/img/logo.png")} alt={SITE.brand} width={1000} height={688} />
           <p>
-            Over 40 years in {SITE.city} residential construction. Home additions and renovations, kitchens and
+            {SITE.years} years in {SITE.city} residential construction. Home additions and renovations, kitchens and
             bathrooms, outdoor living, property maintenance and pre-sale facelifts.
           </p>
         </div>

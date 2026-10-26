@@ -51,10 +51,10 @@ export function ExtensionsLayout() {
             <h2 className="h-xl">One team. First idea to keys in hand.</h2>
             <p className="lede" style={{ marginTop: 22 }}>
               We bring the whole team: designers, architects, draftspeople, engineers and surveyors, plus permits
-              and approvals handled for you. One point of contact from the first idea to handing you the keys.
+              and approvals handled for you. One point of contact from first idea to handing you the keys.
             </p>
             <p className="body-copy turnkey__note">
-              Already have your own architect? No problem. We&rsquo;ll build to their plans.
+              Already have your own architect? No problem, we&rsquo;ll build to their plans.
             </p>
             <div className="stack-cta">
               <a className="btn btn--light" href="#enquire">Get in touch <ArrowIcon /></a>
@@ -72,62 +72,74 @@ export function ExtensionsLayout() {
   );
 }
 
+const RENOVATIONS = {
+  paragraphs: [
+    "Whether your home needs a facelift or a full rethink, we’ll help you get there. Our in-house interior designers work with you from the start to plan a space that suits your lifestyle, your family and your budget.",
+    "Open up the living areas, connect the inside to a new alfresco, or bring tired bathrooms, kitchens and laundries up to date. We design to your budget and build to a standard you’ll be proud of, so you get the best possible outcome for every dollar.",
+  ],
+  points: [
+    "Interior design guidance from concept to completion",
+    "Open-plan living and layout reconfiguration",
+    "New alfresco and outdoor living spaces",
+    "Bathroom, kitchen and laundry upgrades",
+    "Custom built-in robes and storage",
+  ],
+};
+
 const RENO_SECTIONS: {
   eyebrow: string;
   title: string;
-  lede: string;
+  paragraphs: string[];
+  intro: string;
   points: string[];
+  closing?: string;
   image: string;
   alt: string;
 }[] = [
   {
-    eyebrow: "Renovations",
-    title: "A fresh look for the way you live now",
-    lede: "The house can stay. The way it works doesn't have to. We renovate around how you live now, from a single room through to the whole plan, with design guidance and the building work handled by one team.",
-    points: [
-      "Interior design guidance",
-      "Open-plan and layout changes",
-      "Alfresco areas",
-      "Bathrooms, kitchens and laundries",
-      "Built-in robes and storage",
-    ],
-    image: "living-open-plan.jpg",
-    alt: "Renovated open-plan living and dining",
-  },
-  {
     eyebrow: "Home staging & pre-sale facelifts",
     title: "Sell sooner. Sell for more.",
-    lede: "A focused facelift before you list, timed around your campaign. The work is the kind buyers notice on the first walk-through, finished before the first inspection.",
+    paragraphs: [
+      "First impressions sell houses. We get your home ready for market fast with targeted repairs, a fresh facelift and professional styling. One team handles everything, on time for your sale campaign.",
+      "We walk through your home with you, and your agent if you like, and focus on the work buyers notice and will pay for. Nothing more.",
+    ],
+    intro: "Our facelift services include:",
     points: [
-      "Painting",
-      "Flooring and carpet",
-      "Kitchen and bathroom refresh",
-      "Lighting, tapware and handles",
+      "Interior and exterior painting",
+      "New flooring and carpet",
+      "Kitchen and bathroom refreshes",
+      "New lighting, tapware, door handles and fittings",
       "Repairs and patching",
       "Gardens, fences, decks and street appeal",
     ],
+    closing:
+      "Our interior designers then style each room so buyers can picture themselves living there. A well-presented home photographs better, attracts more buyers and gives you the best chance of a strong result.",
     image: "facade.jpg",
     alt: "Restored street facade of a Melbourne home",
   },
   {
     eyebrow: "Home flipping",
     title: "Buy it. Renovate it. Sell it for more.",
-    lede: "Forty-three years in the building industry, put to work on homes bought to be improved and resold. The job runs from the structure through to the styling, so the finished house is ready for the market.",
+    paragraphs: [
+      "Whether you’re an investor or buying your first renovation project, we help you turn a tired property into one buyers want. With 43 years in the building industry, we know where to spend to add value, and where not to.",
+      "Once you’ve bought, we manage the whole renovation with one team, one contract and one point of contact. We work to a tight programme so you’re not paying holding costs any longer than you need to.",
+    ],
+    intro: "Our home flipping services include:",
     points: [
-      "Kitchens, bathrooms and laundries",
-      "Painting, flooring and lighting",
-      "Layout changes",
-      "Structural work, restumping and rewiring",
-      "Outdoor living and landscaping",
-      "Interior design and styling",
-      "Landscaping and paving",
+      "Kitchen, bathroom and laundry renovations",
+      "Painting, flooring, lighting and fittings throughout",
+      "Layout changes and open-plan living",
+      "Structural repairs, restumping and rewiring",
+      "Outdoor living, landscaping and street appeal",
+      "Interior design and styling ready for sale",
+      "Landscaping / paving",
     ],
     image: "kitchen-island.jpg",
     alt: "Renovated kitchen with a stone-topped island",
   },
 ];
 
-/** Renovations page: three sections, each with its own heading and tick list. */
+/** Renovations page: Paul's three sections, in his words. */
 export function RenovationsLayout() {
   return (
     <>
@@ -135,33 +147,38 @@ export function RenovationsLayout() {
         crumbs={[["Home", "/"], ["Services", "/services/"], ["Renovations"]]}
         eyebrow="Renovations"
         title={<>A fresh look <em>for the way you live now</em></>}
-        lede={RENO_SECTIONS[0].lede}
+        lede={RENOVATIONS.paragraphs[0]}
         image="living-open-plan.jpg"
         quote="#enquire"
       />
 
       <section className="section">
         <div className="wrap" style={{ maxWidth: 980 }}>
+          <p className="body-copy">{RENOVATIONS.paragraphs[1]}</p>
           <ul className="ticks ticks--cols">
-            {RENO_SECTIONS[0].points.map((point) => (
+            {RENOVATIONS.points.map((point) => (
               <li key={point}>{point}</li>
             ))}
           </ul>
         </div>
       </section>
 
-      {RENO_SECTIONS.slice(1).map((section, i) => (
+      {RENO_SECTIONS.map((section, i) => (
         <section key={section.eyebrow} className={`section${i === 0 ? " section--cloud" : ""}`}>
           <div className={`wrap split${i % 2 ? " split--flip" : ""}`}>
             <div className="split__copy reveal">
               <p className="eyebrow">{section.eyebrow}</p>
               <h2 className="h-lg">{section.title}</h2>
-              <p className="body-copy">{section.lede}</p>
-              <ul className="ticks">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="body-copy">{paragraph}</p>
+              ))}
+              <p className="body-copy includes__intro">{section.intro}</p>
+              <ul className="includes">
                 {section.points.map((point) => (
                   <li key={point}>{point}</li>
                 ))}
               </ul>
+              {section.closing ? <p className="body-copy includes__closing">{section.closing}</p> : null}
             </div>
             <div className="split__media reveal" style={{ "--d": "120ms" }}>
               <img src={photo(section.image)} alt={`${section.alt}, ${SITE.brand}`} width={1158} height={864} loading="lazy" />

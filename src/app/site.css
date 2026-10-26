@@ -605,6 +605,15 @@ form.is-stepped .fstep.is-active { display: block; }
 .section--dark .ticks li::before { border-color: #fff; }
 .section--dark .body-copy { color: var(--mist); }
 
+.includes__intro { margin-top: 8px; margin-bottom: 0; font-weight: 600; color: var(--ink); }
+.includes { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.includes li { position: relative; padding-left: 18px; color: var(--graphite); font-size: 15.5px; line-height: 1.55; }
+.includes li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+.includes__closing { margin-top: 22px; }
+
 /* Three short offers, as on the extensions page. */
 .offer {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));

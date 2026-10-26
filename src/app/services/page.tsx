@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageHero
         crumbs={[["Home", "/"], ["Services"]]}
         title={<>Our <em>services</em></>}
-        lede="Forty years of Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts."
+        lede={`${SITE.years} years of Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`}
         image="living-open-plan.jpg"
         quote={href("/contact/#enquire")}
       />

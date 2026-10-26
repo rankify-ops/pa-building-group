@@ -1,7 +1,7 @@
 /*
  * Business details. Everything here came from the client:
  *   - contact, address, registrations: Paul Athinis's email signature
- *   - 40+ years and the service specialities: the business Facebook page
+ *   - 43 years in the industry: Paul's renovations copy. Service specialities: the business Facebook page.
  * Anything not on that list is our copy, not a claim of theirs — see HANDOVER.md.
  */
 import servicesJson from "./services.json";
@@ -27,7 +27,7 @@ export const SITE = {
   },
   registrations: ["DB-U 44080", "CDB-U 51464"],
   regulator: "Building and Plumbing Commission",
-  years: "40+",
+  years: "43",
   // Public by design — Web3Forms only sends to the inbox it was registered against.
   web3formsKey: "2742141c-cdc6-4e7b-be33-672d05ed3aff",
 } as const;

@@ -6,7 +6,7 @@ import { Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } fr
 export const metadata: Metadata = {
   title: "About | Melbourne Home Additions & Renovation Builders",
   description:
-    "PA Building Group: over 40 years in Melbourne residential construction, led by director Paul Athinis. Registered builder based in Thornbury.",
+    `PA Building Group: ${SITE.years} years in Melbourne residential construction, led by director Paul Athinis. Registered builder based in Thornbury.`,
   alternates: { canonical: `${SITE.url}/about/` },
 };
 
@@ -16,7 +16,7 @@ export default function AboutPage() {
       <PageHero
         crumbs={[["Home", "/"], ["About"]]}
         title={<>About <em>{SITE.brand}</em></>}
-        lede="Over forty years of Melbourne residential construction, from a building company that would rather do a smaller number of jobs properly than a large number quickly."
+        lede={`${SITE.years} years of Melbourne residential construction, from a building company that would rather do a smaller number of jobs properly than a large number quickly.`}
         image="facade.jpg"
         quote={href("/contact/#enquire")}
       />
@@ -25,13 +25,13 @@ export default function AboutPage() {
         <div className="wrap split">
           <div className="split__copy reveal">
             <p className="eyebrow">Our story</p>
-            <h2 className="h-xl">Forty years in Melbourne housing.</h2>
+            <h2 className="h-xl">{SITE.years} years in Melbourne housing.</h2>
             <p className="lede" style={{ marginTop: 24 }}>
-              Trading as {SITE.legal}, {SITE.brand} has spent over forty years in Melbourne residential
+              Trading as {SITE.legal}, {SITE.brand} has spent {SITE.years} years in Melbourne residential
               construction, led by director {SITE.director} from our office in {SITE.address.suburb}.
             </p>
             <p className="body-copy">
-              Four decades in the same city means very little is genuinely new to us. We have worked on Victorian
+              {SITE.years} years in the same city means very little is genuinely new to us. We have worked on Victorian
               terraces, Edwardian weatherboards, Californian bungalows, interwar brick and every era of post-war
               housing since. Each has its own rules and its own surprises, and we have learnt them the way everyone
               does: by opening walls.
