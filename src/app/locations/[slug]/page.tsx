@@ -15,7 +15,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sub = suburbBySlug((await params).slug);
   if (!sub) return {};
-  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}. Registered builder with over 40 years in Melbourne's ${sub.region}. Free itemised quote.`;
+  const description = `Home additions, renovations, kitchens, bathrooms and outdoor living in ${sub.name}. Registered builder with ${SITE.years} years in Melbourne's ${sub.region}. Free itemised quote.`;
   return {
     title: `Builder ${sub.name} | Home Additions & Renovations`,
     description,
@@ -42,7 +42,7 @@ export default async function LocationPage({ params }: Props) {
       <PageHero
         crumbs={[["Home", "/"], ["Services", "/services/"], [sub.name]]}
         title={<>Builder in <em>{sub.name}</em></>}
-        lede={`Home additions, renovations and repairs across ${sub.name} and the surrounding ${sub.region}, from a registered builder with over forty years in Melbourne housing.`}
+        lede={`Home additions, renovations and repairs across ${sub.name} and the surrounding ${sub.region}, from a registered builder with ${SITE.years} years in Melbourne housing.`}
         image="rear-extension.jpg"
       />
 
@@ -95,7 +95,7 @@ export default async function LocationPage({ params }: Props) {
       <EnquirySection
         context={`${sub.name} page`}
         title={<>Planning something in {sub.name}?</>}
-        lede={`Free site visit, itemised written quote, and an honest answer about what's worth doing. See ${PROJECT_NAME} for the kind of job we take on.`}
+        lede={`Free site visit, itemised written quote, and an honest answer about what's worth doing. See the ${PROJECT_NAME} project for the kind of job we take on.`}
       />
 
       <section className="section section--tight">

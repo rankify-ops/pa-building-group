@@ -11,7 +11,7 @@ const schema = {
   name: SITE.brand,
   legalName: SITE.legal,
   description:
-    "Over 40 years in Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.",
+    `${SITE.years} years in Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
   url: `${SITE.url}/`,
   logo: `${SITE.url}/assets/img/logo-dark.png`,
   image: `${SITE.url}/assets/img/og.jpg`,
@@ -55,12 +55,12 @@ export default function Home() {
           <div className="hero__copy">
             <p className="eyebrow">Melbourne renovation builders</p>
             <h1>
-              Forty years of
+              {SITE.years} years of
               <em>Melbourne homes.</em>
             </h1>
             <p className="hero__lede">
               Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property
-              maintenance and pre-sale facelifts. Four decades of residential building, and the same team from
+              maintenance and pre-sale facelifts. {SITE.years} years of residential building, and the same team from
               first quote to final handover.
             </p>
             <div className="hero__cta">
@@ -69,7 +69,7 @@ export default function Home() {
             </div>
             <ul className="hero__proof">
               <li><ShieldIcon /> Registered builder</li>
-              <li><ClockIcon /> 40+ years in Melbourne</li>
+              <li><ClockIcon /> {SITE.years} years in Melbourne</li>
               <li><PinIcon /> Based in {SITE.address.suburb}</li>
             </ul>
           </div>
@@ -87,7 +87,7 @@ export default function Home() {
       <section className="statbar" aria-label="At a glance">
         <div className="wrap">
           <div className="statbar__grid">
-            <div className="statbar__item"><div className="statbar__figure">40+</div><div className="statbar__label">Years in Melbourne<br />residential building</div></div>
+            <div className="statbar__item"><div className="statbar__figure">{SITE.years}</div><div className="statbar__label">Years in Melbourne<br />residential building</div></div>
             <div className="statbar__item"><div className="statbar__figure">DB-U</div><div className="statbar__label">Registered<br />domestic builder</div></div>
             <div className="statbar__item"><div className="statbar__figure">{SERVICES.length}</div><div className="statbar__label">Services under<br />one roof</div></div>
             <div className="statbar__item"><div className="statbar__figure">1</div><div className="statbar__label">Point of contact,<br />quote to handover</div></div>
@@ -101,7 +101,7 @@ export default function Home() {
             <p className="eyebrow">Who we are</p>
             <h2 className="h-xl">A builder you can hand the whole job to.</h2>
             <p className="lede" style={{ marginTop: 24 }}>
-              {SITE.brand} has spent over forty years in Melbourne residential construction. Most of what we do
+              {SITE.brand} has spent {SITE.years} years in Melbourne residential construction. Most of what we do
               is older housing stock: Victorian and Edwardian homes, Californian bungalows, interwar brick, and the
               post-war houses that followed.
             </p>
@@ -145,7 +145,7 @@ export default function Home() {
             eyebrow="Recent work"
             title={<>{PROJECT_NAME}: a period home that finally works.</>}
             lede="Weatherboard facade and front rooms restored. The rear demolished and rebuilt as a raked-ceiling living, dining and kitchen space that opens straight onto the garden."
-            action={<a className="link-arrow" href={href("/projects/")}>See the full project <ArrowIcon size={13} /></a>}
+            action={<a className="link-arrow" href={href("/projects/")}>See all projects <ArrowIcon size={13} /></a>}
           />
           <div className="projects">
             {FEATURED.map((p, i) => (

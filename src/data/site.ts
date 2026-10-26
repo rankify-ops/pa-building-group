@@ -1,7 +1,7 @@
 /*
  * Business details. Everything here came from the client:
  *   - contact, address, registrations: Paul Athinis's email signature
- *   - 40+ years and the service specialities: the business Facebook page
+ *   - 43 years in the industry: Paul's renovations copy. Service specialities: the business Facebook page.
  * Anything not on that list is our copy, not a claim of theirs — see HANDOVER.md.
  */
 import servicesJson from "./services.json";
@@ -20,14 +20,14 @@ export const SITE = {
   office: { label: "03 9717 0650", tel: "+61397170650" },
   email: "paul@pabuilding.com.au",
   address: {
-    street: "26/327 Mansfield St",
+    street: "51/327 Mansfield St",
     suburb: "Thornbury",
     state: "VIC",
     postcode: "3071",
   },
   registrations: ["DB-U 44080", "CDB-U 51464"],
   regulator: "Building and Plumbing Commission",
-  years: "40+",
+  years: "43",
   // Public by design — Web3Forms only sends to the inbox it was registered against.
   web3formsKey: "2742141c-cdc6-4e7b-be33-672d05ed3aff",
 } as const;
@@ -53,19 +53,31 @@ export type Service = {
 
 export type Suburb = { name: string; slug: string; region: string; character: string };
 
-export type ProjectSection = {
+export type ProjectImage = { image: string; caption: string; id?: string; span?: string };
+
+export type ProjectGroup = {
   anchor: string;
   tag: string;
   title: string;
   blurb: string;
-  images: { image: string; caption: string }[];
+  images: ProjectImage[];
+};
+
+export type Project = {
+  slug: string;
+  name: string;
+  kind: string;
+  summary: string;
+  image: string;
+  groups: ProjectGroup[];
 };
 
 export const SERVICES = servicesJson as Service[];
 export const SUBURBS = suburbsJson as Suburb[];
-export const PROJECT_SECTIONS = projectsJson as ProjectSection[];
+export const PROJECTS = projectsJson as Project[];
 
-export const PROJECT_NAME = "Ethel Street"; // TODO(client): confirm suburb and completion year
+/** Featured project on the home page. The client asked for the suburb only. */
+export const PROJECT_NAME = "Thornbury";
 
 export function serviceBySlug(slug: string) {
   return SERVICES.find((s) => s.slug === slug);

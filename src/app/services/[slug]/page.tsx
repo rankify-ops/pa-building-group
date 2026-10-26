@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SERVICES, SITE, serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
 import { EnquirySection, Faq, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
+import { ExtensionsLayout, RenovationsLayout } from "@/components/ServiceLayouts";
 
 export const dynamicParams = false;
 
@@ -43,6 +44,15 @@ export default async function ServicePage({ params }: Props) {
       url: `${SITE.url}/`,
     },
   };
+
+  if (s.slug === "extensions" || s.slug === "renovations") {
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        {s.slug === "extensions" ? <ExtensionsLayout /> : <RenovationsLayout />}
+      </>
+    );
+  }
 
   return (
     <>

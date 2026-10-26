@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.brand}`,
   },
   description:
-    "Over 40 years in Melbourne residential construction. Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.",
+    `${SITE.years} years in Melbourne residential construction. Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
   icons: {
     icon: [
       { url: asset("/favicon.ico") },
