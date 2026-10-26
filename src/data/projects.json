@@ -1,5 +1,26 @@
 [
   {
+    "slug": "smiths-gully",
+    "name": "Smith's Gully",
+    "kind": "Extension with rammed earth walls",
+    "summary": "An extension built in rammed earth, with a new kitchen and living room and a courtyard enclosed by the same walls.",
+    "image": "smiths-gully/smiths-gully-2.jpg",
+    "groups": [
+      {
+        "anchor": "smiths-gully-rooms",
+        "tag": "Extension",
+        "title": "Rammed earth, inside and out",
+        "blurb": "The new rooms are finished in rammed earth, from the living room and kitchen through to a courtyard walled in the same material.",
+        "images": [
+          { "image": "smiths-gully/smiths-gully-2.jpg", "caption": "Living room" },
+          { "image": "smiths-gully/smiths-gully-1.jpg", "caption": "Kitchen" },
+          { "image": "smiths-gully/smiths-gully-3.jpg", "caption": "Hallway" },
+          { "image": "smiths-gully/smiths-gully-4.jpg", "caption": "Courtyard", "span": "g-12" }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "thornbury",
     "name": "Thornbury",
     "kind": "Extension and renovation",
@@ -77,6 +98,62 @@
         "blurb": "Bluestone paving off the living room, a raised lawn behind a low retaining wall, and stepping stones through to the studio at the rear.",
         "images": [
           { "image": "backyard.jpg", "caption": "Paved terrace" }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "kinglake",
+    "name": "Kinglake",
+    "kind": "New build to lock-up",
+    "summary": "A new build taken through to lock-up. The frame is up, the roof is on, and the openings are in.",
+    "image": "kinglake/kinglake-1.jpg",
+    "groups": [
+      {
+        "anchor": "kinglake-lockup",
+        "tag": "New build",
+        "title": "Frame, roof and openings in",
+        "blurb": "The house at lock-up: roof on, wall framing up, and the window and door openings formed.",
+        "images": [
+          { "image": "kinglake/kinglake-1.jpg", "caption": "Lock-up stage", "span": "g-6" }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "coburg",
+    "name": "Coburg",
+    "kind": "Renovation and addition",
+    "summary": "A weatherboard house. The street frontage was repaired, and the kitchen rebuilt.",
+    "image": "coburg/coburg-1.jpg",
+    "groups": [
+      {
+        "anchor": "coburg-works",
+        "tag": "Renovation",
+        "title": "Street front and a new kitchen",
+        "blurb": "Weatherboards repaired and the facade painted. Inside, a new kitchen with timber joinery and a stone benchtop.",
+        "images": [
+          { "image": "coburg/coburg-1.jpg", "caption": "Street front" },
+          { "image": "coburg/coburg-2.jpg", "caption": "Kitchen" }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "elwood",
+    "name": "Elwood",
+    "kind": "Extension and renovation",
+    "summary": "An extension and renovation, with the kitchen and living room in one volume and a bedroom with built-in robes.",
+    "image": "elwood/elwood-2.jpg",
+    "groups": [
+      {
+        "anchor": "elwood-rooms",
+        "tag": "Extension",
+        "title": "Open plan, and a bedroom with storage",
+        "blurb": "Kitchen and living share one room, with timber joinery and a stone island. The bedroom has a built-in robe.",
+        "images": [
+          { "image": "elwood/elwood-1.jpg", "caption": "Bedroom" },
+          { "image": "elwood/elwood-2.jpg", "caption": "Kitchen and living" }
         ]
       }
     ]

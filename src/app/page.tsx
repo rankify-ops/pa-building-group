@@ -145,7 +145,7 @@ export default function Home() {
             eyebrow="Recent work"
             title={<>{PROJECT_NAME}: a period home that finally works.</>}
             lede="Weatherboard facade and front rooms restored. The rear demolished and rebuilt as a raked-ceiling living, dining and kitchen space that opens straight onto the garden."
-            action={<a className="link-arrow" href={href("/projects/")}>See the full project <ArrowIcon size={13} /></a>}
+            action={<a className="link-arrow" href={href("/projects/")}>See all projects <ArrowIcon size={13} /></a>}
           />
           <div className="projects">
             {FEATURED.map((p, i) => (

@@ -23,7 +23,11 @@ export function href(path: string) {
   return `${BASE_PATH}${path}`;
 }
 
-/** A project photo under public/assets/img/projects/. */
+/**
+ * A project photo. Thornbury's files are bare names in public/assets/img/projects/.
+ * Later jobs live in public/assets/projects/<slug>/ and are stored with that folder.
+ */
 export function photo(file: string) {
-  return asset(`/assets/img/projects/${file}`);
+  const dir = file.includes("/") ? "/assets/projects/" : "/assets/img/projects/";
+  return asset(`${dir}${file}`);
 }

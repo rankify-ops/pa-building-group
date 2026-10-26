@@ -53,7 +53,7 @@ export type Service = {
 
 export type Suburb = { name: string; slug: string; region: string; character: string };
 
-export type ProjectImage = { image: string; caption: string; id?: string };
+export type ProjectImage = { image: string; caption: string; id?: string; span?: string };
 
 export type ProjectGroup = {
   anchor: string;

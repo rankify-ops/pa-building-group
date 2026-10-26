@@ -6,7 +6,7 @@ import { CtaBand, PageHero, SectionHead } from "@/components/Blocks";
 export const metadata: Metadata = {
   title: "Projects | Extensions, Renovations & New Builds Melbourne",
   description:
-    "PA Building Group projects in Melbourne. The Thornbury extension and renovation: a restored weatherboard period home with a new rear living pavilion.",
+    "PA Building Group projects: Smith's Gully, Thornbury, Kinglake, Coburg and Elwood. Extensions, renovations, an addition and a new build to lock-up.",
   alternates: { canonical: `${SITE.url}/projects/` },
 };
 
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       <PageHero
         crumbs={[["Home", "/"], ["Projects"]]}
         title={<>Our <em>projects</em></>}
-        lede="Extensions, renovations and additions across Melbourne. The Thornbury period home is photographed below."
+        lede="Extensions, renovations, an addition and a new build across Melbourne."
         image="rear-extension.jpg"
         quote={href("/contact/#enquire")}
       />
@@ -32,12 +32,12 @@ export default function ProjectsPage() {
         <div className="wrap">
           <SectionHead
             eyebrow="Selected work"
-            title="Thornbury."
-            lede="A weatherboard period home. The street frontage and front rooms were restored, and the rear rebuilt as one raked-ceiling space for cooking, eating and living."
+            title="Five projects."
+            lede="Smith's Gully, Thornbury, Kinglake, Coburg and Elwood."
           />
           <div className="projects">
-            {PROJECTS.map((project) => (
-              <a key={project.slug} className="project project--wide reveal" href={`#${project.slug}`}>
+            {PROJECTS.map((project, i) => (
+              <a key={project.slug} className={`project reveal${i === 1 ? " project--wide" : ""}`} style={{ "--d": `${i * 50}ms` }} href={`#${project.slug}`}>
                 <div className="project__media">
                   <img src={photo(project.image)} alt="" width={1158} height={864} />
                 </div>
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                   </div>
                   <div className="gallery">
                     {sec.images.map((img, i) => (
-                      <figure key={img.image} className={`${spans[i]} reveal`} style={{ "--d": `${i * 70}ms` }}>
+                      <figure key={img.image} className={`${img.span ?? spans[i]} reveal`} style={{ "--d": `${i * 70}ms` }}>
                         <img src={photo(img.image)} alt={`${img.caption}, ${project.name}`} width={1158} height={864} loading="lazy" />
                         <figcaption>{img.caption}</figcaption>
                       </figure>
