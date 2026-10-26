@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="wrap site-footer__grid">
         <div className="footer-brand">
-          <img src={asset("/assets/img/logo.png")} alt={SITE.brand} width={1000} height={688} />
+          <img src={asset("/assets/img/logo.svg")} alt={SITE.brand} width={1371} height={1147} />
           <p>
             {SITE.years} years in {SITE.city} residential construction. Home additions and renovations, kitchens and
             bathrooms, outdoor living, property maintenance and pre-sale facelifts.

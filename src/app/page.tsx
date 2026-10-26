@@ -13,7 +13,7 @@ const schema = {
   description:
     `${SITE.years} years in Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
   url: `${SITE.url}/`,
-  logo: `${SITE.url}/assets/img/logo-dark.png`,
+  logo: `${SITE.url}/assets/img/logo-dark.svg`,
   image: `${SITE.url}/assets/img/og.jpg`,
   telephone: SITE.office.tel,
   email: SITE.email,
