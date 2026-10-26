@@ -1,14 +1,14 @@
 import { PROJECTS, SERVICES, SERVICE_AREAS, SITE, SUBURBS, type Project, type Service } from "@/data/site";
+import { absoluteUrl } from "@/lib/seo";
 
 /** Stable id so service and project markup can point at the same business. */
-export const BUSINESS_ID = `${SITE.url}/#business`;
+export const BUSINESS_ID = absoluteUrl("/#business");
 
-/** Instagram profile supplied for sameAs. Not shown as a new link in the design. */
-const INSTAGRAM = "https://www.instagram.com/pabuilding/";
 
 /**
- * Every suburb already named on the site: the homepage service-area list,
- * the location pages, and the published projects. Nothing is added beyond that.
+ * Service area for LocalBusiness and Service schema. Includes every suburb
+ * that already has a location page, plus suburbs named on the homepage and
+ * the published project locations. Nothing is added beyond that.
  */
 export function areaServed() {
   const names: string[] = [];
@@ -27,7 +27,7 @@ export function areaServed() {
 
 export function absolutePhoto(file: string) {
   const dir = file.includes("/") ? "/assets/projects/" : "/assets/img/projects/";
-  return `${SITE.url}${dir}${file}`;
+  return absoluteUrl(`${dir}${file}`);
 }
 
 export function localBusinessJsonLd() {
@@ -39,12 +39,12 @@ export function localBusinessJsonLd() {
     legalName: SITE.legal,
     description:
       `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
-    url: `${SITE.url}/`,
+    url: absoluteUrl("/"),
     logo: {
       "@type": "ImageObject",
-      url: `${SITE.url}/assets/img/logo-dark.png`,
+      url: absoluteUrl("/assets/img/logo-dark.png"),
     },
-    image: `${SITE.url}/assets/img/og.jpg`,
+    image: absoluteUrl("/assets/img/og.jpg"),
     telephone: [SITE.mobile.label, SITE.office.label],
     email: SITE.email,
     address: {
@@ -75,7 +75,7 @@ export function localBusinessJsonLd() {
         availableLanguage: "English",
       },
     ],
-    sameAs: [INSTAGRAM],
+    sameAs: [SITE.instagram],
     areaServed: areaServed(),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -86,7 +86,7 @@ export function localBusinessJsonLd() {
           "@type": "Service",
           name: service.title,
           description: service.blurb,
-          url: `${SITE.url}/services/${service.slug}/`,
+          url: absoluteUrl(`/services/${service.slug}/`),
         },
       })),
     },
@@ -105,8 +105,8 @@ export function serviceJsonLd(service: Service) {
     name: service.title,
     serviceType: service.title,
     description: service.metaDescription,
-    url: `${SITE.url}/services/${service.slug}/`,
-    areaServed: { "@type": "City", name: "Melbourne" },
+    url: absoluteUrl(`/services/${service.slug}/`),
+    areaServed: areaServed(),
     provider: { "@id": BUSINESS_ID },
   };
 }
@@ -118,7 +118,7 @@ export function locationJsonLd(suburb: { name: string; slug: string }, descripti
     name: `Home additions and renovations in ${suburb.name}`,
     serviceType: "Home additions, renovations and building services",
     description,
-    url: `${SITE.url}/locations/${suburb.slug}/`,
+    url: absoluteUrl(`/locations/${suburb.slug}/`),
     areaServed: {
       "@type": "City",
       name: suburb.name,
@@ -136,7 +136,7 @@ export function breadcrumbJsonLd(crumbs: [string, string?][]) {
       "@type": "ListItem",
       position: index + 1,
       name,
-      ...(path ? { item: `${SITE.url}${path}` } : {}),
+      ...(path ? { item: absoluteUrl(path) } : {}),
     })),
   };
 }
@@ -150,12 +150,12 @@ export function projectsJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE.url}/projects/#page`,
+    "@id": absoluteUrl("/projects/#page"),
     name: `Projects | ${SITE.brand}`,
-    url: `${SITE.url}/projects/`,
+    url: absoluteUrl("/projects/"),
     description:
       "Extensions, renovations, an addition and a new build in Smith's Gully, Thornbury, Kinglake, Coburg and Elwood.",
-    isPartOf: { "@type": "WebSite", name: SITE.brand, url: `${SITE.url}/` },
+    isPartOf: { "@type": "WebSite", name: SITE.brand, url: absoluteUrl("/") },
     about: { "@id": BUSINESS_ID },
     mainEntity: {
       "@type": "ItemList",
@@ -163,13 +163,13 @@ export function projectsJsonLd() {
       itemListElement: PROJECTS.map((project, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `${SITE.url}/projects/#${project.slug}`,
+        url: absoluteUrl(`/projects/#${project.slug}`),
         item: {
           "@type": "CreativeWork",
-          "@id": `${SITE.url}/projects/#${project.slug}`,
+          "@id": absoluteUrl(`/projects/#${project.slug}`),
           name: `${project.kind} in ${project.name}`,
           description: project.summary,
-          url: `${SITE.url}/projects/#${project.slug}`,
+          url: absoluteUrl(`/projects/#${project.slug}`),
           image: projectImageFiles(project).map(absolutePhoto),
           contentLocation: {
             "@type": "Place",

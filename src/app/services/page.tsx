@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { ADDRESS_LINE, SERVICES, SITE } from "@/data/site";
+import { SERVICES, SITE } from "@/data/site";
 import { Areas, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 import { href } from "@/lib/basePath";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Building Services in Thornbury | Additions & Renovations, Melbourne",
+  title: "Building Services in Thornbury, Melbourne",
   description:
-    `Home additions and renovations, kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts in Melbourne. ${SITE.brand}, office at ${ADDRESS_LINE}.`,
+    `Home additions, renovations, kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts in Melbourne. Office at ${SITE.address.street}, Thornbury.`,
   path: "/services/",
 });
 

@@ -5,9 +5,9 @@ import { pageMetadata } from "@/lib/seo";
 import { Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Our Thornbury Builders | Home Additions, Melbourne",
+  title: "About Our Melbourne Builders in Thornbury",
   description:
-    `${SITE.brand}: ${SITE.years} years in Melbourne residential construction, led by director ${SITE.director}. Registered builder. Office at ${ADDRESS_LINE}. Home additions and renovations across north-east Melbourne.`,
+    `${SITE.brand}: ${SITE.years} years in Melbourne residential construction, led by director ${SITE.director}. Registered builder. Office at ${SITE.address.street}, Thornbury.`,
   path: "/about/",
 });
 

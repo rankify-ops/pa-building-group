@@ -13,12 +13,16 @@ export const SITE = {
   legal: "PA Building & Maintenance Services P/L",
   director: "Paul Athinis",
   city: "Melbourne",
-  // Preview URL. At domain cutover change this, drop NEXT_PUBLIC_BASE_PATH from
-  // the deploy workflow and add public/CNAME, all in the same commit.
+  // The only public origin. Canonicals, og:url, schema @id/url, breadcrumbs,
+  // sitemap URLs and the robots.txt sitemap line all read this value.
+  // Still the GitHub Pages preview. Do not switch it until go-live.
+  // At cutover, also drop NEXT_PUBLIC_BASE_PATH and add public/CNAME, or assets 404.
   url: "https://rankify-ops.github.io/pa-building-group",
   mobile: { label: "0409 040 493", tel: "+61409040493" },
   office: { label: "03 9717 0650", tel: "+61397170650" },
   email: "paul@pabuilding.com.au",
+  // Already used as schema sameAs. The footer links to this same profile.
+  instagram: "https://www.instagram.com/pabuilding/",
   address: {
     street: "51/327 Mansfield St",
     suburb: "Thornbury",

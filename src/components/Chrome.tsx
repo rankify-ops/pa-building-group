@@ -34,7 +34,9 @@ export function Footer() {
           <ul>
             <li><a href={href("/about/")}>About</a></li>
             <li><a href={href("/projects/")}>Projects</a></li>
+            <li><a href={href("/locations/")}>Locations</a></li>
             <li><a href={href("/contact/")}>Contact</a></li>
+            <li><a href={href("/privacy/")}>Privacy</a></li>
           </ul>
         </div>
         <div>
@@ -43,6 +45,7 @@ export function Footer() {
             <li><a href={`tel:${SITE.mobile.tel}`}>{SITE.mobile.label}</a></li>
             <li><a href={`tel:${SITE.office.tel}`}>{SITE.office.label}</a></li>
             <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+            <li><a href={SITE.instagram} rel="noopener noreferrer">Instagram</a></li>
             <li>{ADDRESS_LINE}</li>
           </ul>
         </div>
