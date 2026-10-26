@@ -20,7 +20,7 @@ export const SITE = {
   office: { label: "03 9717 0650", tel: "+61397170650" },
   email: "paul@pabuilding.com.au",
   address: {
-    street: "26/327 Mansfield St",
+    street: "51/327 Mansfield St",
     suburb: "Thornbury",
     state: "VIC",
     postcode: "3071",
@@ -53,19 +53,34 @@ export type Service = {
 
 export type Suburb = { name: string; slug: string; region: string; character: string };
 
-export type ProjectSection = {
+export type ProjectImage = { image: string; caption: string; id?: string };
+
+export type ProjectGroup = {
   anchor: string;
   tag: string;
   title: string;
   blurb: string;
-  images: { image: string; caption: string }[];
+  images: ProjectImage[];
+};
+
+export type Project = {
+  slug: string;
+  name: string;
+  kind: string;
+  summary: string;
+  /** True when the client has not supplied photography for this job yet. */
+  needsPhoto: boolean;
+  /** Card image. Omitted when the project still needs photographs. */
+  image?: string;
+  groups: ProjectGroup[];
 };
 
 export const SERVICES = servicesJson as Service[];
 export const SUBURBS = suburbsJson as Suburb[];
-export const PROJECT_SECTIONS = projectsJson as ProjectSection[];
+export const PROJECTS = projectsJson as Project[];
 
-export const PROJECT_NAME = "Ethel Street"; // TODO(client): confirm suburb and completion year
+/** Featured project on the home page. The client asked for the suburb only. */
+export const PROJECT_NAME = "Thornbury";
 
 export function serviceBySlug(slug: string) {
   return SERVICES.find((s) => s.slug === slug);

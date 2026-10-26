@@ -11,6 +11,7 @@ export function PageHero({
   lede,
   image,
   quote = "#enquire",
+  eyebrow,
 }: {
   crumbs: [string, string?][];
   title: ReactNode;
@@ -18,6 +19,7 @@ export function PageHero({
   image: string;
   /** Where "Get a free quote" points; pass null for no buttons. */
   quote?: string | null;
+  eyebrow?: string;
 }) {
   return (
     <section className="pagehero">
@@ -31,6 +33,7 @@ export function PageHero({
               <li key={label}>{path ? <a href={href(path)}>{label}</a> : label}</li>
             ))}
           </ol>
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
           <h1>{title}</h1>
           <p className="pagehero__lede">{lede}</p>
           {quote !== null && (

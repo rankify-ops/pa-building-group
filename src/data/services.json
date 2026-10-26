@@ -1,16 +1,16 @@
 [
   {
     "slug": "extensions",
-    "nav": "Extensions & Additions",
-    "title": "Extensions & Additions",
+    "nav": "Extensions & Renovations",
+    "title": "Extensions & Renovations",
     "icon": "extension",
-    "blurb": "Rear extensions, second storeys and reconfigured floor plans that add the space your family actually needs.",
-    "local": "Rear and second-storey extensions that open up {sub} homes without losing what makes them worth keeping.",
-    "h1": "Home",
-    "em": "Extensions",
-    "metaTitle": "Home Extensions Melbourne | Rear & Second-Storey Additions",
-    "metaDescription": "Rear and second-storey home extensions across Melbourne. Period-sensitive additions, open-plan living, permits managed. Free itemised quote.",
-    "lead": "More room without moving suburb. We design and build rear extensions, second storeys and reconfigured floor plans that add real living space — and look like they belong.",
+    "blurb": "Rear extensions, second storeys and opened-up layouts. More space, without moving.",
+    "local": "Rear extensions, second storeys and opened-up layouts for {sub} homes, without the cost of moving.",
+    "h1": "More space,",
+    "em": "without the move",
+    "metaTitle": "Home Extensions Melbourne | More Space Without the Move",
+    "metaDescription": "Rear extensions, second storeys and opened-up period homes across Melbourne. One team from the first idea to handover, permits included.",
+    "lead": "Love where you live, just need more room? Extend, build up or open it up, without paying stamp duty and moving costs.",
     "blocks": [
       {
         "image": "rear-extension.jpg",
@@ -108,16 +108,16 @@
   },
   {
     "slug": "renovations",
-    "nav": "Home Renovations",
-    "title": "Home Renovations",
+    "nav": "Renovations",
+    "title": "Renovations",
     "icon": "reno",
-    "blurb": "Whole-home and room-by-room renovations — structural changes, new joinery, fresh services throughout.",
-    "local": "Full and partial home renovations for {sub} houses, from a single room through to a whole-of-house rebuild.",
-    "h1": "Home",
-    "em": "Renovations",
-    "metaTitle": "Home Renovations Melbourne | Whole-House & Room Renovations",
-    "metaDescription": "Whole-home and room-by-room renovations across Melbourne. Structural changes, new joinery, upgraded services. Registered builder, itemised quotes.",
-    "lead": "From one tired room to the whole house stripped back to frame. We renovate Melbourne homes with the structure, services and finishes all handled by the one team.",
+    "blurb": "Renovations, pre-sale facelifts and home flips, from layout changes to kitchens, bathrooms and street appeal.",
+    "local": "Renovations, pre-sale facelifts and home flips for {sub} houses, from one room to the whole plan.",
+    "h1": "A fresh look",
+    "em": "for the way you live now",
+    "metaTitle": "Home Renovations Melbourne | Staging, Pre-Sale and Flips",
+    "metaDescription": "Renovations, home staging and pre-sale facelifts, and home flipping across Melbourne. Kitchens, bathrooms, layout changes and street appeal.",
+    "lead": "A fresh look for the way you live now. Renovations, pre-sale facelifts and home flips, with one team from the first walk-through to handover.",
     "blocks": [
       {
         "image": "living-open-plan.jpg",
@@ -152,7 +152,7 @@
         ]
       },
       {
-        "image": "build-progress-1.jpg",
+        "image": "formal-lounge.jpg",
         "tag": "Behind The Plaster",
         "heading": "The bit nobody photographs",
         "paragraphs": [
@@ -762,7 +762,7 @@
     "lead": "A second dwelling for family, a studio for working from home, or a self-contained unit that earns its keep. Built properly — not a shed with a bathroom in it.",
     "blocks": [
       {
-        "image": "build-progress-1.jpg",
+        "image": "build-progress-2.jpg",
         "tag": "Second Dwellings",
         "heading": "Self-contained and independent",
         "paragraphs": [

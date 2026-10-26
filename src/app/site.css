@@ -440,6 +440,7 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
 .pagehero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
 .pagehero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(var(--scrim), .92) 0%, rgba(var(--scrim), .7) 55%, rgba(var(--scrim), .5) 100%); }
 .pagehero__inner { position: relative; padding-block: calc(var(--head-h) + clamp(56px, 7.5vw, 110px)) clamp(64px, 8.5vw, 124px); max-width: 820px; }
+.pagehero .eyebrow { color: rgba(255, 255, 255, .74); }
 .pagehero h1 { color: #fff; font-size: clamp(2.3rem, 4.9vw, 3.9rem); font-weight: 500; letter-spacing: -.035em; }
 .pagehero h1 em { font-style: normal; background: var(--silver-grad-light); -webkit-background-clip: text; background-clip: text; color: transparent; }
 /* The silver loses too much contrast over photography at phone sizes. */
@@ -598,6 +599,27 @@ form.is-stepped .fstep.is-active { display: block; }
   content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 7px;
   border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg);
 }
+.ticks--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 48px; }
+@media (max-width: 700px) { .ticks--cols { grid-template-columns: 1fr; } }
+.section--dark .ticks li { color: var(--mist); }
+.section--dark .ticks li::before { border-color: #fff; }
+.section--dark .body-copy { color: var(--mist); }
+
+/* Three short offers, as on the extensions page. */
+.offer {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 64px); margin: 0; padding: 0; list-style: none;
+}
+.offer li { position: relative; padding-left: 34px; }
+.offer li::before {
+  content: ""; position: absolute; left: 2px; top: 8px; width: 12px; height: 7px;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg);
+}
+.offer h2 { margin-bottom: 12px; }
+.offer p { margin: 0; color: var(--slate); font-size: 15.5px; line-height: 1.65; }
+@media (max-width: 800px) { .offer { grid-template-columns: 1fr; } }
+
+.turnkey__note { margin-top: 8px; color: #fff; font-weight: 500; }
 
 /* ==========================================================================
    Service cards
@@ -626,6 +648,12 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 @media (max-width: 900px) { .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .projects { grid-template-columns: 1fr; grid-auto-rows: 260px; } .project--wide { grid-column: span 1; } }
 .project__media { position: relative; overflow: hidden; height: 100%; }
+.project__media--empty { background: linear-gradient(165deg, #3c4348 0%, #14171a 100%); }
+.project__await {
+  position: absolute; z-index: 1; top: 18px; left: 18px; right: 18px;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255, 255, 255, .66);
+}
 .project__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--t-slow); }
 .project:hover .project__media img { transform: scale(1.045); }
 .project__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(var(--scrim), .86) 0%, rgba(var(--scrim), .2) 48%, rgba(var(--scrim), 0) 72%); }

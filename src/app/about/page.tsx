@@ -46,7 +46,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="split__media reveal" style={{ "--d": "120ms" }}>
-            <img src={photo("build-progress-1.jpg")} alt="Rear extension under construction, before fit-out" width={1800} height={1350} loading="lazy" />
+            <img src={photo("living-open-plan.jpg")} alt="Open-plan living and dining in a renovated Melbourne home" width={1150} height={864} loading="lazy" />
           </div>
         </div>
       </section>

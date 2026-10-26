@@ -50,11 +50,11 @@ visitor is shown Paul's mobile and email instead of a silent failure.
 ## Where the content came from
 
 * **Contact details and registrations**: Paul Athinis's email signature. Mobile 0409 040 493,
-  office 03 9717 0650, paul@pabuilding.com.au, 26/327 Mansfield St Thornbury, DB-U 44080 and
+  office 03 9717 0650, paul@pabuilding.com.au, 51/327 Mansfield St Thornbury, DB-U 44080 and
   CDB-U 51464, Building and Plumbing Commission.
 * **40+ years and the specialities** (additions and renovations, kitchens and bathrooms, outdoor
   living, property maintenance, pre-sale facelifts): the business Facebook page.
-* **Photography**: the Ethel Street job supplied in the client folder.
+* **Photography**: the Thornbury job supplied in the client folder (previously referred to as Ethel Street).
 * Everything else is our copy.
 
 ## Before this goes live
@@ -66,8 +66,9 @@ visitor is shown Paul's mobile and email instead of a silent failure.
    `src/data/services.json`.
 2. **Claims to confirm**: "Licensed & insured" wording, whether he is an HIA or Master Builders
    member (not currently claimed), and the three process-style stats on the home page stat bar.
-3. **Featured project**: confirm the suburb and completion year for Ethel Street
-   (`PROJECT_NAME` in `src/data/site.ts`), and ask for photos of other completed jobs.
+3. **Featured project**: the client has named the photographed job Thornbury
+   (`PROJECT_NAME` in `src/data/site.ts`). Smith's Gully, Kinglake, Coburg, Elwood,
+   North Melbourne and Badgers Creek are listed and still need photographs.
 4. **Reviews**: deliberately left out rather than filled with placeholder cards. Once Paul's
    Google Business Profile is connected, a reviews band between projects and the quote band on the
    home page is the right slot.

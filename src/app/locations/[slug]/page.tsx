@@ -95,7 +95,7 @@ export default async function LocationPage({ params }: Props) {
       <EnquirySection
         context={`${sub.name} page`}
         title={<>Planning something in {sub.name}?</>}
-        lede={`Free site visit, itemised written quote, and an honest answer about what's worth doing. See ${PROJECT_NAME} for the kind of job we take on.`}
+        lede={`Free site visit, itemised written quote, and an honest answer about what's worth doing. See the ${PROJECT_NAME} project for the kind of job we take on.`}
       />
 
       <section className="section section--tight">
