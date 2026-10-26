@@ -21,7 +21,7 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <h4>Services</h4>
+          <h2>Services</h2>
           <ul>
             {SERVICES.slice(0, 6).map((s) => (
               <li key={s.slug}><a href={href(`/services/${s.slug}/`)}>{s.nav}</a></li>
@@ -30,7 +30,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Company</h4>
+          <h2>Company</h2>
           <ul>
             <li><a href={href("/about/")}>About</a></li>
             <li><a href={href("/projects/")}>Projects</a></li>
@@ -38,7 +38,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h2>Contact</h2>
           <ul>
             <li><a href={`tel:${SITE.mobile.tel}`}>{SITE.mobile.label}</a></li>
             <li><a href={`tel:${SITE.office.tel}`}>{SITE.office.label}</a></li>

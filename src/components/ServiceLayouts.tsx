@@ -1,7 +1,7 @@
-import { SITE } from "@/data/site";
+import { serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
 import { ArrowIcon } from "./Icon";
-import { EnquirySection, PageHero } from "./Blocks";
+import { EnquirySection, Faq, PageHero, SectionHead } from "./Blocks";
 
 const EXTEND = [
   {
@@ -28,6 +28,7 @@ export function ExtensionsLayout() {
         title={<>More space, <em>without the move</em></>}
         lede="Love where you live, just need more room? Extend, build up or open it up, without paying stamp duty and moving costs."
         image="rear-extension.jpg"
+        alt="Thornbury rear extension with a raked ceiling opening to the garden"
         quote="#enquire"
       />
 
@@ -62,6 +63,8 @@ export function ExtensionsLayout() {
           </div>
         </div>
       </section>
+
+      <ServiceFaq slug="extensions" />
 
       <EnquirySection
         context="Extensions & renovations"
@@ -115,7 +118,7 @@ const RENO_SECTIONS: {
     closing:
       "Our interior designers then style each room so buyers can picture themselves living there. A well-presented home photographs better, attracts more buyers and gives you the best chance of a strong result.",
     image: "facade.jpg",
-    alt: "Restored street facade of a Melbourne home",
+    alt: "Thornbury period home with a restored street facade",
   },
   {
     eyebrow: "Home flipping",
@@ -135,9 +138,22 @@ const RENO_SECTIONS: {
       "Landscaping / paving",
     ],
     image: "kitchen-island.jpg",
-    alt: "Renovated kitchen with a stone-topped island",
+    alt: "Thornbury kitchen renovation with a stone-topped island",
   },
 ];
+
+function ServiceFaq({ slug, cloud }: { slug: string; cloud?: boolean }) {
+  const service = serviceBySlug(slug);
+  if (!service) return null;
+  return (
+    <section className={`section${cloud ? " section--cloud" : ""}`}>
+      <div className="wrap">
+        <SectionHead eyebrow="FAQ" title="Questions we get asked." />
+        <Faq items={service.faq} />
+      </div>
+    </section>
+  );
+}
 
 /** Renovations page: Paul's three sections, in his words. */
 export function RenovationsLayout() {
@@ -149,6 +165,7 @@ export function RenovationsLayout() {
         title={<>A fresh look <em>for the way you live now</em></>}
         lede={RENOVATIONS.paragraphs[0]}
         image="living-open-plan.jpg"
+        alt="Thornbury renovation with open-plan living and dining"
         quote="#enquire"
       />
 
@@ -181,11 +198,13 @@ export function RenovationsLayout() {
               {section.closing ? <p className="body-copy includes__closing">{section.closing}</p> : null}
             </div>
             <div className="split__media reveal" style={{ "--d": "120ms" }}>
-              <img src={photo(section.image)} alt={`${section.alt}, ${SITE.brand}`} width={1158} height={864} loading="lazy" />
+              <img src={photo(section.image)} alt={`${section.alt} — renovations in Thornbury, Melbourne`} width={1158} height={864} loading="lazy" />
             </div>
           </div>
         </section>
       ))}
+
+      <ServiceFaq slug="renovations" cloud />
 
       <EnquirySection
         context="Renovations"

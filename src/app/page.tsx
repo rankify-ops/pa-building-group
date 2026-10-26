@@ -1,55 +1,74 @@
+import type { Metadata } from "next";
 import { ADDRESS_LINE, PROJECT_NAME, SERVICE_AREAS, SERVICES, SITE } from "@/data/site";
 import { asset, href, photo } from "@/lib/basePath";
+import { pageMetadata } from "@/lib/seo";
 import { ArrowIcon, ClockIcon, PinIcon, ShieldIcon } from "@/components/Icon";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { HERO_PLACEHOLDER } from "@/data/heroPlaceholder";
-import { Credentials, CtaBand, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
+import { Credentials, CtaBand, Faq, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "GeneralContractor"],
-  name: SITE.brand,
-  legalName: SITE.legal,
+export const metadata: Metadata = pageMetadata({
+  title: "Home Additions & Renovations in Thornbury, Melbourne",
   description:
-    `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
-  url: `${SITE.url}/`,
-  logo: `${SITE.url}/assets/img/logo-dark.svg`,
-  image: `${SITE.url}/assets/img/og.jpg`,
-  telephone: SITE.office.tel,
-  email: SITE.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: SITE.address.street,
-    addressLocality: SITE.address.suburb,
-    addressRegion: SITE.address.state,
-    postalCode: SITE.address.postcode,
-    addressCountry: "AU",
-  },
-  areaServed: SERVICE_AREAS.map((name) => ({
-    "@type": "City",
-    name,
-    containedInPlace: { "@type": "City", name: "Melbourne" },
-  })),
-};
+    `Home additions, renovations, kitchens, bathrooms and outdoor living in Thornbury and north-east Melbourne. Office at ${ADDRESS_LINE}. Call ${SITE.mobile.label} for a free itemised quote.`,
+  path: "/",
+});
 
-const FEATURED: { image: string; title: string; anchor: string; wide?: boolean }[] = [
-  { image: "rear-extension.jpg", title: "Rear extension", anchor: "extension", wide: true },
-  { image: "kitchen-island.jpg", title: "Kitchen & butler's pantry", anchor: "kitchen" },
-  { image: "living-gable.jpg", title: "Open-plan living", anchor: "living" },
-  { image: "bathroom-main.jpg", title: "Main bathroom", anchor: "bathrooms" },
-  { image: "facade.jpg", title: "Restored facade", anchor: "heritage" },
+const serviceNames = SERVICES.map((service) => service.nav);
+const serviceList = `${serviceNames.slice(0, -1).join(", ")} and ${serviceNames[serviceNames.length - 1]}`;
+
+const HOME_FAQS = [
+  {
+    q: "What services do you offer?",
+    a: `We take on ${serviceList}. Most of the work is home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts. If yours isn't on the list, ask anyway, and we'll tell you straight if it isn't for us. See <a href="/services/">all services</a>.`,
+  },
+  {
+    q: "Which areas of Melbourne do you work in?",
+    a: `Our only office is at ${ADDRESS_LINE}. Most of our jobs are in Melbourne's north-east, from Northcote and Preston out through Eltham, Greensborough and Doreen. We also work in Camberwell, Kew, Hawthorn and Balwyn. Published projects include Smith's Gully, Thornbury, Kinglake, Coburg and Elwood. If your suburb isn't listed, ask anyway.`,
+  },
+  {
+    q: "How long does a renovation or extension take?",
+    a: "It depends on the job and what's already in the programme. Small repairs can often be slotted in quickly. Extensions depend on permits more than on our availability: most rear extensions run several months on site once permits are in hand, and the permit stage itself depends on the council and whether a heritage overlay applies. We give you a realistic date and a build programme before we start, rather than an optimistic one.",
+  },
+  {
+    q: "How does the process work?",
+    a: "Four steps. Tell us the idea, by phone or the form. We come and look, take measurements and send an itemised written quote, with no charge and no obligation. We then build it: programme locked in, trades booked, permits managed, and a number that gets answered. At handover there is a final walk-through, the defect list is closed out, and we still pick up the phone afterwards.",
+  },
+  {
+    q: "Are you a registered builder?",
+    a: `Yes. ${SITE.director} and the company are both registered with Victoria's ${SITE.regulator}: ${SITE.registrations.join(" and ")}. You can look them up on the public register before you sign anything.`,
+  },
+  {
+    q: "How do quotes work?",
+    a: `Call Paul on ${SITE.mobile.label}, email ${SITE.email}, or send the form. We'll arrange a site visit and come back with an itemised written quote. The visit and the quote are free, and there's no obligation. Detailed design and documentation, if you go that route, is paid work, and we'll tell you what it costs before you commit.`,
+  },
+  {
+    q: "Do you take on small jobs?",
+    a: `Yes. A good share of the work is repairs and small carpentry, alongside full additions and renovations. See <a href="/services/maintenance/">property maintenance</a>. Jobs range from one bathroom to the whole back half of the house.`,
+  },
+  {
+    q: "Where is the office, and who do I talk to?",
+    a: `${SITE.brand}, trading as ${SITE.legal}, has one office at ${ADDRESS_LINE}. ${SITE.director} is the director, and the person who prices the job is the person running it. Call ${SITE.mobile.label} for quotes and site visits, or the office on ${SITE.office.label}. Email ${SITE.email}.`,
+  },
+];
+
+const FEATURED: { image: string; title: string; alt: string; anchor: string; wide?: boolean }[] = [
+  { image: "rear-extension.jpg", title: "Rear extension", alt: "Thornbury rear extension with a raked-ceiling pavilion opening to the garden", anchor: "extension", wide: true },
+  { image: "kitchen-island.jpg", title: "Kitchen & butler's pantry", alt: "Thornbury kitchen renovation with a fluted island and butler's pantry", anchor: "kitchen" },
+  { image: "living-gable.jpg", title: "Open-plan living", alt: "Thornbury open-plan living in a rear extension, under a raked ceiling", anchor: "living" },
+  { image: "bathroom-main.jpg", title: "Main bathroom", alt: "Thornbury main bathroom renovation with terrazzo and a glazed shower", anchor: "bathrooms" },
+  { image: "facade.jpg", title: "Restored facade", alt: "Thornbury period home with a restored weatherboard facade", anchor: "heritage" },
 ];
 
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="hero">
         <div className="hero__media" style={{ backgroundImage: `url(${HERO_PLACEHOLDER})` }}>
           <img
             src={asset("/assets/img/hero.jpg")}
-            alt="Open-plan living and dining under a raked ceiling, opening onto the garden of a Melbourne home"
+            alt="Thornbury extension: open-plan living and dining under a raked ceiling, opening onto the garden"
             width={1600}
             height={1000}
             fetchPriority="high"
@@ -122,10 +141,10 @@ export default function Home() {
           <div className="split__media reveal" style={{ "--d": "120ms" }}>
             <div className="media-stack">
               <div className="media-stack__main">
-                <img src={photo("formal-lounge.jpg")} alt="Restored front lounge with leadlight windows and a ceiling rose" width={1155} height={864} loading="lazy" />
+                <img src={photo("formal-lounge.jpg")} alt="Thornbury period renovation: restored front lounge with leadlight windows and a ceiling rose" width={1155} height={864} loading="lazy" />
               </div>
               <div className="media-stack__inset">
-                <img src={photo("kitchen-island.jpg")} alt="New kitchen with a fluted island and stone benchtop" width={1153} height={864} loading="lazy" />
+                <img src={photo("kitchen-island.jpg")} alt="Thornbury kitchen renovation with a fluted island and stone benchtop" width={1153} height={864} loading="lazy" />
               </div>
             </div>
           </div>
@@ -155,7 +174,7 @@ export default function Home() {
             {FEATURED.map((p, i) => (
               <a key={p.image} className={`project reveal${p.wide ? " project--wide" : ""}`} style={{ "--d": `${i * 60}ms` }} href={href(`/projects/#${p.anchor}`)}>
                 <div className="project__media">
-                  <img src={photo(p.image)} alt={p.title} width={1158} height={864} loading="lazy" />
+                  <img src={photo(p.image)} alt={p.alt} width={1158} height={864} loading="lazy" />
                 </div>
                 <div className="project__body">
                   <div className="project__meta">{PROJECT_NAME}</div>
@@ -169,7 +188,7 @@ export default function Home() {
 
       <section className="quoteband">
         <div className="quoteband__media">
-          <img src={photo("backyard.jpg")} alt="" width={1157} height={864} loading="lazy" />
+          <img src={photo("backyard.jpg")} alt="Thornbury outdoor living: bluestone paved terrace and lawn after the rear extension" width={1157} height={864} loading="lazy" />
         </div>
         <div className="wrap">
           <div className="quoteband__inner reveal">
@@ -226,13 +245,20 @@ export default function Home() {
           <SectionHead
             eyebrow="Service areas"
             title="The office is in Thornbury."
-            lede="Most of our jobs are in Melbourne's north-east, from Northcote and Preston out through Eltham, Greensborough and Doreen. We also work in Camberwell, Kew, Hawthorn and Balwyn. Our only office is at 51/327 Mansfield St, Thornbury. If your suburb isn't listed, ask anyway."
+            lede={`Most of our jobs are in Melbourne's north-east, from Northcote and Preston out through Eltham, Greensborough and Doreen. We also work in Camberwell, Kew, Hawthorn and Balwyn. Our only office is at ${ADDRESS_LINE}. If your suburb isn't listed, ask anyway.`}
           />
           <ul className="areas areas--text reveal">
             {SERVICE_AREAS.map((name) => (
               <li key={name}>{name}</li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="section section--cloud">
+        <div className="wrap">
+          <SectionHead eyebrow="FAQ" title="Questions we get asked." />
+          <Faq items={HOME_FAQS} />
         </div>
       </section>
 

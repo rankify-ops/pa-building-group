@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { ADDRESS_LINE, SERVICES, SITE, SUBURBS, type Service } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
+import { breadcrumbJsonLd } from "@/lib/schema";
 import { ArrowIcon, Icon, MailIcon, PhoneIcon, PinIcon, Rich } from "./Icon";
 import { EnquiryForm } from "./EnquiryForm";
+import { JsonLd } from "./JsonLd";
 
 /* ---------- Interior page hero ---------- */
 export function PageHero({
@@ -10,6 +12,7 @@ export function PageHero({
   title,
   lede,
   image,
+  alt,
   quote = "#enquire",
   eyebrow,
 }: {
@@ -17,14 +20,17 @@ export function PageHero({
   title: ReactNode;
   lede: string;
   image: string;
+  /** What the hero photograph shows. Required so it is never empty or a filename. */
+  alt: string;
   /** Where "Get a free quote" points; pass null for no buttons. */
   quote?: string | null;
   eyebrow?: string;
 }) {
   return (
     <section className="pagehero">
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <div className="pagehero__media">
-        <img src={photo(image)} alt="" width={1158} height={864} fetchPriority="high" />
+        <img src={photo(image)} alt={alt} width={1158} height={864} fetchPriority="high" />
       </div>
       <div className="wrap">
         <div className="pagehero__inner">

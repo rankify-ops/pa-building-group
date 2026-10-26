@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { ADDRESS_LINE, SITE } from "@/data/site";
 import { href } from "@/lib/basePath";
+import { pageMetadata } from "@/lib/seo";
 import { MailIcon, PhoneIcon, PinIcon } from "@/components/Icon";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq, PageHero, SectionHead } from "@/components/Blocks";
 
-export const metadata: Metadata = {
-  title: "Contact | Free Quotes from our Thornbury Office",
-  description: `Call Paul on ${SITE.mobile.label} or send an enquiry for a free site visit and itemised quote. Office in Thornbury, ${ADDRESS_LINE}. We work across north-east Melbourne.`,
-  alternates: { canonical: `${SITE.url}/contact/` },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Our Thornbury Office | Free Quotes, Melbourne",
+  description: `Call Paul on ${SITE.mobile.label} or the office on ${SITE.office.label} for a free site visit and itemised quote. ${SITE.brand}, ${ADDRESS_LINE}. We work across north-east Melbourne.`,
+  path: "/contact/",
+});
 
 const FAQS = [
   { q: "How do I get a quote?", a: `Fill in the form on this page, call Paul on ${SITE.mobile.label}, or email ${SITE.email}. We'll arrange a site visit and come back with an itemised written quote. No charge and no obligation.` },
@@ -28,6 +29,7 @@ export default function ContactPage() {
         title={<>Get in <em>touch</em></>}
         lede="Tell us what you're planning. We'll come and look, and come back with a number in writing."
         image="kitchen-galley.jpg"
+        alt="Thornbury kitchen renovation with a window splashback"
       />
 
       <section className="section section--tight">

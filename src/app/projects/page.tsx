@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { PROJECTS, SITE } from "@/data/site";
+import { PROJECTS } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
+import { JsonLd } from "@/components/JsonLd";
 import { CtaBand, PageHero, SectionHead } from "@/components/Blocks";
+import { projectsJsonLd } from "@/lib/schema";
+import { pageMetadata, projectAlt } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Projects | Renovations across North-East Melbourne",
+export const metadata: Metadata = pageMetadata({
+  title: "Projects | Renovations & Extensions across Melbourne",
   description:
-    "Projects from our Thornbury office: Smith's Gully, Thornbury, Kinglake, Coburg and Elwood. Extensions, renovations, an addition and a new build to lock-up across north-east Melbourne.",
-  alternates: { canonical: `${SITE.url}/projects/` },
-};
+    "Melbourne building projects from our Thornbury office: an extension in Smith's Gully, a renovation and extension in Thornbury, a new build in Kinglake, a renovation and addition in Coburg, and an extension in Elwood.",
+  path: "/projects/",
+});
 
 /** Gallery spans by photo count, so each section fills its rows cleanly. */
 const LAYOUT: Record<number, string[]> = {
@@ -20,11 +23,13 @@ const LAYOUT: Record<number, string[]> = {
 export default function ProjectsPage() {
   return (
     <>
+      <JsonLd data={projectsJsonLd()} />
       <PageHero
         crumbs={[["Home", "/"], ["Projects"]]}
         title={<>Our <em>projects</em></>}
         lede="Extensions, renovations, an addition and a new build across Melbourne."
         image="rear-extension.jpg"
+        alt="Thornbury rear extension opening onto the garden"
         quote={href("/contact/#enquire")}
       />
 
@@ -39,7 +44,7 @@ export default function ProjectsPage() {
             {PROJECTS.map((project, i) => (
               <a key={project.slug} className={`project reveal${i === 1 ? " project--wide" : ""}`} style={{ "--d": `${i * 50}ms` }} href={`#${project.slug}`}>
                 <div className="project__media">
-                  <img src={photo(project.image)} alt="" width={1158} height={864} />
+                  <img src={photo(project.image)} alt={projectAlt(project)} width={1158} height={864} />
                 </div>
                 <div className="project__body">
                   <div className="project__meta">{project.kind}</div>
@@ -62,14 +67,14 @@ export default function ProjectsPage() {
                   <div className="projectblock__head reveal">
                     <div>
                       <p className="eyebrow">{sec.tag}</p>
-                      <h2 className="h-lg">{sec.title}</h2>
+                      <h3 className="h-lg">{sec.title}</h3>
                     </div>
                     <p>{sec.blurb}</p>
                   </div>
                   <div className="gallery">
                     {sec.images.map((img, i) => (
                       <figure key={img.image} className={`${img.span ?? spans[i]} reveal`} style={{ "--d": `${i * 70}ms` }}>
-                        <img src={photo(img.image)} alt={`${img.caption}, ${project.name}`} width={1158} height={864} loading="lazy" />
+                        <img src={photo(img.image)} alt={projectAlt(project, img.caption)} width={1158} height={864} loading="lazy" />
                         <figcaption>{img.caption}</figcaption>
                       </figure>
                     ))}
