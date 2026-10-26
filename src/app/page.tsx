@@ -1,17 +1,17 @@
-import { ADDRESS_LINE, PROJECT_NAME, SERVICES, SITE } from "@/data/site";
+import { ADDRESS_LINE, PROJECT_NAME, SERVICE_AREAS, SERVICES, SITE } from "@/data/site";
 import { asset, href, photo } from "@/lib/basePath";
 import { ArrowIcon, ClockIcon, PinIcon, ShieldIcon } from "@/components/Icon";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { HERO_PLACEHOLDER } from "@/data/heroPlaceholder";
-import { Areas, Credentials, CtaBand, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
+import { Credentials, CtaBand, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
+  "@type": ["LocalBusiness", "GeneralContractor"],
   name: SITE.brand,
   legalName: SITE.legal,
   description:
-    `${SITE.years} years in Melbourne residential construction: home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
+    `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
   url: `${SITE.url}/`,
   logo: `${SITE.url}/assets/img/logo-dark.svg`,
   image: `${SITE.url}/assets/img/og.jpg`,
@@ -25,7 +25,11 @@ const schema = {
     postalCode: SITE.address.postcode,
     addressCountry: "AU",
   },
-  areaServed: { "@type": "City", name: "Melbourne" },
+  areaServed: SERVICE_AREAS.map((name) => ({
+    "@type": "City",
+    name,
+    containedInPlace: { "@type": "City", name: "Melbourne" },
+  })),
 };
 
 const FEATURED: { image: string; title: string; anchor: string; wide?: boolean }[] = [
@@ -217,14 +221,18 @@ export default function Home() {
 
       <Credentials />
 
-      <section className="section section--tight">
+      <section className="section section--tight" id="service-areas">
         <div className="wrap">
           <SectionHead
-            eyebrow="Where we build"
-            title="Based in Thornbury, building across Melbourne."
-            lede="Most of our work is in the inner, northern and eastern suburbs, but we travel for the right project. If your suburb isn't listed, ask anyway."
+            eyebrow="Service areas"
+            title="The office is in Thornbury."
+            lede="Most of our jobs are in Melbourne's north-east, from Northcote and Preston out through Eltham, Greensborough and Doreen. We also work in Camberwell, Kew, Hawthorn and Balwyn. Our only office is at 51/327 Mansfield St, Thornbury. If your suburb isn't listed, ask anyway."
           />
-          <div className="reveal"><Areas /></div>
+          <ul className="areas areas--text reveal">
+            {SERVICE_AREAS.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+          </ul>
         </div>
       </section>
 

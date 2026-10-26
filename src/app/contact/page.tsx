@@ -6,14 +6,14 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq, PageHero, SectionHead } from "@/components/Blocks";
 
 export const metadata: Metadata = {
-  title: "Contact | Free Quotes for Home Renovations Melbourne",
-  description: `Call Paul on ${SITE.mobile.label} or send an enquiry for a free site visit and itemised quote. PA Building Group, ${ADDRESS_LINE}.`,
+  title: "Contact | Free Quotes from our Thornbury Office",
+  description: `Call Paul on ${SITE.mobile.label} or send an enquiry for a free site visit and itemised quote. Office in Thornbury, ${ADDRESS_LINE}. We work across north-east Melbourne.`,
   alternates: { canonical: `${SITE.url}/contact/` },
 };
 
 const FAQS = [
   { q: "How do I get a quote?", a: `Fill in the form on this page, call Paul on ${SITE.mobile.label}, or email ${SITE.email}. We'll arrange a site visit and come back with an itemised written quote. No charge and no obligation.` },
-  { q: "What areas do you cover?", a: `We're based in ${SITE.address.suburb} and most of our work is across Melbourne's inner, northern and eastern suburbs. We travel further for the right project, so ask even if your suburb isn't on our list.` },
+  { q: "What areas do you cover?", a: `Our only office is in ${SITE.address.suburb}. Most of our work is across Melbourne's north-east, including Doreen, and we also take jobs in Camberwell, Kew, Hawthorn and Balwyn. If your suburb isn't listed, ask anyway.` },
   { q: "How quickly can you start?", a: "It depends on the job and what's already in our programme. Small repairs can often be slotted in quickly; extensions depend on permits more than on our availability. We'll give you a realistic date rather than an optimistic one." },
   { q: "Do you charge for quotes?", a: "No. The site visit and the written quote are free. Detailed design and documentation, if you go that route, is paid work, and we'll tell you what it costs before you commit." },
   { q: "Do you take on small jobs?", a: `Yes. See <a href="/services/maintenance/">property maintenance</a>: a good share of our work is repairs and small carpentry.` },

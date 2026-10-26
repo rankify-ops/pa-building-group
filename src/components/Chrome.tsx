@@ -16,6 +16,9 @@ export function Footer() {
             {SITE.years} years in {SITE.city} residential construction. Home additions and renovations, kitchens and
             bathrooms, outdoor living, property maintenance and pre-sale facelifts.
           </p>
+          <p className="footer-areas">
+            Office in Thornbury. We work across north-east Melbourne, including Doreen, and also in Camberwell and Kew.
+          </p>
         </div>
         <div>
           <h4>Services</h4>

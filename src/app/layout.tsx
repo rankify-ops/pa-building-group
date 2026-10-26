@@ -22,11 +22,11 @@ const EARLY = `(function(){var d=document.documentElement;d.classList.add('js-re
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE.url}/`),
   title: {
-    default: `${SITE.brand} | Home Additions & Renovations Melbourne`,
+    default: `${SITE.brand} | Thornbury Builders, North-East Melbourne`,
     template: `%s | ${SITE.brand}`,
   },
   description:
-    `${SITE.years} years in Melbourne residential construction. Home additions and renovations, kitchen and bathroom upgrades, outdoor living areas, property maintenance and pre-sale facelifts.`,
+    `${SITE.years} years in Melbourne residential construction, from our office in Thornbury. Home additions and renovations across north-east Melbourne, plus kitchens, bathrooms, outdoor living, maintenance and pre-sale facelifts.`,
   icons: {
     icon: [
       { url: asset("/assets/img/logo-dark.svg"), type: "image/svg+xml" },

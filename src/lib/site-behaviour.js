@@ -312,4 +312,74 @@ export function initSite() {
   /* ---------- Footer year ---------- */
   var year = document.getElementById('year');
   if (year) { year.textContent = new Date().getFullYear(); }
+
+  /* ---------- Quote attention ----------
+     "Get a free quote", the dock's "Free quote" and "Request a free quote"
+     smooth-scroll to #enquire and pulse the card. Same-page links skip the
+     instant hash jump. A cross-page /contact/#enquire loads normally; if the
+     hash is already #enquire we highlight, and scroll only when the card is
+     still below the fold. Focus uses preventScroll so the clipped first
+     radio does not yank the page. */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var attentionTimer = 0;
+
+  function isQuoteLink(a) {
+    if (!a || !a.getAttribute) { return false; }
+    var link = a.getAttribute('href') || '';
+    if (link.indexOf('#enquire') === -1) { return false; }
+    var text = (a.textContent || '').toLowerCase();
+    var cls = typeof a.className === 'string' ? a.className : '';
+    return text.indexOf('quote') !== -1 || cls.indexOf('quote') !== -1;
+  }
+
+  function samePage(a) {
+    var link = a.getAttribute('href') || '';
+    if (link.charAt(0) === '#') { return true; }
+    try {
+      var url = new URL(a.href, window.location.href);
+      return url.pathname === window.location.pathname;
+    } catch (err) { return false; }
+  }
+
+  function showQuote(box, shouldScroll) {
+    if (!box) { return; }
+    if (shouldScroll) {
+      var top = box.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    box.classList.remove('is-attention');
+    void box.offsetWidth;
+    box.classList.add('is-attention');
+    window.clearTimeout(attentionTimer);
+    attentionTimer = window.setTimeout(function () { box.classList.remove('is-attention'); }, 1500);
+    var form = box.querySelector('form') || box;
+    var first = form.querySelector('input, select, textarea');
+    if (first) {
+      try { first.focus({ preventScroll: true }); } catch (err) { /* old browsers: leave focus where it is */ }
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!isQuoteLink(a) || !samePage(a)) { return; }
+    var box = document.getElementById('enquire');
+    if (!box) { return; }
+    e.preventDefault();
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', '#enquire');
+    }
+    // The mobile menu restores scroll in its own click handler, which runs
+    // before this document listener. Wait one turn so that restore lands
+    // first, then scroll to the card.
+    window.setTimeout(function () { showQuote(box, true); }, 0);
+  });
+
+  if (window.location.hash === '#enquire') {
+    var landed = document.getElementById('enquire');
+    if (landed) {
+      var topEdge = landed.getBoundingClientRect().top;
+      var alreadyPlaced = topEdge >= 0 && topEdge < window.innerHeight * 0.55;
+      showQuote(landed, !alreadyPlaced);
+    }
+  }
 }

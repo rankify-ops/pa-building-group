@@ -463,6 +463,19 @@ body.nav-open .site-header .header-phone { visibility: hidden; }
    Enquiry card and stepped form
    ========================================================================== */
 .enquiry { background: var(--white); color: var(--graphite); padding: clamp(26px, 3vw, 40px); box-shadow: var(--shadow-md); border: 1px solid var(--pearl); border-radius: 3px; }
+.enquiry.is-attention { animation: quote-attention 1.35s ease; transform-origin: center center; }
+@keyframes quote-attention {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10, 87, 255, 0); }
+  35% { transform: scale(1.03); box-shadow: 0 0 0 6px rgba(10, 87, 255, .45), 0 0 28px 4px rgba(10, 87, 255, .35); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10, 87, 255, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .enquiry.is-attention { animation-name: quote-attention-reduced; }
+}
+@keyframes quote-attention-reduced {
+  0%, 100% { outline: 3px solid transparent; outline-offset: 4px; }
+  20%, 60% { outline: 3px solid var(--accent); outline-offset: 4px; }
+}
 .enquiry--dark { background: rgba(20, 22, 24, .92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-color: rgba(255, 255, 255, .14); color: var(--mist); box-shadow: var(--shadow-lg); }
 .enquiry__head { margin-bottom: 22px; }
 .enquiry__head h2 { font-size: clamp(1.5rem, 2.15vw, 1.9rem); letter-spacing: -.024em; }
@@ -715,6 +728,7 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 .areas a { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); border: 1px solid var(--pearl); padding: 9px 16px; border-radius: 2px; background: var(--white); transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast); }
 .areas a:hover { border-color: var(--accent); color: var(--accent); }
 .areas a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.areas--text li { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); border: 1px solid var(--pearl); padding: 9px 16px; border-radius: 2px; background: var(--white); }
 
 /* ==========================================================================
    FAQ
@@ -791,6 +805,7 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 .site-footer a:hover { color: #fff; }
 .footer-brand img { height: 78px; width: auto; margin-bottom: 20px; }
 .footer-brand p { margin: 0; max-width: 36ch; line-height: 1.7; }
+.footer-areas { margin-top: 14px; }
 .site-footer__base { border-top: 1px solid rgba(255, 255, 255, .1); padding-block: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; font-size: 13px; }
 .site-footer__base p { margin: 0; }
 .licence-line { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
