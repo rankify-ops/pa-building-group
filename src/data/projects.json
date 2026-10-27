@@ -5,6 +5,7 @@
     "kind": "Extension with rammed earth walls",
     "summary": "An extension with rammed earth walls, a master bathroom and a large carport, completed in 2021.",
     "image": "smiths-gully/smiths-gully-2.jpg",
+    "listing": "https://www.realestate.com.au/property-house-vic-smiths+gully-150337036",
     "groups": [
       {
         "anchor": "smiths-gully-rooms",
@@ -216,23 +217,35 @@
   {
     "slug": "elwood",
     "name": "Elwood",
-    "kind": "Extension and renovation",
-    "summary": "An extension and renovation in Elwood.",
-    "image": "elwood/elwood-2.jpg",
+    "kind": "Elwood extension and upgrade - also heritage work",
+    "summary": "Elwood extension and upgrade - also heritage work",
+    "image": "elwood/fig2-front-entry-period-tiles.webp",
     "groups": [
       {
         "anchor": "elwood-rooms",
         "tag": "Extension",
-        "title": "Deck and outdoor living",
-        "blurb": "Part of the extension and renovation: a timber deck with built-in seating, under a pergola that opens onto the house.",
+        "title": "Elwood extension and upgrade - also heritage work",
+        "blurb": "Elwood extension and upgrade - also heritage work",
         "images": [
           {
-            "image": "elwood/elwood-1.jpg",
-            "caption": "Deck and pergola"
+            "image": "elwood/fig1-frame-works.webp",
+            "caption": "Progressive frame works prior to rear outdoor living area and internal upgrade - keeping the existing boundary walls, with underpinning and structural works"
           },
           {
-            "image": "elwood/elwood-2.jpg",
-            "caption": "Outdoor living"
+            "image": "elwood/fig2-front-entry-period-tiles.webp",
+            "caption": "New front entry works with period tiles"
+          },
+          {
+            "image": "elwood/fig3a-origami-ceilings.webp",
+            "caption": "Folded origami plaster ceilings to reflect the light through highlight louvre windows"
+          },
+          {
+            "image": "elwood/fig3b-origami-ceilings.webp",
+            "caption": "Folded origami plaster ceilings to reflect the light through highlight louvre windows"
+          },
+          {
+            "image": "elwood/fig3c-origami-ceilings.webp",
+            "caption": "Folded origami plaster ceilings to reflect the light through highlight louvre windows"
           }
         ]
       }

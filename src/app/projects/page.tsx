@@ -3,6 +3,7 @@ import { PROJECTS } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
 import { JsonLd } from "@/components/JsonLd";
 import { CtaBand, PageHero, SectionHead } from "@/components/Blocks";
+import { ArrowIcon } from "@/components/Icon";
 import { projectsJsonLd } from "@/lib/schema";
 import { pageMetadata, projectAlt } from "@/lib/seo";
 
@@ -59,18 +60,32 @@ export default function ProjectsPage() {
       {PROJECTS.map((project) => (
         <section key={project.slug} className="section" id={project.slug}>
           <div className="wrap">
-            <SectionHead eyebrow={project.name} title={project.kind} lede={project.summary} />
+            <SectionHead
+              eyebrow={project.name}
+              title={project.kind}
+              lede={project.summary !== project.kind ? project.summary : undefined}
+              action={
+                project.listing ? (
+                  <a className="link-arrow" href={project.listing} target="_blank" rel="noopener noreferrer">
+                    View on realestate.com.au <ArrowIcon size={13} />
+                  </a>
+                ) : undefined
+              }
+            />
             {project.groups.map((sec) => {
               const spans = LAYOUT[sec.images.length] ?? sec.images.map(() => "g-6");
+              const headingRepeatsProject = sec.title === project.kind && sec.blurb === project.summary;
               return (
                 <article key={sec.anchor} className="projectblock" id={sec.anchor}>
-                  <div className="projectblock__head reveal">
-                    <div>
-                      <p className="eyebrow">{sec.tag}</p>
-                      <h3 className="h-lg">{sec.title}</h3>
+                  {!headingRepeatsProject && (
+                    <div className="projectblock__head reveal">
+                      <div>
+                        <p className="eyebrow">{sec.tag}</p>
+                        <h3 className="h-lg">{sec.title}</h3>
+                      </div>
+                      <p>{sec.blurb}</p>
                     </div>
-                    <p>{sec.blurb}</p>
-                  </div>
+                  )}
                   <div className="gallery">
                     {sec.images.map((img, i) => (
                       <figure key={img.image} className={`${img.span ?? spans[i]} reveal`} style={{ "--d": `${i * 70}ms` }}>
