@@ -104,6 +104,8 @@ export type Project = {
   kind: string;
   summary: string;
   image: string;
+  /** External listing, when the finished project is published. */
+  listing?: string;
   groups: ProjectGroup[];
 };
 
