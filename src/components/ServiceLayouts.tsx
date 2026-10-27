@@ -1,7 +1,7 @@
-import { serviceBySlug } from "@/data/site";
+import { SERVICES, serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
 import { ArrowIcon } from "./Icon";
-import { EnquirySection, Faq, PageHero, SectionHead } from "./Blocks";
+import { EnquirySection, Faq, PageHero, Pillars, SectionHead, ServiceCards } from "./Blocks";
 
 const EXTEND = [
   {
@@ -211,6 +211,204 @@ export function RenovationsLayout() {
         title={<>Tell us about the house.</>}
         lede="A renovation, a pre-sale facelift, or a flip. Paul will walk it with you and say plainly what is worth doing."
       />
+    </>
+  );
+}
+
+type ConceptImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  span: string;
+};
+
+const GRANNY_FLATS: {
+  id: string;
+  eyebrow: string;
+  name: string;
+  summary: string;
+  images: ConceptImage[];
+}[] = [
+  {
+    id: "modern-timber",
+    eyebrow: "Design 01",
+    name: "Modern Timber Granny Flat",
+    summary: "One bedroom, one bathroom and open-plan living. 32 m² in total, including the deck, on an 8.0 × 4.0 m footprint.",
+    images: [
+      {
+        src: "granny-flats/modern-timber-exterior.webp",
+        alt: "Concept exterior of the Modern Timber granny flat, with vertical timber cladding and a deck",
+        caption: "Exterior",
+        width: 1024,
+        height: 718,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/modern-timber-plan.webp",
+        alt: "Concept floor plan of the Modern Timber granny flat, 8.0 by 4.0 metres, with one bedroom, one bathroom and open-plan living",
+        caption: "Floor plan",
+        width: 1434,
+        height: 798,
+        span: "g-12 is-plan",
+      },
+      {
+        src: "granny-flats/modern-timber-interior.webp",
+        alt: "Concept interior of the Modern Timber granny flat, looking through the open-plan living area to the deck",
+        caption: "Interior",
+        width: 1024,
+        height: 486,
+        span: "g-12 is-wide",
+      },
+    ],
+  },
+  {
+    id: "contemporary",
+    eyebrow: "Design 02",
+    name: "Contemporary Granny Flat",
+    summary: "One bedroom, one bathroom and open-plan living. 34.5 m² including the covered deck, on a 7.2 × 4.8 m footprint.",
+    images: [
+      {
+        src: "granny-flats/contemporary-exterior.webp",
+        alt: "Concept exterior of the Contemporary granny flat, with a flat roof, dark cladding and a covered deck",
+        caption: "Exterior",
+        width: 1024,
+        height: 718,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/contemporary-plan.webp",
+        alt: "Concept floor plan of the Contemporary granny flat, 7.2 by 4.8 metres, with one bedroom, one bathroom, open-plan living and a covered deck",
+        caption: "Floor plan",
+        width: 1350,
+        height: 828,
+        span: "g-12 is-plan",
+      },
+      {
+        src: "granny-flats/contemporary-bedroom.webp",
+        alt: "Concept bedroom in the Contemporary granny flat",
+        caption: "Bedroom",
+        width: 816,
+        height: 729,
+        span: "g-6 is-detail",
+      },
+      {
+        src: "granny-flats/contemporary-bathroom.webp",
+        alt: "Concept bathroom in the Contemporary granny flat",
+        caption: "Bathroom",
+        width: 702,
+        height: 729,
+        span: "g-6 is-detail",
+      },
+    ],
+  },
+  {
+    id: "traditional",
+    eyebrow: "Design 03",
+    name: "Traditional Granny Flat",
+    summary: "One bedroom, one bathroom, a laundry and open-plan living. 45 m² including the deck, on an 8.4 × 5.4 m footprint.",
+    images: [
+      {
+        src: "granny-flats/traditional-exterior.webp",
+        alt: "Concept exterior of the Traditional granny flat, with a pitched roof and a deck",
+        caption: "Exterior",
+        width: 1024,
+        height: 718,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/traditional-plan.webp",
+        alt: "Concept floor plan of the Traditional granny flat, 8.4 by 5.4 metres, with one bedroom, one bathroom, a laundry and open-plan living",
+        caption: "Floor plan",
+        width: 1458,
+        height: 852,
+        span: "g-12 is-plan",
+      },
+      {
+        src: "granny-flats/traditional-interior.webp",
+        alt: "Concept interior of the Traditional granny flat, with open-plan living and timber finishes",
+        caption: "Interior",
+        width: 1024,
+        height: 486,
+        span: "g-12 is-wide",
+      },
+    ],
+  },
+];
+
+/** Granny flats page: the three concept sheets Paul sent on 27 Oct 2026. */
+export function GrannyFlatsLayout() {
+  const service = serviceBySlug("granny-flats");
+  if (!service) return null;
+  const others = SERVICES.filter((item) => item.slug !== service.slug).slice(0, 3);
+
+  return (
+    <>
+      <PageHero
+        crumbs={[["Home", "/"], ["Services", "/services/"], [service.nav]]}
+        title={<>{service.h1} <em>{service.em}</em></>}
+        lede={service.lead}
+        image={service.blocks[0].image}
+        alt={`${service.blocks[0].heading} — ${service.title} in Thornbury, Melbourne`}
+      />
+
+      <section className="section" id="concepts">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="Concept designs"
+            title="Three granny flats."
+            lede="One-bedroom layouts to start from, alongside backyard studios and home offices. These drawings are illustrative concepts, not for construction. The final plan is tailored to your block, and the size and approvals are confirmed before anything is built."
+          />
+          {GRANNY_FLATS.map((design) => (
+            <article key={design.id} className="projectblock" id={design.id}>
+              <div className="projectblock__head reveal">
+                <div>
+                  <p className="eyebrow">{design.eyebrow}</p>
+                  <h3 className="h-lg">{design.name}</h3>
+                </div>
+                <p>{design.summary}</p>
+              </div>
+              <div className="gallery">
+                {design.images.map((img, i) => (
+                  <figure key={img.src} className={`${img.span} reveal`} style={{ "--d": `${i * 70}ms` }}>
+                    <img
+                      src={photo(img.src)}
+                      alt={img.alt}
+                      width={img.width}
+                      height={img.height}
+                      loading="lazy"
+                    />
+                    <figcaption>{img.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section--dark">
+        <div className="wrap">
+          <SectionHead eyebrow="Why us" title="Why clients choose us for this work." />
+          <Pillars items={service.why.map((item) => ({ heading: item.heading, text: item.text }))} />
+        </div>
+      </section>
+
+      <ServiceFaq slug="granny-flats" />
+
+      <EnquirySection
+        context={service.title}
+        title={<>Get a quote for your {service.nav.toLowerCase()} project.</>}
+        lede="Tell us what you're planning. Paul will come back to you, book a site visit and put an itemised quote in writing."
+      />
+
+      <section className="section section--tight">
+        <div className="wrap">
+          <SectionHead eyebrow="More services" title="What else we take on." />
+          <ServiceCards services={others} />
+        </div>
+      </section>
     </>
   );
 }

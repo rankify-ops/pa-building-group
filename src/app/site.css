@@ -809,6 +809,40 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 .g-12 { grid-column: span 12; aspect-ratio: 21 / 9; }
 @media (max-width: 760px) { .g-7, .g-5, .g-6, .g-4, .g-12 { grid-column: span 12; aspect-ratio: 4 / 3; } }
 
+/* Concept sheets on the granny flats page. Same gallery, with ratios that
+   fit the artwork: heroes are not 21:9, and a floor plan has to stay whole. */
+.gallery figure.is-sheet { aspect-ratio: 3 / 2; }
+.gallery figure.is-wide { aspect-ratio: 2 / 1; }
+.gallery figure.is-detail { aspect-ratio: 1 / 1; }
+.gallery figure.is-plan {
+  background: var(--white);
+  aspect-ratio: auto;
+  overflow: visible;
+}
+.gallery figure.is-plan img {
+  height: auto;
+  object-fit: contain;
+  background: var(--white);
+  border: 1px solid var(--pearl);
+}
+.gallery figure.is-plan:hover img { transform: none; }
+.gallery figure.is-plan figcaption {
+  position: static;
+  padding: 12px 2px 0;
+  color: var(--steel);
+  background: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+@media (max-width: 760px) {
+  .gallery figure.is-sheet,
+  .gallery figure.is-wide,
+  .gallery figure.is-detail { aspect-ratio: 4 / 3; }
+  .gallery figure.is-plan { aspect-ratio: auto; }
+}
+
 /* ==========================================================================
    CTA band
    ========================================================================== */

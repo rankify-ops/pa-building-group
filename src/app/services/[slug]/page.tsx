@@ -4,7 +4,7 @@ import { SERVICES, serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
 import { JsonLd } from "@/components/JsonLd";
 import { EnquirySection, Faq, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
-import { ExtensionsLayout, RenovationsLayout } from "@/components/ServiceLayouts";
+import { ExtensionsLayout, GrannyFlatsLayout, RenovationsLayout } from "@/components/ServiceLayouts";
 import { serviceJsonLd } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
@@ -32,11 +32,15 @@ export default async function ServicePage({ params }: Props) {
 
   const others = SERVICES.filter((x) => x.slug !== s.slug).slice(0, 3);
 
-  if (s.slug === "extensions" || s.slug === "renovations") {
+  if (s.slug === "extensions" || s.slug === "renovations" || s.slug === "granny-flats") {
+    const layout =
+      s.slug === "extensions" ? <ExtensionsLayout /> :
+      s.slug === "renovations" ? <RenovationsLayout /> :
+      <GrannyFlatsLayout />;
     return (
       <>
         <JsonLd data={serviceJsonLd(s)} />
-        {s.slug === "extensions" ? <ExtensionsLayout /> : <RenovationsLayout />}
+        {layout}
       </>
     );
   }
