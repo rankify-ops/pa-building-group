@@ -810,10 +810,11 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 @media (max-width: 760px) { .g-7, .g-5, .g-6, .g-4, .g-12 { grid-column: span 12; aspect-ratio: 4 / 3; } }
 
 /* Concept sheets on the granny flats page. Same gallery, with ratios that
-   fit the artwork: heroes are not 21:9, and a floor plan has to stay whole. */
+   fit the artwork: heroes are not 21:9, the wide interiors stay whole, and
+   a floor plan is not cropped. */
 .gallery figure.is-sheet { aspect-ratio: 3 / 2; }
-.gallery figure.is-wide { aspect-ratio: 2 / 1; }
-.gallery figure.is-detail { aspect-ratio: 1 / 1; }
+.gallery figure.is-strip { aspect-ratio: auto; }
+.gallery figure.is-strip img { height: auto; }
 .gallery figure.is-plan {
   background: var(--white);
   aspect-ratio: auto;
@@ -837,9 +838,8 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
   text-transform: uppercase;
 }
 @media (max-width: 760px) {
-  .gallery figure.is-sheet,
-  .gallery figure.is-wide,
-  .gallery figure.is-detail { aspect-ratio: 4 / 3; }
+  .gallery figure.is-sheet { aspect-ratio: 3 / 2; }
+  .gallery figure.is-strip,
   .gallery figure.is-plan { aspect-ratio: auto; }
 }
 
