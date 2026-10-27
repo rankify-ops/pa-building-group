@@ -235,39 +235,23 @@ const GRANNY_FLATS: {
     id: "modern-timber",
     eyebrow: "Design 01",
     name: "Modern Timber Granny Flat",
-    summary: "One bedroom, one bathroom and open-plan living. 32 m² in total, including the deck, on an 8.0 × 4.0 m footprint.",
+    summary: "1 bedroom, 1 bathroom, open plan living. Total area 32 m², including the deck. 8.0 × 4.0 m.",
     images: [
       {
         src: "granny-flats/modern-timber-exterior.webp",
-        alt: "Concept exterior of the Modern Timber granny flat, with vertical timber cladding and a deck",
-        caption: "Exterior",
+        alt: "Illustrative concept render of the Modern Timber granny flat",
+        caption: "Render",
         width: 1024,
         height: 672,
         span: "g-12 is-sheet",
       },
       {
         src: "granny-flats/modern-timber-plan.webp",
-        alt: "Concept floor plan of the Modern Timber granny flat, 8.0 by 4.0 metres, with one bedroom, one bathroom and open-plan living",
+        alt: "Floor plan of the Modern Timber granny flat, 8.0 by 4.0 metres",
         caption: "Floor plan",
         width: 1476,
         height: 834,
         span: "g-12 is-plan",
-      },
-      {
-        src: "granny-flats/modern-timber-living.webp",
-        alt: "Concept interior of the Modern Timber granny flat, open-plan living with timber lining",
-        caption: "Living",
-        width: 1024,
-        height: 352,
-        span: "g-12 is-strip",
-      },
-      {
-        src: "granny-flats/modern-timber-bedroom.webp",
-        alt: "Concept bedroom in the Modern Timber granny flat",
-        caption: "Bedroom",
-        width: 1024,
-        height: 302,
-        span: "g-12 is-strip",
       },
     ],
   },
@@ -275,39 +259,23 @@ const GRANNY_FLATS: {
     id: "contemporary",
     eyebrow: "Design 02",
     name: "Contemporary Granny Flat",
-    summary: "One bedroom, one bathroom and open-plan living. 34.5 m² including the covered deck, on a 7.2 × 4.8 m footprint.",
+    summary: "1 bedroom, 1 bathroom, open plan living. Total area 34.5 m², including the covered deck. 7.2 × 4.8 m.",
     images: [
       {
         src: "granny-flats/contemporary-exterior.webp",
-        alt: "Concept exterior of the Contemporary granny flat, with a flat roof, dark cladding and a covered deck",
-        caption: "Exterior",
+        alt: "Illustrative concept render of the Contemporary granny flat",
+        caption: "Render",
         width: 1024,
         height: 672,
         span: "g-12 is-sheet",
       },
       {
         src: "granny-flats/contemporary-plan.webp",
-        alt: "Concept floor plan of the Contemporary granny flat, 7.2 by 4.8 metres, with one bedroom, one bathroom, open-plan living and a covered deck",
+        alt: "Floor plan of the Contemporary granny flat, 7.2 by 4.8 metres",
         caption: "Floor plan",
         width: 1440,
         height: 846,
         span: "g-12 is-plan",
-      },
-      {
-        src: "granny-flats/contemporary-living.webp",
-        alt: "Concept interior of the Contemporary granny flat, open-plan living opening to the covered deck",
-        caption: "Living",
-        width: 1024,
-        height: 352,
-        span: "g-12 is-strip",
-      },
-      {
-        src: "granny-flats/contemporary-bedroom.webp",
-        alt: "Concept bedroom in the Contemporary granny flat",
-        caption: "Bedroom",
-        width: 1024,
-        height: 302,
-        span: "g-12 is-strip",
       },
     ],
   },
@@ -315,39 +283,23 @@ const GRANNY_FLATS: {
     id: "traditional",
     eyebrow: "Design 03",
     name: "Traditional Granny Flat",
-    summary: "One bedroom, one bathroom, a laundry and open-plan living. 45 m² including the deck, on an 8.4 × 5.4 m footprint.",
+    summary: "1 bedroom, 1 bathroom, laundry, open plan living. Total area 45 m², including the deck. 8.4 × 5.4 m.",
     images: [
       {
         src: "granny-flats/traditional-exterior.webp",
-        alt: "Concept exterior of the Traditional granny flat, with a pitched roof, timber posts and a deck",
-        caption: "Exterior",
+        alt: "Illustrative concept render of the Traditional granny flat",
+        caption: "Render",
         width: 1024,
         height: 672,
         span: "g-12 is-sheet",
       },
       {
         src: "granny-flats/traditional-plan.webp",
-        alt: "Concept floor plan of the Traditional granny flat, 8.4 by 5.4 metres, with one bedroom, one bathroom, a laundry and open-plan living",
+        alt: "Floor plan of the Traditional granny flat, 8.4 by 5.4 metres",
         caption: "Floor plan",
         width: 1452,
         height: 876,
         span: "g-12 is-plan",
-      },
-      {
-        src: "granny-flats/traditional-living.webp",
-        alt: "Concept interior of the Traditional granny flat, open-plan living with a pitched ceiling",
-        caption: "Living",
-        width: 1024,
-        height: 352,
-        span: "g-12 is-strip",
-      },
-      {
-        src: "granny-flats/traditional-bedroom.webp",
-        alt: "Concept bedroom in the Traditional granny flat",
-        caption: "Bedroom",
-        width: 1024,
-        height: 302,
-        span: "g-12 is-strip",
       },
     ],
   },
@@ -363,19 +315,16 @@ export function GrannyFlatsLayout() {
     <>
       <PageHero
         crumbs={[["Home", "/"], ["Services", "/services/"], [service.nav]]}
+        eyebrow="Illustrative concept"
         title={<>{service.h1} <em>{service.em}</em></>}
         lede={service.lead}
-        image={service.blocks[0].image}
-        alt={`${service.blocks[0].heading} — ${service.title} in Thornbury, Melbourne`}
+        image="granny-flats/modern-timber-exterior.webp"
+        alt="Illustrative concept render of the Modern Timber granny flat"
       />
 
       <section className="section" id="concepts">
         <div className="wrap">
-          <SectionHead
-            eyebrow="Concept designs"
-            title="Three granny flats."
-            lede="One-bedroom layouts to start from, alongside backyard studios and home offices. These drawings are illustrative concepts, not for construction. The final plan is tailored to your block, and the size and approvals are confirmed before anything is built."
-          />
+          <p className="eyebrow reveal">Illustrative concept</p>
           {GRANNY_FLATS.map((design) => (
             <article key={design.id} className="projectblock" id={design.id}>
               <div className="projectblock__head reveal">
