@@ -1,7 +1,7 @@
-import { serviceBySlug } from "@/data/site";
+import { SERVICES, serviceBySlug } from "@/data/site";
 import { photo } from "@/lib/basePath";
 import { ArrowIcon } from "./Icon";
-import { EnquirySection, Faq, PageHero, SectionHead } from "./Blocks";
+import { EnquirySection, Faq, PageHero, Pillars, SectionHead, ServiceCards } from "./Blocks";
 
 const EXTEND = [
   {
@@ -211,6 +211,169 @@ export function RenovationsLayout() {
         title={<>Tell us about the house.</>}
         lede="A renovation, a pre-sale facelift, or a flip. Paul will walk it with you and say plainly what is worth doing."
       />
+    </>
+  );
+}
+
+type ConceptImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  span: string;
+};
+
+const GRANNY_FLATS: {
+  id: string;
+  eyebrow: string;
+  name: string;
+  summary: string;
+  images: ConceptImage[];
+}[] = [
+  {
+    id: "modern-timber",
+    eyebrow: "Design 01",
+    name: "Modern Timber Granny Flat",
+    summary: "1 bedroom, 1 bathroom, open plan living. Total area 32 m², including the deck. 8.0 × 4.0 m.",
+    images: [
+      {
+        src: "granny-flats/modern-timber-exterior.webp",
+        alt: "Illustrative concept render of the Modern Timber granny flat",
+        caption: "Render",
+        width: 1024,
+        height: 672,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/modern-timber-plan.webp",
+        alt: "Floor plan of the Modern Timber granny flat, 8.0 by 4.0 metres",
+        caption: "Floor plan",
+        width: 1476,
+        height: 834,
+        span: "g-12 is-plan",
+      },
+    ],
+  },
+  {
+    id: "contemporary",
+    eyebrow: "Design 02",
+    name: "Contemporary Granny Flat",
+    summary: "1 bedroom, 1 bathroom, open plan living. Total area 34.5 m², including the covered deck. 7.2 × 4.8 m.",
+    images: [
+      {
+        src: "granny-flats/contemporary-exterior.webp",
+        alt: "Illustrative concept render of the Contemporary granny flat",
+        caption: "Render",
+        width: 1024,
+        height: 672,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/contemporary-plan.webp",
+        alt: "Floor plan of the Contemporary granny flat, 7.2 by 4.8 metres",
+        caption: "Floor plan",
+        width: 1440,
+        height: 846,
+        span: "g-12 is-plan",
+      },
+    ],
+  },
+  {
+    id: "traditional",
+    eyebrow: "Design 03",
+    name: "Traditional Granny Flat",
+    summary: "1 bedroom, 1 bathroom, laundry, open plan living. Total area 45 m², including the deck. 8.4 × 5.4 m.",
+    images: [
+      {
+        src: "granny-flats/traditional-exterior.webp",
+        alt: "Illustrative concept render of the Traditional granny flat",
+        caption: "Render",
+        width: 1024,
+        height: 672,
+        span: "g-12 is-sheet",
+      },
+      {
+        src: "granny-flats/traditional-plan.webp",
+        alt: "Floor plan of the Traditional granny flat, 8.4 by 5.4 metres",
+        caption: "Floor plan",
+        width: 1452,
+        height: 876,
+        span: "g-12 is-plan",
+      },
+    ],
+  },
+];
+
+/** Granny flats page: Paul's updated concept sheets, 27 Oct 2026. */
+export function GrannyFlatsLayout() {
+  const service = serviceBySlug("granny-flats");
+  if (!service) return null;
+  const others = SERVICES.filter((item) => item.slug !== service.slug).slice(0, 3);
+
+  return (
+    <>
+      <PageHero
+        crumbs={[["Home", "/"], ["Services", "/services/"], [service.nav]]}
+        eyebrow="Illustrative concept"
+        title={<>{service.h1} <em>{service.em}</em></>}
+        lede={service.lead}
+        image="granny-flats/modern-timber-exterior.webp"
+        alt="Illustrative concept render of the Modern Timber granny flat"
+      />
+
+      <section className="section" id="concepts">
+        <div className="wrap">
+          <p className="eyebrow reveal">Illustrative concept</p>
+          {GRANNY_FLATS.map((design) => (
+            <article key={design.id} className="projectblock" id={design.id}>
+              <div className="projectblock__head reveal">
+                <div>
+                  <p className="eyebrow">{design.eyebrow}</p>
+                  <h3 className="h-lg">{design.name}</h3>
+                </div>
+                <p>{design.summary}</p>
+              </div>
+              <div className="gallery">
+                {design.images.map((img, i) => (
+                  <figure key={img.src} className={`${img.span} reveal`} style={{ "--d": `${i * 70}ms` }}>
+                    <img
+                      src={photo(img.src)}
+                      alt={img.alt}
+                      width={img.width}
+                      height={img.height}
+                      loading="lazy"
+                    />
+                    <figcaption>{img.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section--dark">
+        <div className="wrap">
+          <SectionHead eyebrow="Why us" title="Why clients choose us for this work." />
+          <Pillars items={service.why.map((item) => ({ heading: item.heading, text: item.text }))} />
+        </div>
+      </section>
+
+      <ServiceFaq slug="granny-flats" />
+
+      <EnquirySection
+        context={service.title}
+        title={<>Get a quote for your {service.nav.toLowerCase()} project.</>}
+        lede="Tell us what you're planning. Paul will come back to you, book a site visit and put an itemised quote in writing."
+      />
+
+      <section className="section section--tight">
+        <div className="wrap">
+          <SectionHead eyebrow="More services" title="What else we take on." />
+          <ServiceCards services={others} />
+        </div>
+      </section>
     </>
   );
 }
