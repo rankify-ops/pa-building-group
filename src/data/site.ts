@@ -15,9 +15,11 @@ export const SITE = {
   city: "Melbourne",
   // The only public origin. Canonicals, og:url, schema @id/url, breadcrumbs,
   // sitemap URLs and the robots.txt sitemap line all read this value.
-  // Still the GitHub Pages preview. Do not switch it until go-live.
-  // At cutover, also drop NEXT_PUBLIC_BASE_PATH and add public/CNAME, or assets 404.
-  url: "https://rankify-ops.github.io/pa-building-group",
+  // The live domain. Production is Vercel, which serves at the root, so there
+  // is no base path to set. Canonicals and the sitemap pointed at the old
+  // GitHub Pages address after Pages was switched off, which made every
+  // canonical a 404 - do not point this anywhere the public cannot reach.
+  url: "https://pabuilding.com.au",
   mobile: { label: "0409 040 493", tel: "+61409040493" },
   office: { label: "03 9717 0650", tel: "+61397170650" },
   email: "paul@pabuilding.com.au",
