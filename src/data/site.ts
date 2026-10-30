@@ -63,8 +63,6 @@ export const SERVICE_AREAS = [
   "Mernda",
   "South Morang",
   "Mill Park",
-  "Templestowe",
-  "Doncaster",
   "Camberwell",
   "Kew",
   "Hawthorn",
