@@ -758,6 +758,12 @@ a.card:hover .btn__arrow { transform: translate(2px, -2px); }
 .areas span { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); border: 1px solid var(--pearl); padding: 9px 16px; border-radius: 2px; background: var(--white); transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast); }
 .areas a:hover { border-color: var(--accent); color: var(--accent); }
 .areas a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+/* Service areas grouped by council (Paul's own list). */
+.councils { display: grid; gap: clamp(26px, 3vw, 38px); }
+.councils__group { display: grid; gap: 12px; }
+.councils__name { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin: 0; }
+.councils .areas span { color: var(--steel); }
+
 .areas--text li { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); border: 1px solid var(--pearl); padding: 9px 16px; border-radius: 2px; background: var(--white); }
 
 /* ==========================================================================

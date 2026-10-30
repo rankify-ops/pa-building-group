@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ADDRESS_LINE, SERVICES, SITE, SUBURBS, type Service } from "@/data/site";
+import { ADDRESS_LINE, SERVICE_AREA_GROUPS, SERVICES, SITE, SUBURBS, type Service } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { ArrowIcon, Icon, MailIcon, PhoneIcon, PinIcon, Rich } from "./Icon";
@@ -176,6 +176,35 @@ export function Areas({ current }: { current?: string }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+/**
+ * Paul's service areas, grouped by council. A suburb that has its own
+ * location page links to it; the rest are plain text, so the list stays
+ * complete without inventing pages we do not have.
+ */
+export function AreaGroups() {
+  const pageFor = new Map(SUBURBS.map((s) => [s.name.toLowerCase(), s.slug]));
+  return (
+    <div className="councils">
+      {SERVICE_AREA_GROUPS.map((g) => (
+        <div className="councils__group reveal" key={g.council}>
+          <h3 className="councils__name">{g.council}</h3>
+          <ul className="areas">
+            {g.suburbs.map((name) => {
+              const slug = pageFor.get(name.toLowerCase());
+              return (
+                <li key={name}>
+                  {slug ? <a href={href(`/locations/${slug}/`)}>{name}</a> : <span>{name}</span>}
+                </li>
+              );
+            })}
+            {g.more && <li><span>&amp; more</span></li>}
+          </ul>
+        </div>
+      ))}
+    </div>
   );
 }
 

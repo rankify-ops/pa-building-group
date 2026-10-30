@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ADDRESS_LINE, SITE } from "@/data/site";
 import { href } from "@/lib/basePath";
-import { Areas, CtaBand, PageHero, SectionHead } from "@/components/Blocks";
+import { AreaGroups, Areas, CtaBand, PageHero, SectionHead } from "@/components/Blocks";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -27,9 +27,19 @@ export default function LocationsPage() {
         <div className="wrap">
           <SectionHead
             eyebrow="Locations"
-            title="The office is in Thornbury."
-            lede="Most of our work is across Melbourne's north-east, including Doreen, and we also take jobs in Camberwell, Kew, Hawthorn and Balwyn. If your suburb isn't listed, ask anyway."
+            title="Based in Thornbury and Doreen."
+            lede="We're based in Thornbury & Doreen and service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
           />
+          <AreaGroups />
+          <p className="lede" style={{ marginTop: "clamp(28px, 3vw, 40px)" }}>
+            Not sure if we cover your area? Get in touch. If we can get there, we&rsquo;ll take the job.
+          </p>
+        </div>
+      </section>
+
+      <section className="section section--cloud section--tight">
+        <div className="wrap">
+          <SectionHead eyebrow="Suburb guides" title="What we see in each suburb." />
           <div className="reveal"><Areas /></div>
         </div>
       </section>

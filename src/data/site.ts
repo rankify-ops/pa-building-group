@@ -69,6 +69,27 @@ export const SERVICE_AREAS = [
   "Balwyn",
 ] as const;
 
+/**
+ * Paul's own service-area list, grouped by council exactly as he sent it
+ * (30 Oct). Suburbs that also have a location page are linked; the rest are
+ * plain text. `more` renders his "& more" where he wrote it.
+ *
+ * Kept verbatim, including the suburbs that appear under two councils
+ * (Bundoora, Alphington, Kew, Hawthorn, Balwyn) — those are genuine boundary
+ * overlaps, not mistakes to tidy away.
+ */
+export const SERVICE_AREA_GROUPS: { council: string; suburbs: string[]; more?: boolean }[] = [
+  { council: "City of Whittlesea", suburbs: ["Doreen", "Mernda", "South Morang", "Mill Park", "Epping", "Wollert"] },
+  { council: "Nillumbik Shire", suburbs: ["Eltham", "Diamond Creek", "Hurstbridge", "Research", "Kangaroo Ground"] },
+  { council: "Banyule", suburbs: ["Heidelberg", "Ivanhoe", "Rosanna", "Greensborough", "Watsonia", "Montmorency", "Briar Hill", "Bundoora"] },
+  { council: "Darebin City", suburbs: ["Alphington", "Bundoora", "Coburg", "Coburg North", "Fairfield", "Keon Park", "Kingsbury", "Macleod", "Northcote", "Preston", "Regent West", "Reservoir", "Thornbury"] },
+  { council: "Yarra City", suburbs: ["Abbotsford", "Burnley", "Carlton North", "Clifton Hill", "Collingwood", "Cremorne", "Fitzroy", "Fitzroy North", "Princes Hill", "Richmond", "Alphington"] },
+  { council: "Yarra Ranges", suburbs: ["Lilydale", "Coldstream", "Healesville", "Yarra Glen"] },
+  { council: "Inner east", suburbs: ["Kew", "Hawthorn", "Camberwell", "Balwyn"] },
+  { council: "Murrindindi Shire", suburbs: ["Alexandra", "Flowerdale", "Glenburn", "Kinglake", "Kinglake Central", "Kinglake West", "Marysville", "Molesworth", "Yarck", "Yea"], more: true },
+  { council: "City of Boroondara", suburbs: ["Kew East", "Kew", "Hawthorn", "Balwyn", "Deepdene", "Mont Albert", "Ashburton", "Canterbury"], more: true },
+];
+
 export type Service = {
   slug: string;
   nav: string;

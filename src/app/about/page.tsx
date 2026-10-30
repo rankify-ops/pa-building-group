@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ADDRESS_LINE, SERVICES, SITE } from "@/data/site";
 import { href, photo } from "@/lib/basePath";
 import { pageMetadata } from "@/lib/seo";
-import { Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
+import { AreaGroups, Credentials, CtaBand, PageHero, Pillars, SectionHead, ServiceCards } from "@/components/Blocks";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Our Melbourne Builders in Thornbury",
@@ -25,23 +25,30 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="wrap split">
+          {/* Paul's own words (30 Oct). Do not reword without asking him. */}
           <div className="split__copy reveal">
-            <p className="eyebrow">Our story</p>
-            <h2 className="h-xl">{SITE.years} years in Melbourne housing.</h2>
+            <p className="eyebrow">Who we are</p>
+            <h2 className="h-xl">A family business, three generations in.</h2>
             <p className="lede" style={{ marginTop: 24 }}>
-              Trading as {SITE.legal}, {SITE.brand} has spent {SITE.years} years in Melbourne residential
-              construction, led by director {SITE.director} from our office at {ADDRESS_LINE}.
+              {SITE.brand} is a family business, built on more than {SITE.years} years in the construction industry
+              and 3rd generation of builders and carpentry.
             </p>
             <p className="body-copy">
-              {SITE.years} years in the same city means very little is genuinely new to us. We have worked on Victorian
-              terraces, Edwardian weatherboards, Californian bungalows, interwar brick and every era of post-war
-              housing since. Each has its own rules and its own surprises, and we have learnt them the way everyone
-              does: by opening walls.
+              Founded by {SITE.director}, our business has grown from decades of hands-on experience across high-end
+              residential renovations, commercial carpentry working on many of the VSBA projects, joinery and
+              insurance maintenance. Today, Paul works alongside his sons, Sam and Brody, bringing the next
+              generation into the trade while keeping the same standards that have defined our work from the start.
             </p>
             <p className="body-copy">
-              We are a hands-on outfit. The person who quotes your job is on site while it is being built, and is
-              still the person who answers the phone a year later.
+              As a family business, we take a personal approach to every project. When you work with us, you deal
+              directly with the people who own the business and stand behind the result. We treat your home as if it
+              were our own: we turn up when we say we will, keep you informed, and finish the job properly.
             </p>
+            <p className="body-copy">
+              From bathroom and kitchen renovations to new builds, alfresco living, and pre-sale facelifts, we work
+              with you and our interior designers to deliver a result that suits your lifestyle and your budget.
+            </p>
+            <p className="body-copy"><strong>Experience you can trust. Service that&rsquo;s personal.</strong></p>
             <div className="signature">
               <div className="signature__name">{SITE.director}</div>
               <div className="signature__role">Director</div>
@@ -64,6 +71,20 @@ export default function AboutPage() {
               { heading: "Respect the house", text: "Old buildings deserve better than being gutted. We keep what's worth keeping and are honest about what isn't." },
             ]}
           />
+        </div>
+      </section>
+
+      <section className="section section--cloud">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="Where we work"
+            title="Based in Thornbury and Doreen."
+            lede="We're based in Thornbury & Doreen and service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
+          />
+          <AreaGroups />
+          <p className="lede" style={{ marginTop: "clamp(28px, 3vw, 40px)" }}>
+            Not sure if we cover your area? Get in touch. If we can get there, we&rsquo;ll take the job.
+          </p>
         </div>
       </section>
 
