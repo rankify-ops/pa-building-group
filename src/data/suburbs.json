@@ -36,6 +36,12 @@
     "character": "large post-war blocks that suit second dwellings and big extensions"
   },
   {
+    "name": "Doreen",
+    "slug": "doreen",
+    "region": "north",
+    "character": "newer estate homes and acreage blocks, where the work is usually extending, adding alfresco areas or finishing what the builder left out"
+  },
+  {
     "name": "Fitzroy",
     "slug": "fitzroy",
     "region": "inner city",

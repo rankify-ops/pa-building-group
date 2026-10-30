@@ -48,6 +48,10 @@ export default function AboutPage() {
               From bathroom and kitchen renovations to new builds, alfresco living, and pre-sale facelifts, we work
               with you and our interior designers to deliver a result that suits your lifestyle and your budget.
             </p>
+            <p className="body-copy">
+              Our carpenters are qualified and Australian-trained, and everything we build is to Australian
+              Standards.
+            </p>
             <p className="body-copy"><strong>Experience you can trust. Service that&rsquo;s personal.</strong></p>
             <div className="signature">
               <div className="signature__name">{SITE.director}</div>
@@ -78,8 +82,8 @@ export default function AboutPage() {
         <div className="wrap">
           <SectionHead
             eyebrow="Where we work"
-            title="Based in Thornbury and Doreen."
-            lede="We're based in Thornbury & Doreen and service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
+            title="Based in Thornbury, working across Melbourne."
+            lede="We service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
           />
           <AreaGroups />
           <p className="lede" style={{ marginTop: "clamp(28px, 3vw, 40px)" }}>

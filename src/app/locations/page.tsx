@@ -27,8 +27,8 @@ export default function LocationsPage() {
         <div className="wrap">
           <SectionHead
             eyebrow="Locations"
-            title="Based in Thornbury and Doreen."
-            lede="We're based in Thornbury & Doreen and service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
+            title="The office is in Thornbury."
+            lede="We service residential clients across metropolitan Melbourne, with most of our work in the north and north-east. Our main service areas include:"
           />
           <AreaGroups />
           <p className="lede" style={{ marginTop: "clamp(28px, 3vw, 40px)" }}>
