@@ -30,8 +30,8 @@ export default function AboutPage() {
             <p className="eyebrow">Who we are</p>
             <h2 className="h-xl">A family business, three generations in.</h2>
             <p className="lede" style={{ marginTop: 24 }}>
-              {SITE.brand} is a family business, built on more than {SITE.years} years in the construction industry
-              and 3rd generation of builders and carpentry.
+              {SITE.brand} is a family business, built on {SITE.years} years&rsquo; experience in the construction
+              industry and 3rd generation of builders and carpentry.
             </p>
             <p className="body-copy">
               Founded by {SITE.director}, our business has grown from decades of hands-on experience across high-end
@@ -49,8 +49,7 @@ export default function AboutPage() {
               with you and our interior designers to deliver a result that suits your lifestyle and your budget.
             </p>
             <p className="body-copy">
-              Our carpenters are qualified and Australian-trained, and everything we build is to Australian
-              Standards.
+              Our trades are all qualified and build to Australian standards with strict adherence to the NCC.
             </p>
             <p className="body-copy"><strong>Experience you can trust. Service that&rsquo;s personal.</strong></p>
             <div className="signature">
@@ -78,6 +77,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="section section--dark">
+        <div className="wrap">
+          <SectionHead eyebrow="What we do" title="Three sides to the business." />
+          <Pillars
+            items={[
+              { heading: "Residential", text: "High-end renovations and extensions, delivered to a premium finish. We work alongside our/your interior designers to bring your vision to life within your budget, from open-plan living and alfresco spaces to kitchens, bathrooms, laundries, and built-in robes." },
+              { heading: "Insurance", text: "Over 30 years’ experience in insurance repairs and make-good works across Victoria and New South Wales." },
+              { heading: "Commercial", text: "Commercial carpentry delivered through awarded tender packages. We partner with principal builders on VSBA school projects alongside our affiliated company, Probus Group, and provide joinery supply and installation." },
+            ]}
+          />
+        </div>
+      </section>
+
       <section className="section section--cloud">
         <div className="wrap">
           <SectionHead
@@ -97,7 +109,7 @@ export default function AboutPage() {
       <section className="section">
         <div className="wrap">
           <SectionHead
-            eyebrow="What we do"
+            eyebrow="Services"
             title="Our services."
             action={<a className="link-arrow" href={href("/services/")}>All services</a>}
           />

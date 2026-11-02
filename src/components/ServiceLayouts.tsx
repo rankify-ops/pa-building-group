@@ -124,7 +124,7 @@ const RENO_SECTIONS: {
     eyebrow: "Home flipping",
     title: "Buy it. Renovate it. Sell it for more.",
     paragraphs: [
-      "Whether you’re an investor or buying your first renovation project, we help you turn a tired property into one buyers want. With 43 years in the building industry, we know where to spend to add value, and where not to.",
+      "Whether you’re an investor or buying your first renovation project, we help you turn a tired property into one buyers want. With 40+ years in the building industry, we know where to spend to add value, and where not to.",
       "Once you’ve bought, we manage the whole renovation with one team, one contract and one point of contact. We work to a tight programme so you’re not paying holding costs any longer than you need to.",
     ],
     intro: "Our home flipping services include:",
